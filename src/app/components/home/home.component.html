@@ -1,11 +1,33 @@
 <section class="home">
-    <img src="../../../assets/images/banner 2.jpg" alt="Banner Image"/>
-    
+    <img src="../../../assets/images/bg.png" alt="Banner Image"/>
+    <div class="header">
+        <app-header></app-header>
+    </div>
     <div class="homecontent">
         <h1>Solution Ninjas</h1>
-    <h2>A Ticketing System for project management</h2>
-    <a routerLink="course" class="btn btn-lg btn-light">Our Services</a> &nbsp;
-    <a routerLink="joinnow" class="btn btn-lg btn-primary">Join Now</a>
-    
-    </div>
+        <h2>A Ticketing System for project management</h2>
+        <strong>Login As  : </strong>
+        <mat-button-toggle-group name="userType" aria-label="Font Style" (change)="toggleChange($event)">
+            <mat-button-toggle value="employee">Employee</mat-button-toggle>
+            <mat-button-toggle value="client" checked>Client</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div class="inner" *ngIf="!myuser" >
+            <asl-google-signin-button ></asl-google-signin-button>
+            &nbsp;  <b>Sigin with Google</b>
+        </div>
+        
+        <!-- <div *ngIf="myuser">
+            <img src="{{myuser.photoUrl}}" alt="User Image" />
+            <div>
+              <h4>{{myuser.name}}</h4>
+              <p>{{myuser.email}}</p>
+            </div>
+        </div> -->
+
+     </div>
 </section>
+<script>
+    const googleButton = document.getElementById('google-button');
+    googleButton.innerText = 'Sign in with Google';
+  </script>
+

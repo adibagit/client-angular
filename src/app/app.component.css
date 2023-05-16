@@ -1,0 +1,5 @@
+  .nav{
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);  /* Set the transparency to 0.3    #0f172a*/
+    overflow:hidden
+  }

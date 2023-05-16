@@ -1,17 +1,23 @@
-<div class="container col-5">
-    <br/>
-    <h2 style="text-align: center;">Edit Department  </h2>
-    <br/>
-    <form>
-        <div class="mb-3">
-          <label for="deptname" class="form-label">Department Name</label>
-          <input type="text" class="form-control" name="deptname" [(ngModel)]="department.deptname">
-        </div>
-        <div class="mb-3">
-          <label for="deptdesc" class="form-label">Description</label>
-          <textarea class="form-control" name="deptdesc" [(ngModel)]="department.deptdesc"></textarea>
-        </div>
-        <br/>
-        <button type="submit" class="btn btn-primary" (click)="updateDept()">Update</button>
-    </form>
+<div class="container">
+  <br/>
+  <div mat-dialog-title>
+    <h2>Edit Department</h2>
+  </div>
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Department Name</mat-label>
+        <input matInput type="text" [(ngModel)]="department.deptname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="department.deptdesc"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-close class="action">
+    <button mat-raised-button>Cancel</button> &nbsp;
+    <button mat-raised-button color="primary" (click)="updateDept()">Update</button>
+  </div>
+  <br/>
 </div>

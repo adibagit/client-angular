@@ -8,22 +8,63 @@
 
 .homecontent
 {
-        position: absolute;
-        top: 70%;
-        left: 20%;
-        transform: translate(-50%,-50%);
+    position: absolute;
+    top: 70%;
+    left: 20%;
+    transform: translate(-50%,-110%);
+    align-content: center;
 }
 .homecontent h1
 {
-    color: #ffffff;
+    color: #222222;
     font-size: 50px;
 }
 .homecontent h2
 {
-    color: #ffffff;
+    color: #222222;
     font-size: 20px;
 }
 .homecontent a
 {
     margin-top: 10px;
 }
+.header
+{
+    position: absolute;
+    top: 12%;
+    left: 16%;
+    transform: translate(-50%,-50%);
+}
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  mat-drawer {
+    width: 260px;
+    background: #0f172a;
+  }
+  mat-drawer-container {
+    height: 100%;
+  }
+
+.inner{
+    background-color: #4081ec;
+    color : white;
+    padding: 6px 10px;
+    margin: 10px 0;
+    width:max-content;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+.inner:hover {
+    background-color: gray; 
+    color:white;
+  }
+
+  /* #22b2ff */
+
+

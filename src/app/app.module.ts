@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
 import { ListDepartmentsComponent } from './components/list-departments/list-departments.component';
 import { AppRoutingModule } from './app.routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
 import { AddDepartmentComponent } from './components/add-department/add-department.component';
 import { UpdateDepartmentComponent } from './components/update-department/update-department.component';
 
@@ -17,9 +17,28 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { LoginComponent } from './components/login/login.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatIconModule} from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { MatListModule } from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+import { Header2Component } from './components/header2/header2.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { MatMenuModule } from '@angular/material/menu';
+import {  GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AddPropertyComponent } from './components/add-property/add-property.component';
+import { UpdatePropertyComponent } from './components/update-property/update-property.component';
+import { ListPropertiesComponent } from './components/list-properties/list-properties.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +46,15 @@ import { HomeComponent } from './components/home/home.component';
     ListDepartmentsComponent,
     AddDepartmentComponent,
     UpdateDepartmentComponent,
-    LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    AdminMenuComponent,
+    Header2Component,
+    AdminDashboardComponent,
+    AdminHomeComponent,
+    AddPropertyComponent,
+    UpdatePropertyComponent,
+    ListPropertiesComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +68,20 @@ import { HomeComponent } from './components/home/home.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatButtonToggleModule,
+    GoogleSigninButtonModule
   ],
   providers: [
     {

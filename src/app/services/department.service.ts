@@ -8,9 +8,7 @@ import { Department } from '../models/department';
 export class DepartmentService {
 
   id?: number;
-  constructor(private httpClient: HttpClient) { 
-    
-  }
+  constructor(private httpClient: HttpClient) { }
 
   setId(deptId?: number){
     this.id = deptId;

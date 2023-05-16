@@ -1,4 +1,29 @@
-<div class="container col-5">
+<div class="container">
+  <br/>
+  <div mat-dialog-title>
+    <h2>Department Form</h2>
+  </div>
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Department Name</mat-label>
+        <input matInput type="text" placeholder="Ex. Electricity" [(ngModel)]="department.deptname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="department.deptdesc"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-close class="action">
+    <button mat-raised-button>Cancel</button> &nbsp;
+    <button mat-raised-button color="primary" (click)="addDept()">Save</button>
+  </div>
+  <br/>
+</div>
+
+
+<!-- <div class="container col-5">
     <br/>
     <h2 style="text-align: center;">Add Department  </h2>
     <br/>
@@ -14,4 +39,4 @@
         <br/>
         <button type="submit" class="btn btn-primary" (click)="addDept()">Add</button>
     </form>
-</div>
+</div> -->

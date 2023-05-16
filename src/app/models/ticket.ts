@@ -8,3 +8,4 @@ export class Ticket {
     ticketdate?: Date;
     lastmodified?:Date
 }
+//this is incomplete

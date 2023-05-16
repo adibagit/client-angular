@@ -1,0 +1,20 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="../../../assets/images/logo.png" alt="Company Logo" />
+  </div>
+  <br/><br/><br/>
+  <mat-divider></mat-divider><br/>
+  <a mat-list-item routerLinkActive="list-item-active" (click)="selectComponent('AdminHomeComponent')">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" (click)="selectComponent('ListDepartmentsComponent')">
+    <mat-icon>account_balance</mat-icon> Departments
+  </a>
+  <a mat-list-item> <mat-icon>person</mat-icon> Employees </a>
+  <a mat-list-item> <mat-icon>group</mat-icon> Clients </a>
+  <a mat-list-item> <mat-icon>apartment</mat-icon> Properties </a>
+  <a mat-list-item> <mat-icon>manage_accounts</mat-icon> Managers </a>
+  <a mat-list-item> <mat-icon>confirmation_number</mat-icon> Tickets </a>
+  <a mat-list-item> <mat-icon>feedback</mat-icon> Feedbacks </a>
+  
+</mat-nav-list>
