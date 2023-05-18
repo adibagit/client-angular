@@ -1,7 +1,6 @@
 import { Component,OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Property } from 'src/app/models/property';
 import { PropertyService } from 'src/app/services/property.service';
 import { AddPropertyComponent } from '../add-property/add-property.component';
 import { UpdatePropertyComponent } from '../update-property/update-property.component';

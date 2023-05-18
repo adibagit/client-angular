@@ -10,7 +10,9 @@
   <a mat-list-item routerLinkActive="list-item-active" (click)="selectComponent('ListDepartmentsComponent')">
     <mat-icon>account_balance</mat-icon> Departments
   </a>
-  <a mat-list-item> <mat-icon>person</mat-icon> Employees </a>
+  <a mat-list-item routerLinkActive="list-item-active" (click)="selectComponent('ListEmployeesComponent')"> 
+    <mat-icon>person</mat-icon> Employees 
+  </a>
   <a mat-list-item> <mat-icon>group</mat-icon> Clients </a>
   <a mat-list-item routerLinkActive="list-item-active" (click)="selectComponent('ListPropertiesComponent')"> 
     <mat-icon>apartment</mat-icon> Properties 

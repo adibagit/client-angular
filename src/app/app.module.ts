@@ -53,6 +53,9 @@ import { SchedulerHomeComponent } from './components/scheduler-home/scheduler-ho
 import { SchedulerDashboardComponent } from './components/scheduler-dashboard/scheduler-dashboard.component';
 import { SchedulerMenuComponent } from './components/scheduler-menu/scheduler-menu.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
+import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
+import { UpdateEmployeesComponent } from './components/update-employees/update-employees.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +84,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     SchedulerHomeComponent,
     SchedulerDashboardComponent,
     SchedulerMenuComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ListEmployeesComponent,
+    AddEmployeesComponent,
+    UpdateEmployeesComponent
   ],
   imports: [
     BrowserModule,
