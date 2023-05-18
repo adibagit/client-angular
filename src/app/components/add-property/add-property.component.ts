@@ -1,9 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { Property } from 'src/app/models/property';
 import { PropertyService } from 'src/app/services/property.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { Area } from 'src/app/models/area';
 @Component({
   selector: 'app-add-property',
   templateUrl: './add-property.component.html',
