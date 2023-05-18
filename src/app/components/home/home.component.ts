@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit{
       else if(await this.isExist(user.email)){
           this.httpClient.get(`http://localhost:8080/api/role/${user.email}`, { responseType: 'text' }).subscribe({
             next: (response: string) => {
-              alert(response);
+              //alert(response);
               console.log(response);
               //redirect to response(userrole) page this.router.navigate(['clientDashboard']);
             },

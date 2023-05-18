@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Property } from '../models/property';
+import { Area } from '../models/area';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class PropertyService {
     return this.httpClient.get<Property[]>("http://localhost:8080/api/properties");
   }
 
+  getAllAreas(): Observable<Area[]>{
+    return this.httpClient.get<Area[]>("http://localhost:8080/api/areas");
+  }
+
   addProperty(property?: Property): Observable<Object>{
     return this.httpClient.post<Object>("http://localhost:8080/api/properties",property ); 
   }
@@ -34,4 +39,5 @@ export class PropertyService {
   deleteProp(id?: number): Observable<Object>{
     return this.httpClient.delete<Object>(`http://localhost:8080/api/properties?id=${id}`);
   }
+  
 }

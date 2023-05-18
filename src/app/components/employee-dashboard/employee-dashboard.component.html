@@ -1,0 +1,15 @@
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <app-employee-menu></app-employee-menu>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
+      <ng-container #componentContainer></ng-container>
+      <app-employee-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-employee-home>
+      <app-employee-home *ngIf="selectedComponentService.getSelectedComponent()=='EmployeeHomeComponent'"></app-employee-home>
+    </mat-drawer-content>
+  </mat-drawer-container>
+  
+      
+  

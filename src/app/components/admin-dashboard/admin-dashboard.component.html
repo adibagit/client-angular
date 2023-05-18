@@ -11,6 +11,7 @@
     <app-admin-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-admin-home>
     <app-admin-home *ngIf="selectedComponentService.getSelectedComponent()=='AdminHomeComponent'"></app-admin-home>
     <app-list-departments *ngIf="selectedComponentService.getSelectedComponent()=='ListDepartmentsComponent'"></app-list-departments>
+    <app-list-properties *ngIf="selectedComponentService.getSelectedComponent()=='ListPropertiesComponent'"></app-list-properties>
     <!-- from menu component : updated value hai : {{selectedComponentService.getSelectedComponent()}} -->
   </mat-drawer-content>
 </mat-drawer-container>
