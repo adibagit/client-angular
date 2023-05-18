@@ -56,6 +56,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
 import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
 import { UpdateEmployeesComponent } from './components/update-employees/update-employees.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +65,7 @@ import { UpdateEmployeesComponent } from './components/update-employees/update-e
     AddDepartmentComponent,
     UpdateDepartmentComponent,
     HomeComponent,
+    HomepageComponent,
     HeaderComponent,
     AdminMenuComponent,
     Header2Component,
