@@ -1,8 +1,6 @@
-import { Component,ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectedComponentService } from 'src/app/services/selected-component.service';
-import { AdminHomeComponent } from '../admin-home/admin-home.component';
-import { ListDepartmentsComponent } from '../list-departments/list-departments.component';
 
 @Component({
   selector: 'app-admin-menu',

@@ -1,0 +1,36 @@
+<div class="container">
+    <br/>
+    <div mat-dialog-title>
+      <h2>Property Form</h2>
+    </div>
+    <div mat-dialog-content class="content">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Property Name</mat-label>
+          <input matInput type="text" placeholder="Ex. Electricity" [(ngModel)]="property.propertyname">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="property.propertydesc"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <textarea matInput [(ngModel)]="property.propertyaddress"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Area</mat-label>
+            <mat-select [(ngModel)]="property.area.zipcode">
+              <mat-option *ngFor="let area of areas" [value]="area.zipcode">
+                {{area.areaname}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <asl-google-signin-button ></asl-google-signin-button>          
+      </div>
+    </div>
+    <div mat-dialog-close class="action">
+      <button mat-raised-button>Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" (click)="addProp()">Save</button>
+    </div>
+    <br/>
+  </div>  

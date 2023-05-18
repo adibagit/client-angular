@@ -39,6 +39,19 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AddPropertyComponent } from './components/add-property/add-property.component';
 import { UpdatePropertyComponent } from './components/update-property/update-property.component';
 import { ListPropertiesComponent } from './components/list-properties/list-properties.component';
+import {MatSelectModule} from '@angular/material/select';
+import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
+import { EmployeeHomeComponent } from './components/employee-home/employee-home.component';
+import { EmployeeMenuComponent } from './components/employee-menu/employee-menu.component';
+import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
+import { ClientHomeComponent } from './components/client-home/client-home.component';
+import { ClientMenuComponent } from './components/client-menu/client-menu.component';
+import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
+import { ManagerHomeComponent } from './components/manager-home/manager-home.component';
+import { ManagerMenuComponent } from './components/manager-menu/manager-menu.component';
+import { SchedulerHomeComponent } from './components/scheduler-home/scheduler-home.component';
+import { SchedulerDashboardComponent } from './components/scheduler-dashboard/scheduler-dashboard.component';
+import { SchedulerMenuComponent } from './components/scheduler-menu/scheduler-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +67,19 @@ import { ListPropertiesComponent } from './components/list-properties/list-prope
     AdminHomeComponent,
     AddPropertyComponent,
     UpdatePropertyComponent,
-    ListPropertiesComponent
+    ListPropertiesComponent,
+    EmployeeDashboardComponent,
+    EmployeeHomeComponent,
+    EmployeeMenuComponent,
+    ClientDashboardComponent,
+    ClientHomeComponent,
+    ClientMenuComponent,
+    ManagerDashboardComponent,
+    ManagerHomeComponent,
+    ManagerMenuComponent,
+    SchedulerHomeComponent,
+    SchedulerDashboardComponent,
+    SchedulerMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +106,8 @@ import { ListPropertiesComponent } from './components/list-properties/list-prope
     MatDividerModule,
     MatMenuModule,
     MatButtonToggleModule,
-    GoogleSigninButtonModule
+    GoogleSigninButtonModule,
+    MatSelectModule
   ],
   providers: [
     {

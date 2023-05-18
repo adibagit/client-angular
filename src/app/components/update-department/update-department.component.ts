@@ -1,6 +1,4 @@
-import { Component ,Inject,OnInit} from '@angular/core';
-import { inject } from '@angular/core/testing';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component ,OnInit} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Department } from 'src/app/models/department';

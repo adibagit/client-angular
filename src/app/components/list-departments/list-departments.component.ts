@@ -47,16 +47,19 @@ export class ListDepartmentsComponent implements OnInit{
 
   deleteDept(id?:number){
     //this.departmentService.deleteDept(id).subscribe();
-    this.departmentService.deleteDept(id).subscribe({
-      next:(res)=>{
-        this.snackBar.open("Department deleted!","OK");
-        //this.getAllDepts();
-      },
-      error:(err)=>{
-        console.log(err);
-        this.snackBar.open("Failed deleting department!","OK");
-      }
-    });
+    this.departmentService.deleteDept(id).subscribe()
+    this.snackBar.open("Department deleted!","OK");
+
+    // this.departmentService.deleteDept(id).subscribe({
+    //   next:(res)=>{
+    //     this.snackBar.open("Department deleted!","OK");
+    //     //this.getAllDepts();
+    //   },
+    //   error:(err)=>{
+    //     console.log(err);
+    //     this.snackBar.open("Failed deleting department!","OK");
+    //   }
+    // });
     //this.router.navigate(['departments']);
     //window.location.reload();
   }

@@ -12,7 +12,9 @@
   </a>
   <a mat-list-item> <mat-icon>person</mat-icon> Employees </a>
   <a mat-list-item> <mat-icon>group</mat-icon> Clients </a>
-  <a mat-list-item> <mat-icon>apartment</mat-icon> Properties </a>
+  <a mat-list-item routerLinkActive="list-item-active" (click)="selectComponent('ListPropertiesComponent')"> 
+    <mat-icon>apartment</mat-icon> Properties 
+  </a>
   <a mat-list-item> <mat-icon>manage_accounts</mat-icon> Managers </a>
   <a mat-list-item> <mat-icon>confirmation_number</mat-icon> Tickets </a>
   <a mat-list-item> <mat-icon>feedback</mat-icon> Feedbacks </a>
