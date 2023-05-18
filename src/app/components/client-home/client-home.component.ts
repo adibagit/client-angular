@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./client-home.component.css']
 })
 export class ClientHomeComponent {
-
+  createTicket(){}
 }

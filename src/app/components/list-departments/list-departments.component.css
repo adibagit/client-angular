@@ -40,9 +40,13 @@
   transform: translate(-50%, -50%);
 }
 
+.table-container{
+  overflow-x: auto;
+}
 
 table {
   width: 100%;
+  white-space: nowrap;
 }
 
 .mat-mdc-form-field {
@@ -51,9 +55,15 @@ table {
 }
 
 td, th {
-  width: 5%;
+  width: 21%;
 }
 .right{
   display: flex;
   align-content: end;
 }
+
+
+
+
+
+

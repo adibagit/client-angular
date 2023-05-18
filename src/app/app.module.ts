@@ -52,6 +52,7 @@ import { ManagerMenuComponent } from './components/manager-menu/manager-menu.com
 import { SchedulerHomeComponent } from './components/scheduler-home/scheduler-home.component';
 import { SchedulerDashboardComponent } from './components/scheduler-dashboard/scheduler-dashboard.component';
 import { SchedulerMenuComponent } from './components/scheduler-menu/scheduler-menu.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +80,8 @@ import { SchedulerMenuComponent } from './components/scheduler-menu/scheduler-me
     ManagerMenuComponent,
     SchedulerHomeComponent,
     SchedulerDashboardComponent,
-    SchedulerMenuComponent
+    SchedulerMenuComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

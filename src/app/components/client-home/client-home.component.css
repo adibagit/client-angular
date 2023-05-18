@@ -1,1 +1,10 @@
 @import url(../admin-home/admin-home.component.css);
+.page__box .mat-raised-button {
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+  }
+  .right{
+    display: flex;
+    align-content: end;
+  }
