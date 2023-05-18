@@ -40,10 +40,16 @@ export class HomeComponent implements OnInit{
         this.router.navigate(['adminDashboard']);
       }
       else if(await this.isExist(user.email)){
-          this.httpClient.get(`http://localhost:8080/api/role/${user.email}`, { responseType: 'text' }).subscribe({
+          this.httpClient.get(`http://localhost:9001/api/role/${user.email}`, { responseType: 'text' }).subscribe({
             next: (response: string) => {
               alert(response);
               console.log(response);
+              if(response=='client'){
+                this.router.navigate(['usersetup']);
+              }else{
+                alert("Redirect to employee")
+              }
+              
               //redirect to response(userrole) page this.router.navigate(['clientDashboard']);
             },
             error: (error: any) => {
@@ -68,7 +74,7 @@ export class HomeComponent implements OnInit{
             console.log(err);
           }
         });
-        this.router.navigate(['']);
+        this.router.navigate(['usersetup']);
       }
     });
   } 

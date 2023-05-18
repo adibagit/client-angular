@@ -10,14 +10,17 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   addUser(user?: User): Observable<Object>{
-    return this.httpClient.post<Object>("http://localhost:8080/api/users",user );
+    return this.httpClient.post<Object>("http://localhost:9001/api/users",user );
   }
 
   userExist(email?:string):Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/userExist/${email}`);
+    return this.httpClient.get<Object>(`http://localhost:9001/api/userExist/${email}`);
   }
   
   getUserRole(email?:string):Observable<string>{
-    return this.httpClient.get<string>(`http://localhost:8080/api/role/${email}`);
+    return this.httpClient.get<string>(`http://localhost:9001/api/role/${email}`);
+  }
+  getUser(id:number):Observable<User>{
+    return this.httpClient.get<User>(`http://localhost:9001/api/users/${id}`);
   }
 }
