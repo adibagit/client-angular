@@ -9,7 +9,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class AddPropertyComponent  implements OnInit{
 
-  //property:Property = new Property();
   property: any = {
     propertyname: '',
     propertydesc: '',
@@ -36,26 +35,12 @@ export class AddPropertyComponent  implements OnInit{
   }
 
   addProp(){
-    // if (this.property.area) {
-    //   const payload = {
-    //     propertyname: this.property.propertyname,
-    //     propertydesc: this.property.propertydesc,
-    //     propertyaddress: this.property.propertyaddress,
-    //     area: {
-    //       zipcode: this.property.area.zipcode
-    //     }
-    //   };
-    
-    // console.log(payload);
-
     console.log(this.property)
     this.propertyService.addProperty(this.property).subscribe({
       next:(res)=>{
         this.snackBar.open("Property added successfully. Please Refresh! ","OK");
-        //window.location.reload();
       },
       error:(err)=>{
-        //alert("Failed to add the Department!")
         this.snackBar.open("Failed adding property!","OK");
       }
     });

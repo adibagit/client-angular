@@ -52,20 +52,15 @@ export class AddEmployeesComponent {
   addEmp(){
 
     this.socialAuthService.authState.subscribe(async (user) => {
-      console.log("user:",user);
-      
       if(await this.isExist(user.email)){
           this.httpClient.get(`http://localhost:9001/api/role/${user.email}`, { responseType: 'text' }).subscribe({
             next: (response: string) => {
-              //alert(response);
-              console.log(response);
               if(response=='client'){
                 this.router.navigate(['usersetup']);
               }else{
                 alert("Redirect to employee")
               }
               
-              //redirect to response(userrole) page this.router.navigate(['clientDashboard']);
             },
             error: (error: any) => {
               this.snackBar.open("Something went wrong!","OK");
@@ -81,7 +76,7 @@ export class AddEmployeesComponent {
         this.userService.addUser(this.user).subscribe({
           next:(res)=>{
             this.userResponse = res;
-            //this.snackBar.open("User Registered successfully.","OK");
+
             this.employee.user.userid = this.userResponse.userid;
             alert(this.userResponse.userid)
             this.empService.addEmployee(this.employee).subscribe({
@@ -101,10 +96,7 @@ export class AddEmployeesComponent {
         });
         this.router.navigate(['adminDashboard']);
       }
-    });
-
-    // console.log(this.property)
-    
+    });    
   }
 
   async isExist(email: string): Promise<boolean> {

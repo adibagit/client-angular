@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialAuthService, } from '@abacritt/angularx-social-login';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -57,8 +57,6 @@ export class HomeComponent implements OnInit{
                 this.manageSession(user.email);
                 this.router.navigate(['employeeDashboard']);
               }
-              
-              //redirect to response(userrole) page this.router.navigate(['clientDashboard']);
             },
             error: (error: any) => {
               this.snackBar.open("Something went wrong!!","OK");
@@ -76,6 +74,7 @@ export class HomeComponent implements OnInit{
         this.userService.addUser(this.user).subscribe({
           next:(res)=>{
             this.snackBar.open("Registered successfully.","OK");
+            this.router.navigate(['clientDashboard']);
           },
           error:(err)=>{
             this.snackBar.open("Registeration failed!","OK");

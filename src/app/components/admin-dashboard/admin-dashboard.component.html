@@ -6,14 +6,11 @@
   <mat-drawer-content>
     <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
     <ng-container #componentContainer></ng-container>
-    <!-- <router-outlet></router-outlet> -->
-    <!-- <app-admin-home *ngIf="selectedComponent=='AdminHomeComponent'"></app-admin-home> -->
     <app-admin-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-admin-home>
     <app-admin-home *ngIf="selectedComponentService.getSelectedComponent()=='AdminHomeComponent'"></app-admin-home>
     <app-list-departments *ngIf="selectedComponentService.getSelectedComponent()=='ListDepartmentsComponent'"></app-list-departments>
     <app-list-properties *ngIf="selectedComponentService.getSelectedComponent()=='ListPropertiesComponent'"></app-list-properties>
     <app-list-employees *ngIf="selectedComponentService.getSelectedComponent()=='ListEmployeesComponent'"></app-list-employees>
-    <!-- from menu component : updated value hai : {{selectedComponentService.getSelectedComponent()}} -->
   </mat-drawer-content>
 </mat-drawer-container>
 

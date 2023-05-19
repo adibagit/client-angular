@@ -1,21 +1,3 @@
-<!-- <table>
-    <tr>
-      <th>Employee ID</th>
-      <th>Fname</th>
-      <th>Lname</th>
-      <th>Department </th>
-    </tr>
-    <tr *ngFor="let emp of employee">
-      <td>{{ emp.empid }}</td>
-      <td>{{ emp.user.firstname }}</td>
-      <td>{{ emp.user.lastname }}</td>
-      <td>{{ emp.user.emailid }}</td>
-      <td>{{ emp.user.phoneno }}</td>
-      <td>{{ emp.user.picture }}</td>
-      <td>{{ emp.department.deptname }}</td>
-    </tr>
-  </table>
-   -->
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Employees
       <button mat-raised-button (click)="openAddEmp()">Add Employee</button>
@@ -43,14 +25,11 @@
                             <mat-card-actions>
                                 <button mat-icon-button color="primary" (click)="openUpdateEmp(emp.empid)"><mat-icon>edit</mat-icon></button>
                                 <button mat-icon-button color="warn" (click)="deleteEmp(emp.empid)"><mat-icon>delete</mat-icon></button>
-                                <!-- <button mat-button>Edit</button>
-                                <button mat-button>Delete</button> -->
                             </mat-card-actions>
                         </mat-card>
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>

@@ -20,10 +20,8 @@ export class AddDepartmentComponent {
     this.departmentService.addDepartment(this.department).subscribe({
       next:(res)=>{
         this.snackBar.open("Department added successfully. Please Refresh! ","OK");
-        //window.location.reload();
       },
       error:(err)=>{
-        //alert("Failed to add the Department!")
         this.snackBar.open("Failed adding department!","OK");
       }
     });
