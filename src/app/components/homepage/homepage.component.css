@@ -48,7 +48,7 @@ header{
     align-items: center;
 }
 .logo img{
-    width:60px;
+    width:70px;
 }
 .navbar{
     display:flex;
@@ -73,21 +73,24 @@ header{
 }
 
 .home{
+
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    background: #ebdbc8;
+    background: linear-gradient(to left,#000046,#1cb5e0);
     gap:1rem;
 }
 .home-text{
     flex: 1 1 17rem;
 }
 .home-img{
-    flex: 11 17rem;
+    flex: 1 1 20rem;
 }
 .home-img img{
+    width: 40rem;
+    height: 40rem;
     animation: animate 3s linear infinite;
 }
 @keyframes animate{
@@ -102,35 +105,37 @@ header{
     }
 }
 .home-text span{
-    font-size: 1rem;
+    margin:3px;
+    font-size: 1.1rem;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--second-color);
+    color: #04048f;
 }
 .home-text h1{
-    font-size: 3.2rem;
-    color:var(--main-color);
+    font-family: "Poppins", sans-serif;
+    font-size: 3.3rem;
+    color:antiquewhite;
     font-weight: bolder;
 }
 .home-text h2{
     font-size: 1.8rem;
     font-weight: 600;
-    color: var(--second-color);
+    color: #fffcfc;
     text-transform: uppercase;
     margin: 0.5rem 0 1.4rem;
 }
 
 .btn{
     padding: 7px 16px;
-    border: 2px solid #1e3932;
+    border: 2px solid #3636eb;
     border-radius: 40px;
-    color:#1e3932;
-    font-weight: 500;
+    color:#04048f;
+    font-weight: 700;
 }
 
 .btn:hover{
     color:#fff;
-    background-color: #1e3932;
+    background-color: #04048f;
 }
 .heading{
     text-align: center;
@@ -175,7 +180,7 @@ header{
 }
 .shop-container .box h2{
     color: #ebdbc8;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 .shop-container .box span{
     color: #ebdbc7;
@@ -183,10 +188,7 @@ header{
     font-weight: 500;
     margin: 0.2rem 0 0.5rem;
 }
-.box .btn{
-    border:2px solid #ebdbc8;
-    color:#ebdbc8;
-}
+
 .box .btn:hover{
     background: #ebdbc8;
     color:#1e3932;
@@ -274,13 +276,16 @@ header{
         padding: 100px 7%;
 
     }
-    .home-text h1{
-        font-size: 2.5rem;
+    .home-text  h1{
+        margin-top: 2px;
+        text-transform: uppercase;
+        font-size: 1.7rem;
     }
     .home-text h2{
-        font-size: 1.5rem;
+        text-transform: capitalize;
+        word-spacing: normal;
+        font-size: 1.4rem;
     }
-   
 }
 
 @media(max-width:1150px){
@@ -295,15 +300,16 @@ header{
         font-size: 1.2rem;
         margin-bottom: 1px;
     }
-    .home-text h1{
+    .home-text  h1{
         margin-top: 2px;
-        text-transform: uppercase;
-        font-size: 2.4rem;
+text-transform: uppercase;
+font-size: 2rem;
     }
     .home-text h2{
-        font-size: 1.5rem;
         text-transform: capitalize;
         word-spacing: normal;
+        font-size: 1.4rem;
+
     }
 }
 

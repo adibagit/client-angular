@@ -58,6 +58,7 @@ import { AddEmployeesComponent } from './components/add-employees/add-employees.
 import { UpdateEmployeesComponent } from './components/update-employees/update-employees.component';
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
 import { UpdateTicketComponent } from './components/update-ticket/update-ticket.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +67,7 @@ import { UpdateTicketComponent } from './components/update-ticket/update-ticket.
     AddDepartmentComponent,
     UpdateDepartmentComponent,
     HomeComponent,
+HomepageComponent,
     HeaderComponent,
     AdminMenuComponent,
     Header2Component,
