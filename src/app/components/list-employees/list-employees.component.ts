@@ -8,6 +8,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdateEmployeesComponent } from '../update-employees/update-employees.component';
+import { AddEmployeesComponent } from '../add-employees/add-employees.component';
 
 @Component({
   selector: 'app-list-employees',
@@ -59,7 +60,7 @@ export class ListEmployeesComponent {
   }
 
   openAddEmp(){
-    this.dialog.open(AddPropertyComponent);
+    this.dialog.open(AddEmployeesComponent);
   }
 
   openUpdateEmp(id:number){

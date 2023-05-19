@@ -1,0 +1,17 @@
+.inner{
+    background-color: #4081ec;
+    color : white;
+    padding: 6px 10px;
+    margin: 10px 0;
+    width:max-content;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.inner:hover {
+    background-color: gray; 
+    color:white;
+  }

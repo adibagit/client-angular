@@ -56,6 +56,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
 import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
 import { UpdateEmployeesComponent } from './components/update-employees/update-employees.component';
+import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
+import { UpdateTicketComponent } from './components/update-ticket/update-ticket.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +89,10 @@ import { UpdateEmployeesComponent } from './components/update-employees/update-e
     UserProfileComponent,
     ListEmployeesComponent,
     AddEmployeesComponent,
-    UpdateEmployeesComponent
+    UpdateEmployeesComponent,
+    AddTicketComponent,
+    ListTicketsComponent,
+    UpdateTicketComponent
   ],
   imports: [
     BrowserModule,
