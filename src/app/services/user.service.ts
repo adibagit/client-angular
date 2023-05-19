@@ -23,4 +23,8 @@ export class UserService {
   getUser(id:number):Observable<User>{
     return this.httpClient.get<User>(`http://localhost:8080/api/users/${id}`);
   }
+
+  getUserByEmail(email?:String):Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/userOf/${email}`);
+  }
 }

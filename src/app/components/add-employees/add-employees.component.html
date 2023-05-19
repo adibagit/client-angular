@@ -1,1 +1,27 @@
-<p>add-employees works!</p>
+<div class="container">
+    <br/>
+    <div mat-dialog-title>
+      <h2>Employee Form</h2>
+    </div>
+    <div mat-dialog-content class="content">
+      <div class="row">
+        <mat-form-field>
+            <mat-label>Department</mat-label>
+            <mat-select [(ngModel)]="employee.department.deptid" required="true" >
+              <mat-option *ngFor="let dept of departments" [value]="dept.deptid" >
+                {{dept.deptname}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="inner" >
+            <asl-google-signin-button ></asl-google-signin-button>
+            &nbsp;  <b>Sigin Employee with Google</b>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-close class="action">
+      <button mat-raised-button>Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" (click)="addEmp()">Save</button>
+    </div>
+    <br/>
+  </div>  

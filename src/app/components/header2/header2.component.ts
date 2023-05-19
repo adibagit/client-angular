@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
 export class Header2Component implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router,private socialAuthService: SocialAuthService) {}
+  username = sessionStorage.getItem('username');
+  picture = sessionStorage.getItem('dp');
+  
+  constructor(private router: Router,private socialAuthService: SocialAuthService) {
+  
+  }
 
   ngOnInit(): void {}
 
@@ -18,8 +23,11 @@ export class Header2Component implements OnInit {
     this.toggleSidebarForMe.emit();
   }
 
+  
+
   logOut(): void {
     this.socialAuthService.signOut(); 
+    sessionStorage.clear();
     this.router.navigate(['']); 
   }
 }

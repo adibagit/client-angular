@@ -1,6 +1,5 @@
 import { Component , OnInit} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
@@ -34,7 +33,7 @@ export class UpdatePropertyComponent implements OnInit{
     });
 
   }
-  constructor(private router:Router, private propertyService: PropertyService,private snackBar: MatSnackBar){}
+  constructor(private propertyService: PropertyService,private snackBar: MatSnackBar){}
   updateProp(){
     this.propertyService.updateProp(this.property).subscribe({
       next:(res)=>{

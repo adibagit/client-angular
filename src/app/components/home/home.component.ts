@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialAuthService, GoogleLoginProvider, SocialUser, } from '@abacritt/angularx-social-login';
+import { SocialAuthService, } from '@abacritt/angularx-social-login';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit{
 
   myuser:any;
   loggedIn:any;
+  loggedInUser:any;
 
   ngOnInit() {
     this.socialAuthService.authState.subscribe(async (user) => {
@@ -37,23 +38,30 @@ export class HomeComponent implements OnInit{
 
 
       if(user.email == 'adiba012000@gmail.com'){
+        this.manageSession(user.email);
         this.router.navigate(['adminDashboard']);
       }
+      
+      if(user.email == 'siddiqui.rubab.dcs23@vnsgu.ac.in'){
+        this.manageSession(user.email);
+        this.router.navigate(['schedulerDashboard']); 
+      }
       else if(await this.isExist(user.email)){
-          this.httpClient.get(`http://localhost:9001/api/role/${user.email}`, { responseType: 'text' }).subscribe({
+          this.httpClient.get(`http://localhost:8080/api/role/${user.email}`, { responseType: 'text' }).subscribe({
             next: (response: string) => {
-              //alert(response);
               console.log(response);
               if(response=='client'){
-                this.router.navigate(['usersetup']);
-              }else{
-                alert("Redirect to employee")
+                this.manageSession(user.email);
+                this.router.navigate(['clientDashboard']);
+              }else if(response=='employee'){
+                this.manageSession(user.email);
+                this.router.navigate(['employeeDashboard']);
               }
               
               //redirect to response(userrole) page this.router.navigate(['clientDashboard']);
             },
             error: (error: any) => {
-              this.snackBar.open("Something went wrong!","OK");
+              this.snackBar.open("Something went wrong!!","OK");
               console.error('Error occurred while retrieving user role:', error);
             }
           });
@@ -85,67 +93,26 @@ export class HomeComponent implements OnInit{
     console.log(this.user);
   }
 
-  // isExist(email: string): boolean {
-  //   let exist = false;
-  //   this.userService.userExist(email).subscribe((response: boolean) => {
-  //     exist = response;
-  //   });
-  //   return exist;
-  // }
-
-
+  
   async isExist(email: string): Promise<boolean> {
     const observable = this.userService.userExist(email);
     const result = await firstValueFrom(observable);
     return result as boolean;
   }
-  
-  
-  // isExist(email:string): boolean{
-  //   return this.userService.userExist(email).subscribe();
-  // }
-  
-  // loginWithGoogle(): void {
-  //   this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  // }
-  // logOut(): void {
-  //   this.socialAuthService.signOut(); 
-  // }
 
+   manageSession(email:string){
+    this.userService.getUserByEmail(email).subscribe({
+      next:(res)=>{
+        this.loggedInUser = res;
+        sessionStorage.setItem('username', this.loggedInUser[0]["firstname"]);
+        sessionStorage.setItem('dp',this.loggedInUser[0]["picture"]);
+      },
+      error:(err)=>{
+        this.snackBar.open("Something went wrong with your session!","OK");
+        console.log(err);
+      }
+    })
+   }
+  
 }
 
-// signInWithGoogle(): void {
-//   this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user: SocialUser) => {
-//     alert("hi there");
-//     alert("User:"+user);
-//     alert(user.authToken);
-//     alert(user.email);
-//     alert(user.firstName);
-//     alert(user.photoUrl);
-//     console.log(user);
-
-//   }).catch(error => {
-//     alert("failed");
-//     console.log(error)
-//   });
-// }
-
-  // email: string ="";
-  // password: string="";
-
-  // constructor(private http: HttpClient, private router: Router) {}
-
-  // onSubmit() {
-  //   const url = 'http://localhost:8080/api/authenticate';
-  //   const body = { email: this.email, password: this.password };
-
-  //   this.http.post<any>(url, body).subscribe(
-  //     data => {
-  //       localStorage.setItem('token', data.token);
-  //       this.router.navigate(['/dashboard']);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
