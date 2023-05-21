@@ -59,6 +59,8 @@ import { UpdateEmployeesComponent } from './components/update-employees/update-e
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
 import { UpdateTicketComponent } from './components/update-ticket/update-ticket.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { ListManagersComponent } from './components/list-managers/list-managers.component';
+import { UpdateManagerComponent } from './components/update-manager/update-manager.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +96,9 @@ HomepageComponent,
     UpdateEmployeesComponent,
     AddTicketComponent,
     ListTicketsComponent,
-    UpdateTicketComponent
+    UpdateTicketComponent,
+    ListManagersComponent,
+    UpdateManagerComponent
   ],
   imports: [
     BrowserModule,

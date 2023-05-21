@@ -1,0 +1,32 @@
+<div class="container-fluid page">
+<div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center">
+ 
+          <div class="parent-container">
+              <div class="employee-container">
+                  <div *ngFor="let man of manager" >
+                      <mat-card class="employee-card" mat-elevation-z8>
+                          <mat-card-header>
+                          <mat-card-title-group>
+                              <mat-card-title>{{ man.user.firstname }} {{ man.user.lastname }}</mat-card-title>
+                              <mat-card-subtitle>{{ man.department.deptname }}</mat-card-subtitle>
+                              <img mat-card-md-image src="{{ man.user.picture }}"   alt="Employee Avatar">
+                          </mat-card-title-group>
+                          </mat-card-header>
+                          <mat-card-content>
+                              <p>Manager ID: {{ man.managerid }}</p>
+                              <p>Email: {{ man.user.emailid }}</p>
+                              <p>Phone: {{ man.user.phoneno }}</p>
+                          </mat-card-content>
+                          <mat-card-actions>
+                              <button mat-icon-button color="primary" (click)="openUpdateManager(man.managerid)"><mat-icon>edit</mat-icon></button>
+                              <button mat-icon-button color="warn" (click)="deleteManager(man.managerid)"><mat-icon>delete</mat-icon></button>
+                          </mat-card-actions>
+                      </mat-card>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
