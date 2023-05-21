@@ -43,7 +43,7 @@ export class HomepageComponent implements OnInit {
       }
       
       if(user.email == 'siddiqui.rubab.dcs23@vnsgu.ac.in'){
-        this.manageSession(user.email);
+        this.manageSession(user.email);+
         this.router.navigate(['schedulerDashboard']); 
       }
       else if(await this.isExist(user.email)){
@@ -56,8 +56,7 @@ export class HomepageComponent implements OnInit {
               }else if(response=='employee'){
                 this.manageSession(user.email);
                 this.router.navigate(['employeeDashboard']);
-              }
-              
+              }   
             },
             error: (error: any) => {
               this.snackBar.open("Something went wrong!!","OK");
@@ -74,6 +73,7 @@ export class HomepageComponent implements OnInit {
         }
         this.userService.addUser(this.user).subscribe({
           next:(res)=>{
+            this.manageSession(user.email);
             this.snackBar.open("Registered successfully.","OK");
             this.router.navigate(['clientDashboard']);
           },
@@ -104,8 +104,9 @@ export class HomepageComponent implements OnInit {
     this.userService.getUserByEmail(email).subscribe({
       next:(res)=>{
         this.loggedInUser = res;
-        sessionStorage.setItem('username', this.loggedInUser[0]["firstname"]);
-        sessionStorage.setItem('dp',this.loggedInUser[0]["picture"]);
+        localStorage.setItem('username', this.loggedInUser[0]["firstname"]);
+        localStorage.setItem('dp',this.loggedInUser[0]["picture"]);
+        localStorage.setItem('userid',this.loggedInUser[0]["userid"]);
       },
       error:(err)=>{
         this.snackBar.open("Something went wrong with your session!","OK");

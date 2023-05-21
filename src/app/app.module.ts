@@ -20,7 +20,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
@@ -66,8 +65,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     ListDepartmentsComponent,
     AddDepartmentComponent,
     UpdateDepartmentComponent,
-    HomeComponent,
-HomepageComponent,
+    HomepageComponent,
     HeaderComponent,
     AdminMenuComponent,
     Header2Component,

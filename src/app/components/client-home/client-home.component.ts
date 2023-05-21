@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTicketComponent } from '../add-ticket/add-ticket.component';
 
 @Component({
   selector: 'app-client-home',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./client-home.component.css']
 })
 export class ClientHomeComponent {
-  createTicket(){}
+  constructor(private dialog:MatDialog){}
+  openAddTicket(){
+    this.dialog.open(AddTicketComponent);
+  }
 }
