@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class Header2Component implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  username = sessionStorage.getItem('username');
-  picture = sessionStorage.getItem('dp');
+  username = localStorage.getItem('username');
+  picture = localStorage.getItem('dp');
   
   constructor(private router: Router,private socialAuthService: SocialAuthService) {
   

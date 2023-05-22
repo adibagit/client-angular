@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListDepartmentsComponent } from './components/list-departments/list-departments.component';
 import { AddDepartmentComponent } from './components/add-department/add-department.component';
 import { UpdateDepartmentComponent } from './components/update-department/update-department.component';
-import { HomeComponent } from './components/home/home.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
@@ -16,10 +15,10 @@ import { ManagerDashboardComponent } from './components/manager-dashboard/manage
 import { SchedulerDashboardComponent } from './components/scheduler-dashboard/scheduler-dashboard.component';
 import { ListManagersComponent } from './components/list-managers/list-managers.component';
 import { UpdateManagerComponent } from './components/update-manager/update-manager.component';
+import { InactiveEmployeeComponent } from './components/inactive-employee/inactive-employee.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
   { path : "departments",component : ListDepartmentsComponent},
   { path : "add-department", component : AddDepartmentComponent},
   { path : "update-department", component : UpdateDepartmentComponent},
@@ -35,6 +34,7 @@ const routes: Routes = [
   { path : "homepage",component : HomepageComponent},
   { path : "managers",component : ListManagersComponent},
   {path : "update-manager",component : UpdateManagerComponent},
+  {path : "inactive-employee",component : InactiveEmployeeComponent},
 ];
 
 @NgModule({
