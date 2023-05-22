@@ -53,13 +53,15 @@ import { SchedulerDashboardComponent } from './components/scheduler-dashboard/sc
 import { SchedulerMenuComponent } from './components/scheduler-menu/scheduler-menu.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
-import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
 import { UpdateEmployeesComponent } from './components/update-employees/update-employees.component';
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
 import { UpdateTicketComponent } from './components/update-ticket/update-ticket.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ListManagersComponent } from './components/list-managers/list-managers.component';
 import { UpdateManagerComponent } from './components/update-manager/update-manager.component';
+import { InactiveEmployeeComponent } from './components/inactive-employee/inactive-employee.component';
+import { EmployeeRequestsComponent } from './components/employee-requests/employee-requests.component';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,13 +92,14 @@ import { UpdateManagerComponent } from './components/update-manager/update-manag
     SchedulerMenuComponent,
     UserProfileComponent,
     ListEmployeesComponent,
-    AddEmployeesComponent,
     UpdateEmployeesComponent,
     AddTicketComponent,
     ListTicketsComponent,
     UpdateTicketComponent,
     ListManagersComponent,
-    UpdateManagerComponent
+    UpdateManagerComponent,
+    InactiveEmployeeComponent,
+    EmployeeRequestsComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +127,8 @@ import { UpdateManagerComponent } from './components/update-manager/update-manag
     MatMenuModule,
     MatButtonToggleModule,
     GoogleSigninButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatBadgeModule
   ],
   providers: [
     {

@@ -1,14 +1,10 @@
 import { Component,OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { AddPropertyComponent } from '../add-property/add-property.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { NotificationService } from 'src/app/services/notification.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdateEmployeesComponent } from '../update-employees/update-employees.component';
-import { AddEmployeesComponent } from '../add-employees/add-employees.component';
+import { EmployeeRequestsComponent } from '../employee-requests/employee-requests.component';
 
 @Component({
   selector: 'app-list-employees',
@@ -22,9 +18,27 @@ export class ListEmployeesComponent {
     department: {deptname:''},
   };
 
-  constructor(private empService: EmployeeService,private dialog:MatDialog,private snackBar: MatSnackBar){}
+  // notificationMessage: string | undefined;
+  noOfEmployeeRequest : number;
+
+  constructor(private empService: EmployeeService,private dialog:MatDialog,private snackBar: MatSnackBar,private notificationService: NotificationService){}
   ngOnInit(): void {
     this.getAllProps();
+    // this.notificationService.getNotificationObservable().subscribe((message: string) => {
+    //   this.notificationMessage = message;
+    // });
+
+    this.empService.getEmployeeRequest().subscribe({
+      next:(res)=>{
+        this.noOfEmployeeRequest = res.length;
+        console.log("length hai",res.length);
+        // this.employeeService.noOfEmployeeRequest = this.employees.length;
+        //count emps for badge 
+      },
+      error:(err)=>{
+        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+      }
+    });
   }
 
   getAllProps(){
@@ -59,8 +73,12 @@ export class ListEmployeesComponent {
     //window.location.reload();
   }
 
-  openAddEmp(){
-    this.dialog.open(AddEmployeesComponent);
+  openAddEmployeeRequest(){
+    const dialogRef = this.dialog.open(EmployeeRequestsComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      // Reload the current component
+      this.ngOnInit();
+    });
   }
 
   openUpdateEmp(id:number){
