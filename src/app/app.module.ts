@@ -20,7 +20,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
@@ -54,13 +53,15 @@ import { SchedulerDashboardComponent } from './components/scheduler-dashboard/sc
 import { SchedulerMenuComponent } from './components/scheduler-menu/scheduler-menu.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
-import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
 import { UpdateEmployeesComponent } from './components/update-employees/update-employees.component';
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
 import { UpdateTicketComponent } from './components/update-ticket/update-ticket.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ListManagersComponent } from './components/list-managers/list-managers.component';
 import { UpdateManagerComponent } from './components/update-manager/update-manager.component';
+import { InactiveEmployeeComponent } from './components/inactive-employee/inactive-employee.component';
+import { EmployeeRequestsComponent } from './components/employee-requests/employee-requests.component';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,8 +69,7 @@ import { UpdateManagerComponent } from './components/update-manager/update-manag
     ListDepartmentsComponent,
     AddDepartmentComponent,
     UpdateDepartmentComponent,
-    HomeComponent,
-HomepageComponent,
+    HomepageComponent,
     HeaderComponent,
     AdminMenuComponent,
     Header2Component,
@@ -92,13 +92,14 @@ HomepageComponent,
     SchedulerMenuComponent,
     UserProfileComponent,
     ListEmployeesComponent,
-    AddEmployeesComponent,
     UpdateEmployeesComponent,
     AddTicketComponent,
     ListTicketsComponent,
     UpdateTicketComponent,
     ListManagersComponent,
-    UpdateManagerComponent
+    UpdateManagerComponent,
+    InactiveEmployeeComponent,
+    EmployeeRequestsComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +127,8 @@ HomepageComponent,
     MatMenuModule,
     MatButtonToggleModule,
     GoogleSigninButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatBadgeModule
   ],
   providers: [
     {

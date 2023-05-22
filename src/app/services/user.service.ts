@@ -27,4 +27,8 @@ export class UserService {
   getUserByEmail(email?:String):Observable<Object>{
     return this.httpClient.get<Object>(`http://localhost:8080/api/userOf/${email}`);
   }
+
+  deleteUser(id?: number): Observable<void>{
+    return this.httpClient.delete<void>(`http://localhost:8080/api/users?id=${id}`);
+  }
 }

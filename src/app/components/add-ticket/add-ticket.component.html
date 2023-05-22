@@ -1,1 +1,48 @@
-<p>add-ticket works!</p>
+<div class="container">
+    <br/>
+    <div mat-dialog-title>
+      <h2>Ticket Form</h2>
+    </div>
+    <div mat-dialog-content class="content">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="ticket.description"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Property</mat-label>
+            <mat-select [(ngModel)]="ticket.property.propertyid">
+              <mat-option *ngFor="let property of properties" [value]="property.propertyid">
+                {{property.propertyname}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <div>
+            <mat-toolbar>
+              <!-- Display files names -->
+              <input matInput [value]="fileAttr.join(' - ')" readonly name="name" />
+              <!-- Browse Button -->
+              <button mat-flat-button color="primary">Browse File</button>
+            </mat-toolbar>
+            <!-- Fetch selected filed on change -->
+            <input
+              type="file"
+              #fileInput
+              id="uploadFile"
+              (change)="uploadFileEvt($event)"
+              name="uploadFile"
+              multiple="multiple"
+              accept="image/*"
+            />
+          </div>
+        </mat-form-field>
+        
+      </div>
+    </div>
+    <div mat-dialog-close class="action">
+      <button mat-raised-button>Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" (click)="addTicket()">Save</button>
+    </div>
+    <br/>
+  </div>  
