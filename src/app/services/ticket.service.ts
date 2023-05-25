@@ -35,4 +35,15 @@ export class TicketService {
     return this.httpClient.delete<Object>(`http://localhost:8080/api/ticket?id=${id}`);
   }
 
+  getTicketsByUser(userId?: number):Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/getTicketBy/${userId}/user`);
+  }
+
+  getTicketsByProperty(propertyId?: number):Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/getTicketBy/${propertyId}/property`);
+  }
+
+  getTicketsByStatus(statusId?: number):Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/getTicketBy/${statusId}/status`);
+  }
 }

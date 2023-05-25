@@ -135,9 +135,9 @@ export class HomepageComponent implements OnInit {
     this.userService.getUserByEmail(email).subscribe({
       next:(res)=>{
         this.loggedInUser = res;
-        localStorage.setItem('username', this.loggedInUser[0]["firstname"]);
-        localStorage.setItem('dp',this.loggedInUser[0]["picture"]);
-        localStorage.setItem('userid',this.loggedInUser[0]["userid"]);
+        sessionStorage.setItem('username', this.loggedInUser[0]["firstname"]);
+        sessionStorage.setItem('dp',this.loggedInUser[0]["picture"]);
+        sessionStorage.setItem('userid',this.loggedInUser[0]["userid"]);
       },
       error:(err)=>{
         this.snackBar.open("Something went wrong with your session!","OK");

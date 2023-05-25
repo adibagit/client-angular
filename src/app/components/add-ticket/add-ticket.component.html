@@ -17,27 +17,9 @@
               </mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field>
-          <div>
-            <mat-toolbar>
-              <!-- Display files names -->
-              <input matInput [value]="fileAttr.join(' - ')" readonly name="name" />
-              <!-- Browse Button -->
-              <button mat-flat-button color="primary">Browse File</button>
-            </mat-toolbar>
-            <!-- Fetch selected filed on change -->
-            <input
-              type="file"
-              #fileInput
-              id="uploadFile"
-              (change)="uploadFileEvt($event)"
-              name="uploadFile"
-              multiple="multiple"
-              accept="image/*"
-            />
-          </div>
-        </mat-form-field>
         
+        
+        <input type="file" (change)="handleFileInput($event)" multiple accept="image/*">
       </div>
     </div>
     <div mat-dialog-close class="action">
