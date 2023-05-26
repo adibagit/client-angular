@@ -17,6 +17,7 @@
   color: black;
   font-size: 2rem;
   height: auto;
+  overflow-y: auto;
 }
 .page__content-data {
   
@@ -102,19 +103,97 @@
     align-items: center;
     margin-top: 10px;
   }
-  
-  .ticket-status {
-    margin-right: 10px;
-    padding: 5px;
-    background-color: hsl(4, 46%, 93%); /* Change the color as desired */
-    color:#dc3545;
+
+  .status-button {
+    margin-left: 10px;
+    padding: 5px 10px;
     border-radius: 4px;
-    border-color: #b1afaf;
-    border-style: solid;
-    border-width: 0.5px;
+    width: 120px; /* Adjust the width as needed */
+    text-align: center;
+    font-size: 14px; /* Adjust the font size as needed */
+    width: 120px; /* Adjust the width as needed */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   
+  .status-button.status-new {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .status-button.status-picked {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .status-button.status-inprocess {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .status-button.status-completed {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  /* .ticket-status {
+    
+    padding: 0.2rem 0.5rem;
+    
+    width: 120px; 
+    
+    
+    
+  }
+.status-new{
+  margin-right: 10px;
+  padding: 5px;
+  background-color: orange; 
+  color:white;
+  border-radius: 4px;
+  border-color: #b1afaf;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+.status-picked{
+  margin-right: 10px;
+  padding: 5px;
+  background-color: rgb(85, 0, 255); 
+  color:white;
+  border-radius: 4px;
+  border-color: #b1afaf;
+  border-style: solid;
+  border-width: 0.5px;
+  width: 120px;
+  text-align: center;
+}
+
+.status-inprocess{
+  margin-right: 10px;
+  padding: 5px;
+  background-color: #008B8B; 
+  color:white;
+  border-radius: 4px;
+  border-color: #b1afaf;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+.status-completed{
+  margin-right: 10px;
+  padding: 5px;
+  background-color: green; 
+  color:white;
+  border-radius: 4px;
+  border-color: #b1afaf;
+  border-style: solid;
+  border-width: 0.5px;
+} */
+  
   .ticket-date {
+    margin-left: 50px;
     color: #aaa;
   }
   
