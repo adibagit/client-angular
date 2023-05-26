@@ -11,8 +11,8 @@ export class TicketService {
   id?: number;
   constructor(private httpClient: HttpClient) { }
 
-  setId(propId?: number){
-    this.id = propId;
+  setId(TicketId?: number){
+    this.id = TicketId;
   }
 
   getAllTickets(): Observable<Ticket[]>{
