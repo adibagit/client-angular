@@ -71,10 +71,8 @@ export class AddTicketComponent implements OnInit {
       Array.from(this.images).forEach((image: File) => {
         this.imageService.uploadImage(image).subscribe({
           next:(res:string)=>{
-            url=res;
-            console.log("Ticket added : ticket id: ",this.addedTicket.ticketid);
-            alert("In image service"+this.addedTicket.ticketid)
-            const imageDetails = {
+              url=res;
+              const imageDetails = {
               imagename: image.name,
               imagepath: url, 
               ticket: {

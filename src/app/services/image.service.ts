@@ -25,8 +25,6 @@ export class ImageService {
 
   uploadImage(file: File): Observable<string> {
     const formData = new FormData();
-    //console.log("Form data:",formData);
-    //console.log("FILEs is  ",file);
     formData.append('image', file);
     return this.httpClient.post('http://localhost:8080/api/image/upload', formData, { responseType: 'text' });
   }

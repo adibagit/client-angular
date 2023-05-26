@@ -62,6 +62,7 @@ import { UpdateManagerComponent } from './components/update-manager/update-manag
 import { InactiveEmployeeComponent } from './components/inactive-employee/inactive-employee.component';
 import { EmployeeRequestsComponent } from './components/employee-requests/employee-requests.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { AddWorkflowComponent } from './components/add-workflow/add-workflow.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +100,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     ListManagersComponent,
     UpdateManagerComponent,
     InactiveEmployeeComponent,
-    EmployeeRequestsComponent
+    EmployeeRequestsComponent,
+    AddWorkflowComponent
   ],
   imports: [
     BrowserModule,

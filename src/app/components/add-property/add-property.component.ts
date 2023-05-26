@@ -35,7 +35,6 @@ export class AddPropertyComponent  implements OnInit{
   }
 
   addProp(){
-    console.log(this.property)
     this.propertyService.addProperty(this.property).subscribe({
       next:(res)=>{
         this.snackBar.open("Property added successfully.","OK");
