@@ -3,10 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
-import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
 import { ListDepartmentsComponent } from './components/list-departments/list-departments.component';
 import { AppRoutingModule } from './app.routing.module';
-import { FormsModule,ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AddDepartmentComponent } from './components/add-department/add-department.component';
 import { UpdateDepartmentComponent } from './components/update-department/update-department.component';
 
@@ -63,10 +62,10 @@ import { InactiveEmployeeComponent } from './components/inactive-employee/inacti
 import { EmployeeRequestsComponent } from './components/employee-requests/employee-requests.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { AddWorkflowComponent } from './components/add-workflow/add-workflow.component';
+import { TrackTicketComponent } from './components/track-ticket/track-ticket.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ListTicketsComponent,
     ListDepartmentsComponent,
     AddDepartmentComponent,
     UpdateDepartmentComponent,
@@ -95,13 +94,13 @@ import { AddWorkflowComponent } from './components/add-workflow/add-workflow.com
     ListEmployeesComponent,
     UpdateEmployeesComponent,
     AddTicketComponent,
-    ListTicketsComponent,
     UpdateTicketComponent,
     ListManagersComponent,
     UpdateManagerComponent,
     InactiveEmployeeComponent,
     EmployeeRequestsComponent,
-    AddWorkflowComponent
+    AddWorkflowComponent,
+    TrackTicketComponent
   ],
   imports: [
     BrowserModule,

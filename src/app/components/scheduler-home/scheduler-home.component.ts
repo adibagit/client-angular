@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddWorkflowComponent } from '../add-workflow/add-workflow.component';
 import { WorkflowService } from 'src/app/services/workflow.service';
 import { Workflow } from 'src/app/models/worklow';
+import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
 
 @Component({
   selector: 'app-scheduler-home',
@@ -96,8 +97,9 @@ export class SchedulerHomeComponent {
     return false;
   }
 
-  viewWorkflow(ticketid: number) {
-    
+  openWorkflow(ticketid: number) {
+    this.workflowService.id=ticketid;
+    this.dialog.open(TrackTicketComponent);
   }
   
 

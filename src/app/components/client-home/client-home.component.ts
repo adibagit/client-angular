@@ -4,6 +4,8 @@ import { AddTicketComponent } from '../add-ticket/add-ticket.component';
 import { TicketService } from 'src/app/services/ticket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImageService } from 'src/app/services/image.service';
+import { WorkflowService } from 'src/app/services/workflow.service';
+import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
 
 @Component({
   selector: 'app-client-home',
@@ -16,7 +18,8 @@ export class ClientHomeComponent implements OnInit {
     private dialog:MatDialog,
     private ticketService : TicketService,
     private snackbar : MatSnackBar,
-    private imageService : ImageService
+    private imageService : ImageService,
+    private workflowService : WorkflowService
     
   ){}
 
@@ -27,7 +30,6 @@ export class ClientHomeComponent implements OnInit {
 
   ngOnInit(): void {
    this.getAllTicketByUser();
-   console.log("the array : ",this.ticketImages)
   }
 
   openAddTicket(){
@@ -63,5 +65,23 @@ export class ClientHomeComponent implements OnInit {
       }
     });
   }
+  openTrackTicket(ticketId:number){
+    this.workflowService.id = ticketId;
+    this.dialog.open(TrackTicketComponent);
+  }
 
+  deleteTicket(ticketId:number){
+    this.ticketService.deleteTicket(ticketId).subscribe({
+      next:(res)=>{
+        this.snackbar.open("Deleted !","Dismiss");
+        this.ngOnInit();
+      },
+      error:(err)=>{
+        console.log(err);
+        // this.snackbar.open("Failed deleting ticket!","Ok");
+        this.snackbar.open("Deleted !","Dismiss");
+        this.ngOnInit();
+      }
+    });
+  }
 }

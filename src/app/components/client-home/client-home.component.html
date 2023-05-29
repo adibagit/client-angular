@@ -28,9 +28,12 @@
               </div>
             </div>
             <div class="ticket-actions">
-              <button mat-raised-button class="close-button">Track</button>
+              <button mat-raised-button class="close-button" (click)="openTrackTicket(ticket.ticketid)" *ngIf="ticket.status.status != 'pending'">Track</button>
+              <button mat-raised-button class="close-button" (click)="deleteTicket(ticket.ticketid)" *ngIf="ticket.status.status == 'pending'">
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
             </div>
-            <div class="ticket-priority"></div>
+            <div class="ticket-priority" *ngIf="ticket.status.status != 'pending'"></div>
             
           </div>
         </div>
