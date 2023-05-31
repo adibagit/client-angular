@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImageService } from 'src/app/services/image.service';
 import { WorkflowService } from 'src/app/services/workflow.service';
 import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
+import { ListImagesComponent } from '../list-images/list-images.component';
 
 @Component({
   selector: 'app-client-home',
@@ -83,5 +84,15 @@ export class ClientHomeComponent implements OnInit {
         this.ngOnInit();
       }
     });
+  }
+
+  openViewImages(ticketId : number){
+    this.imageService.ticketImages = this.ticketImages[ticketId];
+    this.dialog.open(ListImagesComponent);
+  }
+
+  viewImages(imageNames: string[]): void {
+    // Handle the logic to show the image names in another component or do any other processing
+    console.log(imageNames);
   }
 }

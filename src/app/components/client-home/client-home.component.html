@@ -18,10 +18,18 @@
               <p class="ticket-description"><b>{{ticket.description}}</b></p>
               <div class="ticket-info">
                 <div class="ticket-status">
-                  <button mat-raised-button class="status-button status-new" *ngIf="ticket.status.status === 'New'">New</button>
-                  <button mat-raised-button class="status-button status-picked" *ngIf="ticket.status.status === 'Picked'">Picked</button>
-                  <button mat-raised-button class="status-button status-inprocess" *ngIf="ticket.status.status === 'In-process'">In-process</button>
-                  <button mat-raised-button class="status-button status-completed" *ngIf="ticket.status.status === 'Completed'">Completed</button>
+                  <!-- <button mat-raised-button class="status-button status-new" *ngIf="ticket.status.status === 'new'">New</button>
+                  <button mat-raised-button class="status-button status-picked" *ngIf="ticket.status.status === 'picked'">Picked</button>
+                  <button mat-raised-button class="status-button status-inprocess" *ngIf="ticket.status.status === 'in-process'">In-process</button>
+                  <button mat-raised-button class="status-button status-completed" *ngIf="ticket.status.status === 'completed'">Completed</button> -->
+
+
+                <span class="ticket-status"> 
+                  <span *ngIf="ticket.status.status === 'new'" class="status-new status-button">{{ticket.status.status}}</span>
+                  <span *ngIf="ticket.status.status === 'picked'" class="status-picked status-button">{{ticket.status.status}}</span>
+                  <span *ngIf="ticket.status.status === 'in-process'" class="status-inprocess status-button">{{ticket.status.status}}</span>
+                  <span *ngIf="ticket.status.status === 'completed'" class="status-completed status-button">{{ticket.status.status}}</span>
+                </span>
 
                 </div>
                 <!-- <span class="ticket-status"> 
@@ -34,18 +42,19 @@
                 <span class="ticket-date">Last Updated: {{ticket.lastmodified | date:'MMM d, yyyy'}}</span>
               </div>
             </div>
-            <div class="ticket-images">
+            <!-- <div class="ticket-images">
               <div *ngFor="let image of ticketImages[ticket.ticketid]" class="ticket-image">
                 <img [src]="'http://localhost:8080/uploads/' + image.imagename" [alt]="image.imagename" class="image-thumbnail">
               </div>
-            </div>
+            </div> -->
             <div class="ticket-actions">
-              <button mat-raised-button class="close-button" (click)="openTrackTicket(ticket.ticketid)" *ngIf="ticket.status.status != 'pending'">Track</button>
-              <button mat-raised-button class="close-button" (click)="deleteTicket(ticket.ticketid)" *ngIf="ticket.status.status == 'pending'">
+              <button mat-raised-button class="close-button" (click)="openViewImages(ticket.ticketid)">Images</button>
+              <button mat-raised-button class="close-button" (click)="openTrackTicket(ticket.ticketid)" *ngIf="ticket.status.status != 'new'">Track</button>
+              <button mat-raised-button class="close-button" (click)="deleteTicket(ticket.ticketid)" *ngIf="ticket.status.status == 'new'">
                 <mat-icon color="warn">delete</mat-icon>
               </button>
             </div>
-            <div class="ticket-priority" *ngIf="ticket.status.status != 'pending'"></div>
+            <div class="ticket-priority" *ngIf="ticket.status.status != 'new'"></div>
             
           </div>
         </div>

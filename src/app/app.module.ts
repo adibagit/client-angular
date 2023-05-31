@@ -63,6 +63,9 @@ import { EmployeeRequestsComponent } from './components/employee-requests/employ
 import {MatBadgeModule} from '@angular/material/badge';
 import { AddWorkflowComponent } from './components/add-workflow/add-workflow.component';
 import { TrackTicketComponent } from './components/track-ticket/track-ticket.component';
+import { ListImagesComponent } from './components/list-images/list-images.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AssignTicketComponent } from './components/assign-ticket/assign-ticket.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +103,9 @@ import { TrackTicketComponent } from './components/track-ticket/track-ticket.com
     InactiveEmployeeComponent,
     EmployeeRequestsComponent,
     AddWorkflowComponent,
-    TrackTicketComponent
+    TrackTicketComponent,
+    ListImagesComponent,
+    AssignTicketComponent
   ],
   imports: [
     BrowserModule,
@@ -129,7 +134,9 @@ import { TrackTicketComponent } from './components/track-ticket/track-ticket.com
     MatButtonToggleModule,
     GoogleSigninButtonModule,
     MatSelectModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule
+    
   ],
   providers: [
     {

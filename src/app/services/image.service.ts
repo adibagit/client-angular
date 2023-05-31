@@ -8,7 +8,9 @@ import { Image } from '../models/image';
 })
 export class ImageService {
 
+  ticketImages : any;
   id?: number;
+  
   constructor(private httpClient: HttpClient) { }
 
   getImagesByTicket(id:number): Observable<Image[]>{

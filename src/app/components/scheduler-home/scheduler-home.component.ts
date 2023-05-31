@@ -68,11 +68,6 @@ export class SchedulerHomeComponent {
     });
   }
 
-  openUpdateWorkflow(id:number){
-    // this.departmentService.setId(id);
-    // this.dialog.open(UpdateDepartmentComponent);
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -83,13 +78,6 @@ export class SchedulerHomeComponent {
   }
 
   isWorkflowExist(ticketid:number):boolean{
-    // let exists =false;
-    // this.workflowService.isWorkflowExist(ticketid).subscribe({
-    //   next:(res)=>{
-    //     exists= res;
-    //   }
-    // });
-    // return exists;
     if (this.workflows) {
       const workflowExists = this.workflows.some((workflow) => workflow.ticket?.ticketid === ticketid);
       return workflowExists;

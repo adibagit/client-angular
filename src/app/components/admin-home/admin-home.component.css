@@ -15,11 +15,11 @@
     margin-top: -2rem;
     background: white;
     color: black;
-    font-size: 2rem;
     height: auto;
+    overflow-x: scroll;
 }
 .page__content-data {
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

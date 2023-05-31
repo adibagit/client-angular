@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Workflow } from '../models/worklow';
+import { Department } from '../models/department';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class WorkflowService {
 
   isWorkflowExist(id?:number): Observable<boolean>{
     return this.httpClient.get<boolean>(`http://localhost:8080/api/workflowByTicket/${id}`);
+  }
+
+  getWorkflowsByDept(deptId:number): Observable<Workflow[]>{
+    return this.httpClient.get<Workflow[]>(`http://localhost:8080/api/workflowByDept/${deptId}`);
   }
 
 }

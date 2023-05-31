@@ -7,6 +7,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
+  id?:number;
   constructor(private httpClient: HttpClient) { }
 
   addUser(user?: User): Observable<Object>{
@@ -30,5 +31,9 @@ export class UserService {
 
   deleteUser(id?: number): Observable<void>{
     return this.httpClient.delete<void>(`http://localhost:8080/api/users?id=${id}`);
+  }
+
+  updateUser(user?: User) : Observable<Object>{
+    return this.httpClient.put<Object>(`http://localhost:8080/api/users/${this.id}`,user);
   }
 }
