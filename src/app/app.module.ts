@@ -63,6 +63,10 @@ import { InactiveEmployeeComponent } from './components/inactive-employee/inacti
 import { EmployeeRequestsComponent } from './components/employee-requests/employee-requests.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { AddWorkflowComponent } from './components/add-workflow/add-workflow.component';
+import { ComponentNameComponent } from './components/component-name/component-name.component';
+import { EmployeeTicketsComponent } from './components/employee-tickets/employee-tickets.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AssignToMeComponent } from './components/assign-to-me/assign-to-me.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +105,10 @@ import { AddWorkflowComponent } from './components/add-workflow/add-workflow.com
     UpdateManagerComponent,
     InactiveEmployeeComponent,
     EmployeeRequestsComponent,
-    AddWorkflowComponent
+    AddWorkflowComponent,
+    ComponentNameComponent,
+    EmployeeTicketsComponent,
+    AssignToMeComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +119,7 @@ import { AddWorkflowComponent } from './components/add-workflow/add-workflow.com
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatFormFieldModule,
+    MatTooltipModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
