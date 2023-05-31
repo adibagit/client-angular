@@ -49,4 +49,8 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(`http://localhost:8080/api/employeeByDept/${id}`);
   }
 
+  getEmployeeIdByUserId(id?: number): Observable<number>{
+    return this.httpClient.get<number>(`http://localhost:8080/api/employeeIdFromUserid/${id}`);
+  }
+
 }

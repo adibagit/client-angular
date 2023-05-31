@@ -66,6 +66,10 @@ import { TrackTicketComponent } from './components/track-ticket/track-ticket.com
 import { ListImagesComponent } from './components/list-images/list-images.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AssignTicketComponent } from './components/assign-ticket/assign-ticket.component';
+import { ComponentNameComponent } from './components/component-name/component-name.component';
+import { EmployeeTicketsComponent } from './components/employee-tickets/employee-tickets.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AssignToMeComponent } from './components/assign-to-me/assign-to-me.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,7 +109,10 @@ import { AssignTicketComponent } from './components/assign-ticket/assign-ticket.
     AddWorkflowComponent,
     TrackTicketComponent,
     ListImagesComponent,
-    AssignTicketComponent
+    AssignTicketComponent,
+    ComponentNameComponent,
+    EmployeeTicketsComponent,
+    AssignToMeComponent
   ],
   imports: [
     BrowserModule,
@@ -116,6 +123,7 @@ import { AssignTicketComponent } from './components/assign-ticket/assign-ticket.
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatFormFieldModule,
+    MatTooltipModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
