@@ -17,7 +17,19 @@
               <h3 class="ticket-title">Ticket #{{ticket.ticketid}}</h3>
               <p class="ticket-description"><b>{{ticket.description}}</b></p>
               <div class="ticket-info">
-                <span class="ticket-status"> {{ticket.status.status}}</span>
+                <div class="ticket-status">
+                  <button mat-raised-button class="status-button status-new" *ngIf="ticket.status.status === 'New'">New</button>
+                  <button mat-raised-button class="status-button status-picked" *ngIf="ticket.status.status === 'Picked'">Picked</button>
+                  <button mat-raised-button class="status-button status-inprocess" *ngIf="ticket.status.status === 'In-process'">In-process</button>
+                  <button mat-raised-button class="status-button status-completed" *ngIf="ticket.status.status === 'Completed'">Completed</button>
+
+                </div>
+                <!-- <span class="ticket-status"> 
+                  <span *ngIf="ticket.status.status === 'New'" class="status-new">{{ticket.status.status}}</span>
+                  <span *ngIf="ticket.status.status === 'Picked'" class="status-picked">{{ticket.status.status}}</span>
+                  <span *ngIf="ticket.status.status === 'In-process'" class="status-inprocess">{{ticket.status.status}}</span>
+                  <span *ngIf="ticket.status.status === 'Completed'" class="status-completed">{{ticket.status.status}}</span>
+                </span> -->
                 <span class="ticket-date">Created: {{ticket.ticketdate | date:'MMM d, yyyy'}}</span> &nbsp;&nbsp;
                 <span class="ticket-date">Last Updated: {{ticket.lastmodified | date:'MMM d, yyyy'}}</span>
               </div>
