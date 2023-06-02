@@ -21,8 +21,8 @@ export class ImageService {
     return this.httpClient.post<Object>("http://localhost:8080/api/image",image ); 
   }
 
-  deleteImage(id?: number): Observable<void>{
-    return this.httpClient.delete<void>(`http://localhost:8080/api/image?id=${id}`);
+  deleteImage(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/image?id=${id}`,{ responseType: 'text' });
   }
 
   uploadImage(file: File): Observable<string> {

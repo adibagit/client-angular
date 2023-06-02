@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { AssignToMeComponent } from '../assign-to-me/assign-to-me.component';
 import { TicketService } from 'src/app/services/ticket.service';
-import { LogsService } from 'src/app/services/logs.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { WorkflowService } from 'src/app/services/workflow.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -26,7 +25,6 @@ constructor(
     private dialog:MatDialog,
     private ticketService : TicketService,
     private workflowService : WorkflowService,
-    private logsService : LogsService,
     private employeeService : EmployeeService,
     private snackbar : MatSnackBar,
     private imageService : ImageService

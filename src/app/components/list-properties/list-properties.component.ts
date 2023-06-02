@@ -24,7 +24,7 @@ export class ListPropertiesComponent implements OnInit{
     area: {areaname:''}
   };
 
-  displayedColumns: string[] = ['propertyid', 'propertyname', 'propertydesc', 'propertyaddress','area','regdate','actions'];
+  displayedColumns: string[] = ['propertyname', 'propertydesc', 'propertyaddress','area','regdate','actions'];
   dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
@@ -76,7 +76,9 @@ export class ListPropertiesComponent implements OnInit{
     //this.dialog.open(AddDepartmentComponent,{data});
     this.propertyService.setId(id);
    // this.router.navigate(['update-department']); 
-    this.dialog.open(UpdatePropertyComponent);
+    this.dialog.open(UpdatePropertyComponent).afterClosed().subscribe(()=>{
+      this.ngOnInit();
+    })
   }
 
   applyFilter(event: Event) {

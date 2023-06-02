@@ -22,6 +22,7 @@ export class EmployeeRequestsComponent implements OnInit{
   }
 
   departments:any;
+  managers:any;
 
   constructor(private employeeService : EmployeeService,
     private snackBar: MatSnackBar,
@@ -41,11 +42,7 @@ export class EmployeeRequestsComponent implements OnInit{
       }
     });
 
-    this.deptService.getAllDepartments().subscribe({
-      next:(res)=>{
-        this.departments=res;
-      }
-    })
+    this.filterDepartments();
   }
 
   acceptRequest(employee :any): void {
@@ -54,35 +51,25 @@ export class EmployeeRequestsComponent implements OnInit{
       this.snackBar.open("Please select department","OK");
     }else{
       if(this.managerChecked){
-        //check if department already has manager or not
-        this.managerService.getAllManagers().subscribe({
+        this.managerService.addManager(this.employeeRequest).subscribe({
           next:(res)=>{
-            const isDeptIdMatched = res.some(item => item.department && item.department.deptid === this.employeeRequest.department.deptid);
-            if (isDeptIdMatched) {
-              this.snackBar.open("Manager for this department already exists!","OK");
-            }else {
-              this.managerService.addManager(this.employeeRequest).subscribe({
-                next:(res)=>{
-                  this.snackBar.open("Accepted as Manager","OK");
-                  //Update userRole as manager
-                  this.userService.getUser(this.employeeRequest.user.userid).subscribe({
-                    next:(result)=>{
-                      result.usertype='manager';
-                      this.userService.id=result.userid;
-                      this.userService.updateUser(result).subscribe(() => {
-                        this.ngOnInit();
-                      });
-                    }
-                  })
-                },
-                error:(err)=>{
-                  this.snackBar.open("Failed accepting request!","OK");
-                  console.log(err);
-                }
-              });
-            }
+            this.snackBar.open("Accepted as Manager","OK");
+            //Update userRole as manager
+            this.userService.getUser(this.employeeRequest.user.userid).subscribe({
+              next:(result)=>{
+                result.usertype='manager';
+                this.userService.id=result.userid;
+                this.userService.updateUser(result).subscribe(() => {
+                  this.ngOnInit();
+                });
+              }
+            })
+          },
+          error:(err)=>{
+            this.snackBar.open("Failed accepting request!","OK");
+            console.log(err);
           }
-        })
+        });
       }else{
         this.employeeService.addEmployee(this.employeeRequest).subscribe({
           next:(res)=>{
@@ -112,6 +99,29 @@ export class EmployeeRequestsComponent implements OnInit{
       }
     });
   }
+
+  filterDepartments(): void {
+    if (this.managerChecked) {
+      this.deptService.getDepartmentsWithoutManager().subscribe({
+        next: (res) => {
+          this.departments = res;
+        },
+        error: (err) => {
+          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+        }
+      });
+    } else {
+      this.deptService.getAllDepartments().subscribe({
+        next: (res) => {
+          this.departments = res;
+        },
+        error: (err) => {
+          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+        }
+      });
+    }
+  }
+  
 
 
 }

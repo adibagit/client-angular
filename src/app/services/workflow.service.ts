@@ -29,12 +29,12 @@ export class WorkflowService {
     return this.httpClient.post<Object>("http://localhost:8080/api/workflow",workflow );
   }
 
-  deleteWorkflow(id?: number): Observable<Object>{
-    return this.httpClient.delete<Object>(`http://localhost:8080/api/workflow?id=${id}`);
+  deleteWorkflow(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/workflow?id=${id}`,{ responseType: 'text' });
   }
 
   isWorkflowExist(id?:number): Observable<boolean>{
-    return this.httpClient.get<boolean>(`http://localhost:8080/api/workflowByTicket/${id}`);
+    return this.httpClient.get<boolean> (`http://localhost:8080/api/workflowByTicket/${id}`);
   }
 
   getWorkflowsByDept(deptId:number): Observable<Workflow[]>{

@@ -37,7 +37,7 @@ export class UpdatePropertyComponent implements OnInit{
   updateProp(){
     this.propertyService.updateProp(this.property).subscribe({
       next:(res)=>{
-        this.snackBar.open("Property updated successfully. Please Refresh!","OK");
+        this.snackBar.open("Property updated successfully.","OK");
       },
       error:(err)=>{
         console.log(err);

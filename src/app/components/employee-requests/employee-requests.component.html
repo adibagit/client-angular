@@ -8,7 +8,7 @@
       </mat-select>
   </mat-form-field>
   <section class="example-section">
-    <mat-checkbox class="example-margin" [(ngModel)]="managerChecked">Add as manager</mat-checkbox>
+    <mat-checkbox class="example-margin" [(ngModel)]="managerChecked" (ngModelChange)="filterDepartments()">Add as manager</mat-checkbox>
   </section>
 </div>
 <table mat-table [dataSource]="employees" class="employee-table">

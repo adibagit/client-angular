@@ -43,7 +43,7 @@ export class SchedulerHomeComponent {
       next:(res)=>{
         this.workflows=res;
       }
-    })
+    });
   }
 
   getAllTickets(){

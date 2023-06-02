@@ -1,7 +1,6 @@
 import { Component,OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { NotificationService } from 'src/app/services/notification.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdateEmployeesComponent } from '../update-employees/update-employees.component';
 import { EmployeeRequestsComponent } from '../employee-requests/employee-requests.component';
@@ -21,7 +20,7 @@ export class ListEmployeesComponent {
   // notificationMessage: string | undefined;
   noOfEmployeeRequest : number;
 
-  constructor(private empService: EmployeeService,private dialog:MatDialog,private snackBar: MatSnackBar,private notificationService: NotificationService){}
+  constructor(private empService: EmployeeService,private dialog:MatDialog,private snackBar: MatSnackBar){}
   ngOnInit(): void {
     this.getAllProps();
     // this.notificationService.getNotificationObservable().subscribe((message: string) => {
@@ -74,18 +73,16 @@ export class ListEmployeesComponent {
   }
 
   openAddEmployeeRequest(){
-    const dialogRef = this.dialog.open(EmployeeRequestsComponent);
-    dialogRef.afterClosed().subscribe(() => {
-      // Reload the current component
+    this.dialog.open(EmployeeRequestsComponent).afterClosed().subscribe(() => {
       this.ngOnInit();
     });
   }
 
   openUpdateEmp(id:number){
-    //this.dialog.open(AddDepartmentComponent,{data});
     this.empService.setId(id);
-   // this.router.navigate(['update-department']); 
-    this.dialog.open(UpdateEmployeesComponent);
+    this.dialog.open(UpdateEmployeesComponent).afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
 }

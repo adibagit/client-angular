@@ -28,8 +28,8 @@ export class ManagerService {
     return this.httpClient.put<Object>(`http://localhost:8080/api/manager/${this.id}`,department);
   }
 
-  deleteManager(id?: number): Observable<Object>{
-    return this.httpClient.delete<Object>(`http://localhost:8080/api/manager?id=${id}`);
+  deleteManager(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/manager?id=${id}`,{ responseType: 'text' });
   }
 
   addManager(manager:Manager): Observable<Object>{

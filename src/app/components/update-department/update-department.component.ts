@@ -21,7 +21,7 @@ export class UpdateDepartmentComponent implements OnInit{
   updateDept(){
     this.departmentService.updateDept(this.department).subscribe({
       next:(res)=>{
-        this.snackBar.open("Department updated successfully. Please Refresh!","OK");
+        this.snackBar.open("Department updated successfully.","OK");
       },
       error:(err)=>{
         this.snackBar.open("Failed updating department!","OK");

@@ -35,7 +35,7 @@ export class UpdateEmployeesComponent implements OnInit{
   updateEmp(){
     this.empService.updateEmp(this.employee).subscribe({
       next:(res)=>{
-        this.snackBar.open("Employee updated successfully. Please Refresh!","OK");
+        this.snackBar.open("Employee updated successfully.","OK");
       },
       error:(err)=>{
         console.log(err);

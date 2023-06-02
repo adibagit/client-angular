@@ -19,7 +19,7 @@ export class ListDepartmentsComponent implements OnInit{
 
   departments?: Department[];
 
-  displayedColumns: string[] = ['deptid', 'deptname', 'deptdesc', 'lastmodified','actions'];
+  displayedColumns: string[] = ['deptname', 'deptdesc', 'lastmodified','actions'];
   dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
@@ -38,6 +38,7 @@ export class ListDepartmentsComponent implements OnInit{
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.departments = res;
+        console.log(res)
       },
       error:(err)=>{
         this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
@@ -46,18 +47,25 @@ export class ListDepartmentsComponent implements OnInit{
   }
 
   deleteDept(id?:number){
-    this.departmentService.deleteDept(id).subscribe();
-    this.snackBar.open("Department deleted!","OK");
-
+    this.departmentService.deleteDept(id).subscribe({
+      next:(res)=>{
+        this.snackBar.open("Department deleted!","OK");
+        this.ngOnInit();
+      }
+    });
   }
 
   openAddDept(){
-    this.dialog.open(AddDepartmentComponent);
+    this.dialog.open(AddDepartmentComponent).afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   openUpdateDept(id:number){
     this.departmentService.setId(id);
-    this.dialog.open(UpdateDepartmentComponent);
+    this.dialog.open(UpdateDepartmentComponent).afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   applyFilter(event: Event) {

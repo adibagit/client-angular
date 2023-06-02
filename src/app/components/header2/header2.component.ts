@@ -1,6 +1,7 @@
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-header2',
@@ -10,14 +11,20 @@ import { Router } from '@angular/router';
 export class Header2Component implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  username = sessionStorage.getItem('username');
-  picture = sessionStorage.getItem('dp');
-  
-  constructor(private router: Router,private socialAuthService: SocialAuthService) {
+  // username = sessionStorage.getItem('username');
+  // picture = sessionStorage.getItem('dp');
+  username :any;
+  picture :any;
+  constructor(private router: Router,private sessionService : SessionService) {
   
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // alert("inheader2 +"+sessionStorage.getItem('username'))
+    // alert("inheader2 +"+sessionStorage.getItem('dp'))
+    this.username = sessionStorage.getItem('username');
+    this.picture = sessionStorage.getItem('dp');
+  }
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
@@ -26,8 +33,9 @@ export class Header2Component implements OnInit {
   
 
   logOut(): void {
-    this.socialAuthService.signOut(); 
+    //this.socialAuthService.signOut(); 
     sessionStorage.clear();
+    this.sessionService.isLoggedIn=false;
     this.router.navigate(['']); 
   }
 }

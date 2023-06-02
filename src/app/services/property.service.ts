@@ -36,8 +36,8 @@ export class PropertyService {
     return this.httpClient.put<Object>(`http://localhost:8080/api/properties/${this.id}`,property);
   }
 
-  deleteProp(id?: number): Observable<Object>{
-    return this.httpClient.delete<Object>(`http://localhost:8080/api/properties?id=${id}`);
+  deleteProp(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/properties?id=${id}`,{ responseType: 'text' });
   }
   
 }

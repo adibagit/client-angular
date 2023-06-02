@@ -32,8 +32,8 @@ export class TicketService {
     return this.httpClient.put<Object>(`http://localhost:8080/api/ticket/${this.id}`,ticket);
   }
 
-  deleteTicket(id?: number): Observable<Object>{
-    return this.httpClient.delete<Object>(`http://localhost:8080/api/ticket?id=${id}`);
+  deleteTicket(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/ticket?id=${id}`,{ responseType: 'text' });
   }
 
   getTicketsByUser(userId?: number):Observable<Object>{

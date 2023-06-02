@@ -68,6 +68,7 @@ export class AddTicketComponent implements OnInit {
 
         });
       let url:any;
+      console.log(this.images);
       Array.from(this.images).forEach((image: File) => {
         this.imageService.uploadImage(image).subscribe({
           next:(res:string)=>{
