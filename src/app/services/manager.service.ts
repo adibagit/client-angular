@@ -10,25 +10,33 @@ import { Manager } from '../models/manager';
 export class ManagerService {
 
   id?: number;
-  constructor(private httpclient : HttpClient) { }
+  constructor(private httpClient : HttpClient) { }
 
   setId(managerid?: number){
     this.id = managerid;
   }
 
-getAllManagers(): Observable<Manager[]>{
-  return this.httpclient.get<Manager[]>("http://localhost:8080/api/manager");
-}
+  getAllManagers(): Observable<Manager[]>{
+    return this.httpClient.get<Manager[]>("http://localhost:8080/api/manager");
+  }
 
-getManagerById(): Observable<Object>{
-  return this.httpclient.get<Object>(`http://localhost:8080/api/manager/${this.id}`);
-}
+  getManagerById(): Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/manager/${this.id}`);
+  }
 
-updateManager(department?: Manager) : Observable<Object>{
-  return this.httpclient.put<Object>(`http://localhost:8080/api/manager/${this.id}`,department);
-}
+  updateManager(department?: Manager) : Observable<Object>{
+    return this.httpClient.put<Object>(`http://localhost:8080/api/manager/${this.id}`,department);
+  }
 
-deleteManager(id?: number): Observable<Object>{
-  return this.httpclient.delete<Object>(`http://localhost:8080/api/manager?id=${id}`);
-}
+  deleteManager(id?: number): Observable<Object>{
+    return this.httpClient.delete<Object>(`http://localhost:8080/api/manager?id=${id}`);
+  }
+
+  addManager(manager:Manager): Observable<Object>{
+    return this.httpClient.post<Object>("http://localhost:8080/api/manager",manager ); 
+  }
+
+  getManagerByUser(userId : number): Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/managerByUser/${userId}`);
+  }
 }

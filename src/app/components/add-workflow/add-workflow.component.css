@@ -14,10 +14,10 @@
   }
   
   .add-button {
-    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 5px 10px;
+    margin-top: -20px;
     cursor: pointer;
   }
 .outer{
@@ -83,4 +83,9 @@
   position: absolute;
   top: 10px;
   right: 10px;
+}
+.action{
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
 }

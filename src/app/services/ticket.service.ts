@@ -24,8 +24,8 @@ export class TicketService {
     return this.httpClient.post<Object>("http://localhost:8080/api/ticket",ticket ); 
   }
 
-  getTicketById():Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/ticket/${this.id}`);
+  getTicketById(id?: number):Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/ticket/${id}`);
   }
 
   updateTicket(ticket?: Ticket) : Observable<Object>{

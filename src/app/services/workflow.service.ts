@@ -37,6 +37,10 @@ export class WorkflowService {
     return this.httpClient.get<boolean>(`http://localhost:8080/api/workflowByTicket/${id}`);
   }
 
+  getWorkflowsByDept(deptId:number): Observable<Workflow[]>{
+    return this.httpClient.get<Workflow[]>(`http://localhost:8080/api/workflowByDept/${deptId}`);
+  }
+
   getEmployeeDepartment(id?:number): Observable<Object>{
     return this.httpClient.get<Object>(`http://localhost:8080/api/getDeparmentByEmployee/${id}`);
   }

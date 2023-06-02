@@ -56,7 +56,7 @@
               <td mat-cell class="actionCol" *matCellDef="let row"> 
                 <button mat-icon-button color="warn" (click)="openCreateWorkflow(row.ticketid)" *ngIf="!isWorkflowExist(row.ticketid)"><mat-icon>add</mat-icon></button>
                 <button mat-icon-button color="green" *ngIf="!isWorkflowSet"></button>
-                <button mat-button *ngIf="isWorkflowExist(row.ticketid)" (click)="viewWorkflow(row.ticketid)">
+                <button mat-button *ngIf="isWorkflowExist(row.ticketid)" (click)="openWorkflow(row.ticketid)">
                   <mat-icon>visibility</mat-icon>
                 </button>
               </td>

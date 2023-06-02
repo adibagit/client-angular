@@ -70,11 +70,12 @@ export class HomepageComponent implements OnInit {
                       this.router.navigate(['employeeDashboard']);
                     }else{
                       this.router.navigate(['inactive-employee']);
-                    } 
+                    }
                   }
                 });                
-              }else{
-                // CONFUSION -- this.router.navigate(['managerDashboard']);
+              }else{ //the user is manager
+                this.manageSession(user.email);
+                this.router.navigate(['managerDashboard']);
               } 
             },
             error: (error: any) => {
@@ -106,7 +107,6 @@ export class HomepageComponent implements OnInit {
             console.log(err);
           }
         });
-        //this.router.navigate(['usersetup']);
       }
     });
   } 

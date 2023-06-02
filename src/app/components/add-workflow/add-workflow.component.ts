@@ -1,6 +1,7 @@
 import { Component , ElementRef, OnInit} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Department } from 'src/app/models/department';
+import { Ticket } from 'src/app/models/ticket';
 import { DepartmentService } from 'src/app/services/department.service';
 import { TicketService } from 'src/app/services/ticket.service';
 import { WorkflowService } from 'src/app/services/workflow.service';
@@ -17,7 +18,7 @@ export class AddWorkflowComponent implements OnInit{
   departments:any;
 
   workflow:any={
-    ticket:{ticketid:''},
+    ticket:{ticketid:'',statusid:''},
     department:{deptid:''},
     status:{statusid:''},
     description:'',
@@ -68,6 +69,24 @@ export class AddWorkflowComponent implements OnInit{
 
     this.workflowService.addWorkflow(this.workflow).subscribe({
       next:(res)=>{
+        if(res){
+          let ticket:Ticket;
+          this.ticketService.getTicketById(this.ticketService.id).subscribe({
+            next:(res)=>{
+              ticket=res;
+              if (ticket.status) {
+                ticket.status.statusid = 2;
+                this.ticketService.updateTicket(ticket).subscribe({
+                  next:(res)=>{
+                    // console.log("This ticket is after update :",res);
+                  }
+                });
+              }
+            }
+          });
+          
+         
+        }
         this.snackBar.open("Workflow added successfully.","OK");
       },
       error:(err)=>{
