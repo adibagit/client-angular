@@ -7,8 +7,12 @@ import { Logs } from '../models/logs';
   providedIn: 'root'
 })
 export class LogsService {
-
+  statusId?: number;
+  employeeId?: number;
   constructor(private httpClient: HttpClient) {}
 
+  getlogsByEmployee(employeeId?: number,statusId?:number):Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/logsByEmployee/${employeeId}/${statusId}`);
+  }
 
 }

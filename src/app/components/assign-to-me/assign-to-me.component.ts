@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild,Inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { TicketService } from 'src/app/services/ticket.service';
+import { LogsService } from 'src/app/services/logs.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { WorkflowService } from 'src/app/services/workflow.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-assign-to-me',
@@ -13,14 +13,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AssignToMeComponent implements OnInit{
 
-  logs: any = {
-    logid: {logid:''},
-    workflow: {workflowid:''},
-    employee: {empid:''},
-    status:{statusid:1},
-    comment:'',
-    logdate: ''
-  };
+  logs: any;
 
   clientId : number = Number(sessionStorage.getItem('userid'));
   workflows ?: any;
@@ -30,12 +23,12 @@ export class AssignToMeComponent implements OnInit{
 
   constructor(
     private ticketService : TicketService,
+    private logService : LogsService,
     private workflowService : WorkflowService,
     private employeeService:EmployeeService,
     private snackbar : MatSnackBar,
-    private router:Router,
-    @Inject(MAT_DIALOG_DATA) public data: { workflow: any }
-  
+    private router:Router
+
   ){}
 
 
@@ -51,12 +44,35 @@ ngOnInit(): void {
       console.log(err);
     }
   });
- this.getDepartmentAllTickets();
+ this.getEmployeesLogs();
 }
 
-getDepartmentAllTickets()
+getEmployeesLogs()
 {
-  console.log(this.data.workflow)
+  this.employeeService.getEmployeeIdByUserId(this.clientId).subscribe({
+    next:(res)=>{
+     this.empId = res;
+     console.log("empid"+this.empId)
+     this.getTheLog(this.empId);
+
+
+    },
+    error:(err)=>{
+      this.snackbar.open("Something went wrong cant find empId ! Try restarting the server.","OK");
+      console.log(err);
+    }
+  });
+}
+
+getTheLog(empId : number){
+  this.logService.getlogsByEmployee(empId,1).subscribe({
+    next:(res)=>{
+      this.logs = res;
+    },
+    error:(err)=>{
+      this.snackbar.open("Failed fetching workflows. Try restarting the server","Ok");
+    }
+    })
 
 }
 }
