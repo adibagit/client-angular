@@ -10,7 +10,8 @@
     <a mat-list-item (click)="selectComponent('EmployeeTicketsComponent')">
       <mat-icon>confirmation_number</mat-icon> Tickets
     </a>
-    <a mat-list-item> <mat-icon>assignment</mat-icon> Assigned to me </a>
+    <a mat-list-item (click)="selectComponent('AssignToMeComponent')">
+       <mat-icon>assignment</mat-icon> Assigned to me </a>
     <a mat-list-item> <mat-icon>history</mat-icon> History </a>
 
   </mat-nav-list>
