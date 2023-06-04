@@ -7,7 +7,7 @@
       <ng-container #componentContainer></ng-container>
       <app-employee-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-employee-home>
       <app-employee-home *ngIf="selectedComponentService.getSelectedComponent()=='EmployeeHomeComponent'"></app-employee-home>
-      <app-employee-tickets *ngIf="selectedComponentService.getSelectedComponent()=='EmployeeTicketsComponent'"></app-employee-tickets>
+      <!-- <app-employee-tickets *ngIf="selectedComponentService.getSelectedComponent()=='EmployeeTicketsComponent'"></app-employee-tickets> -->
       <app-assign-to-me *ngIf="selectedComponentService.getSelectedComponent()=='AssignToMeComponent'"></app-assign-to-me>
     </mat-drawer-content>
 

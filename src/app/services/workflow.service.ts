@@ -49,8 +49,15 @@ export class WorkflowService {
     return this.httpClient.get<Workflow[]>(`http://localhost:8080/api/GetDepartmentTickets/${id}`);
   }
 
-  updateWorkflowStatus(workflowid?:number,statusId?: number) : Observable<Object>{
-    return this.httpClient.put<Object>(`http://localhost:8080/api/changeWorkflowStatus/${workflowid}/${statusId}`,String);
+  updateWorkflowStatus(workflowid?:number,statusId?: number) : Observable<string>{
+    return this.httpClient.put<string>(`http://localhost:8080/api/changeWorkflowStatus/${workflowid}/${statusId}`,{ responseType: 'text' });
   }
 
+  shiftToNextWorkflow(ticketId?: number, priority?: number, statusId?: number): Observable<string> {
+    return this.httpClient.put<string>(
+      `http://localhost:8080/api/updateStatus/${ticketId}/${priority}/${statusId}`,
+      { responseType: 'text' }
+    );
+  }
+  
 }

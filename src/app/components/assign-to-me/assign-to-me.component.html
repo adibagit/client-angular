@@ -18,13 +18,24 @@
                 <p class="ticket-description"><b>{{log.workflow.description}}</b></p><br>
                 <p  class="ticket-date"><b>Property: {{log.workflow.ticket.property.propertyname}}</b></p>
                 <div class="ticket-info">
-                  <span class="ticket-status">Unassigned</span>
+                  <span class="ticket-status">{{log.workflow.status.status}}</span>
                   <span class="ticket-date">Created: {{log.logdate | date:'MMM d, yyyy'}}</span> &nbsp;&nbsp;
   
                 </div>
               </div>
-  
-            
+              <!-- [disabled]="startedWorking" -->
+              <ng-container *ngIf="log.workflow.status.statusid === 10">
+                <button mat-raised-button class="start-button"  (click)="startWorking(log.workflow)">Start Working</button>
+              </ng-container>
+              <ng-container *ngIf="log.workflow.status.statusid === 13;">
+                <button mat-raised-button class="complete-button" [disabled]="showComplete" (click)="completeWorking(log.workflow)">Complete</button>
+              </ng-container>
+              <ng-container *ngIf="log.workflow.status.statusid === 4">
+                <span class="happy-vibes">
+                  <span class="checked-symbol">&#10003;</span>
+                  Completed 
+                </span>
+              </ng-container>
               <div class="ticket-priority"  matTooltip="Priority {{log.workflow.priority}}" matTooltipPosition="left"> </div>
           
             </div>

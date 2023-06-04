@@ -31,7 +31,7 @@
             <th mat-header-cell *matHeaderCellDef><b>Actions</b></th>
             <td mat-cell class="actionCol" *matCellDef="let row"> 
               <button mat-icon-button color="primary" (click)="openUpdateDept(row.deptid)"><mat-icon>edit</mat-icon></button>
-              <!-- <button mat-icon-button color="warn" (click)="deleteDept(row.deptid)"><mat-icon>delete</mat-icon></button> -->
+              <button mat-icon-button color="warn" (click)="deleteDept(row.deptid)" [disabled]="true"><mat-icon>delete</mat-icon></button>
             </td>
           </ng-container>
       

@@ -38,12 +38,13 @@ deleteManager(id?:number){
   this.managerservice.deleteManager(id).subscribe({
     next:(res)=>{
       this.snackbar.open("Manager deleted!","OK");
-      //this.getAllProps();
+      this.ngOnInit();
     },
     error:(err)=>{
       console.log(err);
       // this.snackBar.open("Failed deleting property!","OK");
-      this.snackbar.open("Manager deleted!","OK");
+      this.snackbar.open("Failed deleting manager!","OK");
+      this.ngOnInit();
     }
   });
   //this.router.navigate(['departments']);

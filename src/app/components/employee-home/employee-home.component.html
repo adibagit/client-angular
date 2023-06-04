@@ -1,8 +1,54 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Employee Dashboard</div>
-    <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute text-center">
-        Dashboard Content
-      </div>
+  <div class="d-flex page__box p-3 mt-2" style="display:flex; justify-content: space-between;">Department Tickets
+    
+  </div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute">
+
+      <br/>
+      <ng-container *ngIf="workflows && workflows.length > 0; else noWorkflows">
+        <div class="ticket-container">
+          <div *ngFor="let workflow of workflows" class="ticket">
+            <div class="ticket-left-line"></div>
+            <div class="ticket-icon">
+              <mat-icon>confirmation_number</mat-icon>
+            </div>
+            <div class="ticket-details">
+              <h3 class="ticket-title">Ticket #{{workflow.ticket.ticketid}}</h3>
+              <p class="ticket-description"><b>{{workflow.description}}</b></p><br>
+              <p  class="ticket-date"><b>Property: {{workflow.ticket.property.propertyname}}</b></p>
+              <div class="ticket-info">
+                <span class="ticket-status">{{workflow.status.status}}</span>
+                <span class="ticket-date">Created: {{workflow.date | date:'MMM d, yyyy'}}</span> &nbsp;&nbsp;
+
+              </div>
+            </div>
+
+            <div class="ticket-actions">
+              <ng-container *ngIf="checkAssignedToMe(workflow); else assigned">
+                <button mat-raised-button class="close-button" (click)="openAssignToMe(workflow.workflowid, workflow.ticket.ticketid)">Assign To Me</button>
+              </ng-container>
+              <ng-template #assigned>
+                <span class="happy-vibes">
+                  <span class="checked-symbol">&#10003;</span>
+                  Assigned 
+                </span>
+              </ng-template>
+
+            
+              <!-- <button mat-raised-button class="close-button" (click)="openAssignToMe(workflow.workflowid,workflow.ticket.ticketid)" *ngIf="workflow.status.statusid==10 || workflow.status.statusid==12">Assign To Me</button> -->
+            </div>
+            <div class="ticket-priority"  matTooltip="Priority {{workflow.priority}}" matTooltipPosition="left"> </div>
+        
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #noWorkflows>
+        You don't have any tickets yet.
+      </ng-template>
+
+      <!-- kmdwkwqmddl -->
     </div>
   </div>
+</div>

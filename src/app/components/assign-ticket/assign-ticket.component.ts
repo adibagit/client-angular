@@ -45,7 +45,8 @@ export class AssignTicketComponent implements OnInit{
       next:(res)=>{
         this.snackbar.open("Assigned","Ok");
       }
-    })
+    });
+    
   }
 
 }

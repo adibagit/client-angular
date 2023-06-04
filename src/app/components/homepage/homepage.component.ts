@@ -61,7 +61,7 @@ export class HomepageComponent implements OnInit {
                 this.userService.getUserByEmail(user.email).subscribe(async res => {
                   this.myuser = res;
                   if (await this.isEmployeeActive(this.myuser[0]["userid"])) {
-                    alert(this.myuser[0]["userid"]);
+                    // alert(this.myuser[0]["userid"]);
                     this.manageSession(user.email);
                     this.router.navigate(['employeeDashboard']);
                   } else {
@@ -110,7 +110,7 @@ export class HomepageComponent implements OnInit {
 
   toggleChange(event: MatButtonToggleChange) {
     this.user.usertype=event.value;
-    alert('Selected value:'+ this.user.usertype);
+    // alert('Selected value:'+ this.user.usertype);
     console.log(this.user);
   }
 

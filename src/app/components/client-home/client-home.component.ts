@@ -36,7 +36,7 @@ export class ClientHomeComponent implements OnInit {
   openAddTicket(){
     this.dialog.open(AddTicketComponent).afterClosed().subscribe(() => {
       this.getAllTicketByUser();
-    });;
+    });
   }
 
   getAllTicketByUser(){
@@ -68,7 +68,9 @@ export class ClientHomeComponent implements OnInit {
   }
   openTrackTicket(ticketId:number){
     this.workflowService.id = ticketId;
-    this.dialog.open(TrackTicketComponent);
+    this.dialog.open(TrackTicketComponent).afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   deleteTicket(ticketId:number){

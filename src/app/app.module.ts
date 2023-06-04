@@ -66,10 +66,10 @@ import { TrackTicketComponent } from './components/track-ticket/track-ticket.com
 import { ListImagesComponent } from './components/list-images/list-images.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AssignTicketComponent } from './components/assign-ticket/assign-ticket.component';
-import { EmployeeTicketsComponent } from './components/employee-tickets/employee-tickets.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AssignToMeComponent } from './components/assign-to-me/assign-to-me.component';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
+import { ListFeedbacksComponent } from './components/list-feedbacks/list-feedbacks.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,9 +110,9 @@ import { ListClientsComponent } from './components/list-clients/list-clients.com
     TrackTicketComponent,
     ListImagesComponent,
     AssignTicketComponent,
-    EmployeeTicketsComponent,
     AssignToMeComponent,
-    ListClientsComponent
+    ListClientsComponent,
+    ListFeedbacksComponent
   ],
   imports: [
     BrowserModule,

@@ -61,11 +61,13 @@ export class ListEmployeesComponent {
       next:(res)=>{
         this.snackBar.open("Employee deleted!","OK");
         //this.getAllProps();
+        this.ngOnInit();
       },
       error:(err)=>{
         console.log(err);
         // this.snackBar.open("Failed deleting property!","OK");
-        this.snackBar.open("Employee deleted!","OK");
+        this.snackBar.open("Failed to delete employee","OK");
+        this.ngOnInit();
       }
     });
     //this.router.navigate(['departments']);

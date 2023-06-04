@@ -22,13 +22,15 @@
                             </mat-card-title-group>
                             </mat-card-header>
                             <mat-card-content>
-                                <p>Employee ID: {{ emp.empid }}</p>
-                                <p>Email: {{ emp.user.emailid }}</p>
-                                <p>Phone: {{ emp.user.phoneno }}</p>
+                                <!-- <p>Employee ID: {{ emp.empid }}</p> -->
+                                <hr/>
+                                <p><b>Email:</b> {{ emp.user.emailid }}</p>
+                                <p><b>Phone:</b> {{ emp.user.phoneno }}</p>
+                                <hr/>
                             </mat-card-content>
                             <mat-card-actions>
                                 <button mat-icon-button color="primary" (click)="openUpdateEmp(emp.empid)"><mat-icon>edit</mat-icon></button>
-                                <button mat-icon-button color="warn" (click)="deleteEmp(emp.empid)"><mat-icon>delete</mat-icon></button>
+                                <button mat-icon-button color="warn" (click)="deleteEmp(emp.empid)" [disabled]="true"><mat-icon>delete</mat-icon></button>
                             </mat-card-actions>
                         </mat-card>
                     </div>

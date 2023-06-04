@@ -65,7 +65,7 @@ export class AddWorkflowComponent implements OnInit{
     this.tasks.push(newTask);
 
     this.workflow.priority = this.tasks.length;
-    this.workflow.status.statusid = this.tasks.length === 1 ? 2 : 1;
+    this.workflow.status.statusid = this.tasks.length === 1 ? 10 : 12;
 
     this.workflowService.addWorkflow(this.workflow).subscribe({
       next:(res)=>{
@@ -75,7 +75,7 @@ export class AddWorkflowComponent implements OnInit{
             next:(res)=>{
               ticket=res;
               if (ticket.status) {
-                ticket.status.statusid = 2;
+                ticket.status.statusid = 3;
                 this.ticketService.updateTicket(ticket).subscribe({
                   next:(res)=>{
                     // console.log("This ticket is after update :",res);

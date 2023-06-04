@@ -20,8 +20,11 @@ export class ListClientsComponent implements OnInit{
     emailid:'',
     picture:'',
     usertype:'',
-    regdate:''
+    regdate:'',
   };
+
+  totalTickets=0;
+  selectedClientID: number | null = null;
 
   constructor( private userService:UserService, private ticketService :TicketService,private dialog: MatDialog){}
 
@@ -33,14 +36,13 @@ export class ListClientsComponent implements OnInit{
     });
   }
 
-  getTotalTickets(userID : number):number{
-    let count=0;
-    this.ticketService.getTicketsByUser(userID).subscribe({
+  getTotalTickets(userId : number){
+    this.selectedClientID = userId; 
+    this.ticketService.getTicketsByUser(userId).subscribe({
       next:(res)=>{
-          console.log(res);
-          alert("in");
+          this.totalTickets = Object.keys(res).length;
       }
     });
-    return count;
   }
+
 }

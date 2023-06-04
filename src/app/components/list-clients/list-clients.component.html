@@ -22,6 +22,9 @@
                             </mat-card-content>
                             <mat-card-actions>
                                 <button mat-icon-button color="primary" (click)="getTotalTickets(client.userid)"><mat-icon>confirmation_number</mat-icon></button>
+                                <!-- <span *ngIf="totalTickets">{{ totalTickets }}</span> -->
+                                <!-- <span *ngIf="client.totalTickets">{{ client.totalTickets }}</span> -->
+                                <span class="ticket-count" *ngIf="selectedClientID === client.userid && totalTickets">{{ totalTickets }}</span>
                             </mat-card-actions>
                         </mat-card>
                     </div>
