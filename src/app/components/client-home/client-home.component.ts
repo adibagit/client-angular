@@ -35,6 +35,7 @@ export class ClientHomeComponent implements OnInit {
 
   openAddTicket(){
     this.dialog.open(AddTicketComponent).afterClosed().subscribe(() => {
+      this.ngOnInit();
       this.getAllTicketByUser();
     });
   }

@@ -62,6 +62,7 @@ export class AddTicketComponent implements OnInit {
           this.addedTicket = res;
           this.snackBar.open("Ticket added successfully.", "OK");
           this.ngOnInit();
+        
         },
         error:(err) => {
           this.snackBar.open("Failed adding ticket", "OK");
