@@ -66,7 +66,7 @@ import { AddWorkflowComponent } from './components/add-workflow/add-workflow.com
 @NgModule({
   declarations: [
     AppComponent,
-    ListTicketsComponent,
+   // ListTicketsComponent,
     ListDepartmentsComponent,
     AddDepartmentComponent,
     UpdateDepartmentComponent,
