@@ -6,7 +6,7 @@
         <mat-form-field>
           <mat-label>Filter</mat-label>
           <div class="filter" >
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Tickets" #input>
           </div>
         </mat-form-field>
         <div class="table-container">
@@ -37,10 +37,10 @@
               <td mat-cell *matCellDef="let row"> {{row.description}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="priority">
+            <!-- <ng-container matColumnDef="priority">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Priority</b> </th>
               <td mat-cell *matCellDef="let row"> {{row.priority}} </td>
-            </ng-container>
+            </ng-container> -->
 
             <ng-container matColumnDef="date">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Created At</b> </th>

@@ -7,23 +7,29 @@
       <div class="row">
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea matInput [(ngModel)]="ticket.description"></textarea>
+          <textarea matInput [(ngModel)]="ticket.description" required #descriptionInput="ngModel"></textarea>
+          <mat-error *ngIf="descriptionInput.invalid && descriptionInput.touched">
+            Description field is required.
+          </mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Property</mat-label>
-            <mat-select [(ngModel)]="ticket.property.propertyid">
+            <mat-select [(ngModel)]="ticket.property.propertyid" required #propertySelect="ngModel">
               <mat-option *ngFor="let property of properties" [value]="property.propertyid">
                 {{property.propertyname}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="propertySelect.invalid && propertySelect.touched">
+              Property field is required.
+            </mat-error>
         </mat-form-field>
         
         
         <input type="file" (change)="handleFileInput($event)" multiple accept="image/*">
       </div>
     </div>
-    <div mat-dialog-close class="action">
-      <button mat-raised-button>Cancel</button> &nbsp;
+    <div class="action">
+      <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
       <button mat-raised-button color="primary" (click)="addTicket()">Save</button>
     </div>
     <br/>
