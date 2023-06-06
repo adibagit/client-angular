@@ -88,6 +88,7 @@
   
     .ticket-details {
       flex-grow: 1;
+      max-width: 52rem;
     }
   
     .ticket-title {
@@ -95,9 +96,10 @@
       margin-bottom: 5px;
     }
   
-    .ticket-description {
+    p .ticket-description {
       font-size: 1.3rem;
       margin: 0;
+      max-width: 10px;
     }
   
     .ticket-info {

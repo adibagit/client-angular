@@ -46,7 +46,7 @@ export class HomepageComponent implements OnInit {
           this.manageSession(user.email);
           this.router.navigate(['adminDashboard']);
         }  
-        else if(user.email == 'siddiqui.rubab.dcs23@vnsgu.ac.in'){
+        else if(user.email == 'neha01pophalikar@gmail.com'){
           this.manageSession(user.email);+
           this.router.navigate(['schedulerDashboard']);
         }
