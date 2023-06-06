@@ -61,6 +61,8 @@ export class AddTicketComponent implements OnInit {
         next:(res) => {
           this.addedTicket = res;
           this.snackBar.open("Ticket added successfully.", "OK");
+          this.ngOnInit();
+        
         },
         error:(err) => {
           this.snackBar.open("Failed adding ticket", "OK");
@@ -68,6 +70,7 @@ export class AddTicketComponent implements OnInit {
 
         });
       let url:any;
+      console.log(this.images);
       Array.from(this.images).forEach((image: File) => {
         this.imageService.uploadImage(image).subscribe({
           next:(res:string)=>{

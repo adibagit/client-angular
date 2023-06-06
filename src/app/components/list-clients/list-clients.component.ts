@@ -1,0 +1,48 @@
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TicketService } from 'src/app/services/ticket.service';
+import { UserService } from 'src/app/services/user.service';
+
+@Component({
+  selector: 'app-list-clients',
+  templateUrl: './list-clients.component.html',
+  styleUrls: ['./list-clients.component.css']
+})
+export class ListClientsComponent implements OnInit{
+
+  ngOnInit(): void {
+    this.getAllClients();
+  }
+
+  clients: any = {
+    firstname:'',
+    lastname:'',
+    emailid:'',
+    picture:'',
+    usertype:'',
+    regdate:'',
+  };
+
+  totalTickets=0;
+  selectedClientID: number | null = null;
+
+  constructor( private userService:UserService, private ticketService :TicketService,private dialog: MatDialog){}
+
+  getAllClients(){
+    this.userService.getAllClients().subscribe({
+      next:(result)=>{
+        this.clients = result;
+      }
+    });
+  }
+
+  getTotalTickets(userId : number){
+    this.selectedClientID = userId; 
+    this.ticketService.getTicketsByUser(userId).subscribe({
+      next:(res)=>{
+          this.totalTickets = Object.keys(res).length;
+      }
+    });
+  }
+
+}

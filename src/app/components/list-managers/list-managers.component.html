@@ -16,9 +16,11 @@
                           </mat-card-title-group>
                           </mat-card-header>
                           <mat-card-content>
-                              <p>Manager ID: {{ man.managerid }}</p>
-                              <p>Email: {{ man.user.emailid }}</p>
-                              <p>Phone: {{ man.user.phoneno }}</p>
+                              <hr/>
+                              <!-- <p>Manager ID: {{ man.managerid }}</p> -->
+                              <p><b>Email:</b> {{ man.user.emailid }}</p>
+                              <p><b>Phone:</b>   {{ man.user.phoneno }}</p>
+                              <hr/>
                           </mat-card-content>
                           <mat-card-actions>
                               <button mat-icon-button color="primary" (click)="openUpdateManager(man.managerid)"><mat-icon>edit</mat-icon></button>

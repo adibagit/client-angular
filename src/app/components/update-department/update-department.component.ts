@@ -21,17 +21,12 @@ export class UpdateDepartmentComponent implements OnInit{
   updateDept(){
     this.departmentService.updateDept(this.department).subscribe({
       next:(res)=>{
-        //alert('Department updated successfully. ')
-        this.snackBar.open("Department updated successfully. Please Refresh!","OK");
-        //window.location.reload();
+        this.snackBar.open("Department updated successfully.","OK");
       },
       error:(err)=>{
-        //alert("Failed to update the Department!")
         this.snackBar.open("Failed updating department!","OK");
       }
     });
-    //this.router.navigate(['departments']);
-    //window.location.reload();
   }
 
   getDeptById(){

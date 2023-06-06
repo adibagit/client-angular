@@ -23,7 +23,7 @@ export class AddDepartmentComponent {
       console.log(this.department)
       this.departmentService.addDepartment(this.department).subscribe({
         next: (res) => {
-          this.snackBar.open("Department added successfully. Please Refresh! ", "OK");
+          this.snackBar.open("Department added successfully.", "OK");
           this.dialogRef.close();
         },
         error: (err) => {

@@ -12,11 +12,6 @@
       <div class="table-container" style="max-height: 248px; overflow-x: auto;">
         <table mat-table [dataSource]="dataSource" matSort>
       
-          <ng-container matColumnDef="deptid">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>ID</b> </th>
-            <td mat-cell *matCellDef="let row"> {{row.deptid}} </td>
-          </ng-container>
-    
           <ng-container matColumnDef="deptname">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Name</b> </th>
             <td mat-cell *matCellDef="let row"> {{row.deptname}} </td>
@@ -36,7 +31,7 @@
             <th mat-header-cell *matHeaderCellDef><b>Actions</b></th>
             <td mat-cell class="actionCol" *matCellDef="let row"> 
               <button mat-icon-button color="primary" (click)="openUpdateDept(row.deptid)"><mat-icon>edit</mat-icon></button>
-              <button mat-icon-button color="warn" (click)="deleteDept(row.deptid)"><mat-icon>delete</mat-icon></button>
+              <button mat-icon-button color="warn" (click)="deleteDept(row.deptid)" [disabled]="true"><mat-icon>delete</mat-icon></button>
             </td>
           </ng-container>
       

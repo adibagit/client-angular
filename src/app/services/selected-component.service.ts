@@ -7,15 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class SelectedComponentService {
 
   constructor() { }
-  // private selectedComponentSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
-  // setSelectedComponent(component: string) {
-  //   this.selectedComponentSubject.next(component);
-  // }
-
-  // getSelectedComponent() {
-  //   return this.selectedComponentSubject.asObservable();
-  // }
+  
   private selectedComponent: string='';
 
   setSelectedComponent(component: string) {

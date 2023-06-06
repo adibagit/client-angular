@@ -19,7 +19,7 @@ export class DepartmentService {
   }
 
   addDepartment(department?: Department): Observable<Object>{
-    return this.httpClient.post<Object>("http://localhost:8080/api/department",department ); 
+    return this.httpClient.post<Object>("http://localhost:8080/api/department",department );
   }
 
   getDeptById():Observable<Object>{
@@ -30,7 +30,12 @@ export class DepartmentService {
     return this.httpClient.put<Object>(`http://localhost:8080/api/department/${this.id}`,department);
   }
 
-  deleteDept(id?: number): Observable<Object>{
-    return this.httpClient.delete<Object>(`http://localhost:8080/api/department?id=${id}`);
+  deleteDept(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/department?id=${id}`,{ responseType: 'text' });
   }
+
+  getDepartmentsWithoutManager(): Observable<Department[]>{
+    return this.httpClient.get<Department[]>("http://localhost:8080/api/departments/withoutManager");
+  }
+
 }

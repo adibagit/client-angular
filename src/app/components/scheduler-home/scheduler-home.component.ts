@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddWorkflowComponent } from '../add-workflow/add-workflow.component';
 import { WorkflowService } from 'src/app/services/workflow.service';
 import { Workflow } from 'src/app/models/worklow';
+import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
 
 @Component({
   selector: 'app-scheduler-home',
@@ -42,7 +43,7 @@ export class SchedulerHomeComponent {
       next:(res)=>{
         this.workflows=res;
       }
-    })
+    });
   }
 
   getAllTickets(){
@@ -67,11 +68,6 @@ export class SchedulerHomeComponent {
     });
   }
 
-  openUpdateWorkflow(id:number){
-    // this.departmentService.setId(id);
-    // this.dialog.open(UpdateDepartmentComponent);
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -82,13 +78,6 @@ export class SchedulerHomeComponent {
   }
 
   isWorkflowExist(ticketid:number):boolean{
-    // let exists =false;
-    // this.workflowService.isWorkflowExist(ticketid).subscribe({
-    //   next:(res)=>{
-    //     exists= res;
-    //   }
-    // });
-    // return exists;
     if (this.workflows) {
       const workflowExists = this.workflows.some((workflow) => workflow.ticket?.ticketid === ticketid);
       return workflowExists;
@@ -96,8 +85,9 @@ export class SchedulerHomeComponent {
     return false;
   }
 
-  viewWorkflow(ticketid: number) {
-    
+  openWorkflow(ticketid: number) {
+    this.workflowService.id=ticketid;
+    this.dialog.open(TrackTicketComponent);
   }
   
 

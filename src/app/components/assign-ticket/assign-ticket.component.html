@@ -1,0 +1,25 @@
+<div class="container">
+    <br/>
+    <div mat-dialog-title>
+      <h2>Assign Ticket</h2>
+      <hr/>
+    </div>
+    <div mat-dialog-content class="content">
+      <div class="row">
+          <mat-form-field>
+              <mat-label>Employee</mat-label>
+              <mat-select [(ngModel)]="log.employee.empid" >
+                <mat-option *ngFor="let employee of employees" [value]="employee.empid" >
+                  {{employee.user.firstname}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+    </div>
+    <div mat-dialog-close class="action">
+      <button mat-raised-button>Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" (click)="assignTicket()">Done</button>
+    </div>
+    <br/>
+  </div>
+  

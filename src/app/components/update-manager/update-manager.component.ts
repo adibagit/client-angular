@@ -35,7 +35,7 @@ constructor(private managerService: ManagerService,private snackBar: MatSnackBar
   updateManager(){
     this.managerService.updateManager(this.manager).subscribe({
       next:(res)=>{
-        this.snackBar.open("Manager updated successfully. Please Refresh!","OK");
+        this.snackBar.open("Manager updated successfully.","OK");
       },
       error:(err)=>{
         console.log(err);

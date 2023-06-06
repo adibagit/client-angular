@@ -38,12 +38,13 @@
   }
   
   .table-container{
-    overflow-x: auto;
+    /* overflow-x: auto; */
+    width: 100%;
   }
   
   table {
-    width: 100%;
-    white-space: nowrap;
+    /* width: 20%; */
+    /* white-space: nowrap; */
   }
   
   .mat-mdc-form-field {

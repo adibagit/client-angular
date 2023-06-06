@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Arvo&family=Hind+Siliguri&family=Poppins:wght@400;500;600;700&display=swap');
-
  *{
     margin:0;
     padding: 0;
@@ -11,12 +9,10 @@
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
 }
-
 :root{
     --main-color:#008148;
     --second-color:#1e3932;
 }
-
 *::selection{
     color: #fff;
     background:#008148;
@@ -24,11 +20,9 @@
 section{
     padding: 50px 10%;
 }
-
 img{
     width:100%;
 }
-
 header{
     position: fixed;
     top: 0;
@@ -60,20 +54,16 @@ header{
     font-weight: 600;
     text-transform: uppercase;
 }
-
 .navbar a:hover{
     color: #008148;
 }
-
 #menu-icon{
     font-size: 24px;
     cursor: pointer;
     z-index: 1001;
     display: none;
 }
-
 .home{
-
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -124,7 +114,6 @@ header{
     text-transform: uppercase;
     margin: 0.5rem 0 1.4rem;
 }
-
 .btn{
     display: inline-block;
     padding: 6px 12px;
@@ -138,7 +127,6 @@ header{
     font-weight: bold;
 
 }
-
 .btn:hover{
     background-color: #3367D6;
 
@@ -232,7 +220,6 @@ input[type="checkbox"] {
     font-weight: 500;
     margin: 0.2rem 0 0.5rem;
 }
-
 .box .btn:hover{
     background: #ebdbc8;
     color:#1e3932;
@@ -314,7 +301,6 @@ input[type="checkbox"] {
 .sub-heading{
     font-size: 1.2rem;
 }
-
 @media(max-width:1825px){
     header{
         padding:18px 4%;
@@ -335,7 +321,6 @@ input[type="checkbox"] {
         font-size: 1.4rem;
     }
 }
-
 @media(max-width:1150px){
     header{
         padding:18px 7%;
@@ -350,8 +335,8 @@ input[type="checkbox"] {
     }
     .home-text  h1{
         margin-top: 2px;
-text-transform: uppercase;
-font-size: 2rem;
+    text-transform: uppercase;
+    font-size: 2rem;
     }
     .home-text h2{
         text-transform: capitalize;
@@ -360,7 +345,6 @@ font-size: 2rem;
 
     }
 }
-
 @media(max-width:991px){
     header{
         padding:18px 4%;
@@ -383,7 +367,6 @@ font-size: 2rem;
 
     }
 }
-
 @media(max-width:768px){
     header{
         padding:6px 2%;
@@ -423,7 +406,6 @@ font-size: 2rem;
         font-size: 1.2rem;
     }
 }
-
 @media(max-width:768px){
     .home-text{
         padding-top: 6rem;
@@ -445,9 +427,7 @@ font-size: 2rem;
     display: flex;
     flex-direction: column;
   }
-
 }
-
 @media(max-width:768px){
     .links{
         display: flex;
@@ -458,7 +438,6 @@ font-size: 2rem;
       
     }
 }
-
 @media(max-width:364px){
     .links{
         display: flex;

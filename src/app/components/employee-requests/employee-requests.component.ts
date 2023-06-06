@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/models/employee';
 import { DepartmentService } from 'src/app/services/department.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { ManagerService } from 'src/app/services/manager.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class EmployeeRequestsComponent implements OnInit{
 
   employees: any;
+  managerChecked=false;
 
   employeeRequest : any ={
     user:{userid:''},
@@ -20,11 +22,13 @@ export class EmployeeRequestsComponent implements OnInit{
   }
 
   departments:any;
+  managers:any;
 
   constructor(private employeeService : EmployeeService,
     private snackBar: MatSnackBar,
     private deptService : DepartmentService,
-    private userService : UserService
+    private userService : UserService,
+    private managerService : ManagerService
   ) {}
 
   ngOnInit(): void {
@@ -32,18 +36,13 @@ export class EmployeeRequestsComponent implements OnInit{
       next:(res)=>{
         this.employees = res;
         this.employeeService.noOfEmployeeRequest = this.employees.length;
-        //count emps for badge 
       },
       error:(err)=>{
         this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
       }
     });
 
-    this.deptService.getAllDepartments().subscribe({
-      next:(res)=>{
-        this.departments=res;
-      }
-    })
+    this.filterDepartments();
   }
 
   acceptRequest(employee :any): void {
@@ -51,16 +50,38 @@ export class EmployeeRequestsComponent implements OnInit{
     if(this.employeeRequest.department.deptid === null || this.employeeRequest.department.deptid === ''){
       this.snackBar.open("Please select department","OK");
     }else{
-      this.employeeService.addEmployee(this.employeeRequest).subscribe({
-        next:(res)=>{
-          this.snackBar.open("Accepted","OK");
-          this.ngOnInit();
-        },
-        error:(err)=>{
-          this.snackBar.open("Failed accepting request!","OK");
-          console.log(err);
-        }
-      });
+      if(this.managerChecked){
+        this.managerService.addManager(this.employeeRequest).subscribe({
+          next:(res)=>{
+            this.snackBar.open("Accepted as Manager","OK");
+            //Update userRole as manager
+            this.userService.getUser(this.employeeRequest.user.userid).subscribe({
+              next:(result)=>{
+                result.usertype='manager';
+                this.userService.id=result.userid;
+                this.userService.updateUser(result).subscribe(() => {
+                  this.ngOnInit();
+                });
+              }
+            })
+          },
+          error:(err)=>{
+            this.snackBar.open("Failed accepting request!","OK");
+            console.log(err);
+          }
+        });
+      }else{
+        this.employeeService.addEmployee(this.employeeRequest).subscribe({
+          next:(res)=>{
+            this.snackBar.open("Accepted","OK");
+            this.ngOnInit();
+          },
+          error:(err)=>{
+            this.snackBar.open("Failed accepting request!","OK");
+            console.log(err);
+          }
+        });
+      }
     }
     
   }
@@ -73,12 +94,34 @@ export class EmployeeRequestsComponent implements OnInit{
         this.ngOnInit();
       },
       error:(err)=>{
-        //this.snackBar.open("Request Failed!","OK");
         this.ngOnInit();
         console.log(err);
       }
     });
   }
+
+  filterDepartments(): void {
+    if (this.managerChecked) {
+      this.deptService.getDepartmentsWithoutManager().subscribe({
+        next: (res) => {
+          this.departments = res;
+        },
+        error: (err) => {
+          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+        }
+      });
+    } else {
+      this.deptService.getAllDepartments().subscribe({
+        next: (res) => {
+          this.departments = res;
+        },
+        error: (err) => {
+          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+        }
+      });
+    }
+  }
+  
 
 
 }

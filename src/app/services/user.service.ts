@@ -7,6 +7,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
+  id?:number;
   constructor(private httpClient: HttpClient) { }
 
   addUser(user?: User): Observable<Object>{
@@ -28,7 +29,27 @@ export class UserService {
     return this.httpClient.get<Object>(`http://localhost:8080/api/userOf/${email}`);
   }
 
-  deleteUser(id?: number): Observable<void>{
-    return this.httpClient.delete<void>(`http://localhost:8080/api/users?id=${id}`);
+  deleteUser(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/users?id=${id}`,{ responseType: 'text' });
+  }
+
+  updateUser(user?: User) : Observable<Object>{
+    return this.httpClient.put<Object>(`http://localhost:8080/api/users/${this.id}`,user);
+  }
+
+  getAllUsers(): Observable<User[]>{
+    return this.httpClient.get<User[]>("http://localhost:8080/api/users");
+  }
+  
+  getAllManagers(): Observable<User[]>{
+    return this.httpClient.get<User[]>("http://localhost:8080/api/usersByRole/manager");
+  }
+
+  getAllClients(): Observable<User[]>{
+    return this.httpClient.get<User[]>("http://localhost:8080/api/usersByRole/client");
+  }
+
+  getAllEmployees(): Observable<User[]>{
+    return this.httpClient.get<User[]>("http://localhost:8080/api/usersByRole/employee");
   }
 }

@@ -3,10 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
-import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
 import { ListDepartmentsComponent } from './components/list-departments/list-departments.component';
 import { AppRoutingModule } from './app.routing.module';
-import { FormsModule,ReactiveFormsModule, UntypedFormArray } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AddDepartmentComponent } from './components/add-department/add-department.component';
 import { UpdateDepartmentComponent } from './components/update-department/update-department.component';
 
@@ -63,10 +62,18 @@ import { InactiveEmployeeComponent } from './components/inactive-employee/inacti
 import { EmployeeRequestsComponent } from './components/employee-requests/employee-requests.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { AddWorkflowComponent } from './components/add-workflow/add-workflow.component';
+import { TrackTicketComponent } from './components/track-ticket/track-ticket.component';
+import { ListImagesComponent } from './components/list-images/list-images.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AssignTicketComponent } from './components/assign-ticket/assign-ticket.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AssignToMeComponent } from './components/assign-to-me/assign-to-me.component';
+import { ListClientsComponent } from './components/list-clients/list-clients.component';
+import { ListFeedbacksComponent } from './components/list-feedbacks/list-feedbacks.component';
+import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
 @NgModule({
   declarations: [
     AppComponent,
-   // ListTicketsComponent,
     ListDepartmentsComponent,
     AddDepartmentComponent,
     UpdateDepartmentComponent,
@@ -95,13 +102,19 @@ import { AddWorkflowComponent } from './components/add-workflow/add-workflow.com
     ListEmployeesComponent,
     UpdateEmployeesComponent,
     AddTicketComponent,
-    ListTicketsComponent,
     UpdateTicketComponent,
     ListManagersComponent,
     UpdateManagerComponent,
     InactiveEmployeeComponent,
     EmployeeRequestsComponent,
-    AddWorkflowComponent
+    AddWorkflowComponent,
+    TrackTicketComponent,
+    ListImagesComponent,
+    AssignTicketComponent,
+    AssignToMeComponent,
+    ListClientsComponent,
+    ListFeedbacksComponent,
+    ListTicketsComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +125,7 @@ import { AddWorkflowComponent } from './components/add-workflow/add-workflow.com
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatFormFieldModule,
+    MatTooltipModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
@@ -130,7 +144,9 @@ import { AddWorkflowComponent } from './components/add-workflow/add-workflow.com
     MatButtonToggleModule,
     GoogleSigninButtonModule,
     MatSelectModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule
+    
   ],
   providers: [
     {

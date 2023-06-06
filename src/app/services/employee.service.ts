@@ -33,8 +33,8 @@ export class EmployeeService {
     return this.httpClient.put<Object>(`http://localhost:8080/api/employee/${this.id}`,department);
   }
 
-  deleteEmp(id?: number): Observable<void>{
-    return this.httpClient.delete<void>(`http://localhost:8080/api/employee?id=${id}`);
+  deleteEmp(id?: number): Observable<string>{
+    return this.httpClient.delete(`http://localhost:8080/api/employee?id=${id}`,{ responseType: 'text' });
   }
 
   isActive(id?:number):Observable<Object>{
@@ -43,6 +43,14 @@ export class EmployeeService {
 
   getEmployeeRequest(): Observable<Employee[]>{
     return this.httpClient.get<Employee[]>("http://localhost:8080/api/employeeRequest");
+  }
+
+  getEmployeesByDept(id?:number): Observable<Employee[]>{
+    return this.httpClient.get<Employee[]>(`http://localhost:8080/api/employeeByDept/${id}`);
+  }
+
+  getEmployeeIdByUserId(id?: number): Observable<number>{
+    return this.httpClient.get<number>(`http://localhost:8080/api/employeeIdFromUserid/${id}`);
   }
 
 }
