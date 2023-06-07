@@ -9,6 +9,7 @@ import { Feedback } from '../models/feedback';
 export class FeedbackService {
 
   id?: number;
+  feedbackId ?: number;
   constructor(private httpClient: HttpClient) { }
 
   getAllFeedbacks(): Observable<Feedback[]>{
@@ -16,6 +17,18 @@ export class FeedbackService {
   }
 
   updateFeedback(feedback?: Feedback) : Observable<Object>{
-    return this.httpClient.put<Object>(`http://localhost:8080/api/feedback/${this.id}`,feedback);
+    return this.httpClient.put<Object>(`http://localhost:8080/api/feedback/${this.feedbackId}`,feedback);
+  }
+
+  addFeedback(feedback?: Feedback): Observable<Object>{
+    return this.httpClient.post<Object>("http://localhost:8080/api/feedback",feedback );
+  }
+
+  feedbackExist(userId?:number,ticketId?:number):Observable<boolean>{
+    return this.httpClient.get<boolean>(`http://localhost:8080/api/feedbackExist/${userId}/${ticketId}`);
+  }
+
+  getFeedbackByUserAndTicket(userId?:number,ticketId?:number):Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/feedback/${userId}/${ticketId}`);
   }
 }

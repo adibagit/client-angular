@@ -7,6 +7,8 @@ import { ImageService } from 'src/app/services/image.service';
 import { WorkflowService } from 'src/app/services/workflow.service';
 import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
 import { ListImagesComponent } from '../list-images/list-images.component';
+import { FeedbackService } from 'src/app/services/feedback.service';
+import { AddFeedbackComponent } from '../add-feedback/add-feedback.component';
 
 @Component({
   selector: 'app-client-home',
@@ -20,7 +22,8 @@ export class ClientHomeComponent implements OnInit {
     private ticketService : TicketService,
     private snackbar : MatSnackBar,
     private imageService : ImageService,
-    private workflowService : WorkflowService
+    private workflowService : WorkflowService,
+    private feedbackService : FeedbackService
     
   ){}
 
@@ -97,5 +100,12 @@ export class ClientHomeComponent implements OnInit {
   viewImages(imageNames: string[]): void {
     // Handle the logic to show the image names in another component or do any other processing
     console.log(imageNames);
+  }
+
+  openAddFeedback(ticketId : number){
+    this.feedbackService.id = ticketId;
+    this.dialog.open(AddFeedbackComponent).afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 }

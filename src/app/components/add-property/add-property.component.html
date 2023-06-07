@@ -7,15 +7,15 @@
       <div class="row">
         <mat-form-field appearance="outline">
           <mat-label>Property Name</mat-label>
-          <input matInput type="text" placeholder="Ex. Electricity" [(ngModel)]="property.propertyname">
+          <input matInput type="text" placeholder="Ex. Electricity" [(ngModel)]="property.propertyname" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea matInput [(ngModel)]="property.propertydesc"></textarea>
+          <textarea matInput [(ngModel)]="property.propertydesc" required></textarea>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Address</mat-label>
-            <textarea matInput [(ngModel)]="property.propertyaddress"></textarea>
+            <textarea matInput [(ngModel)]="property.propertyaddress" required></textarea>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Area</mat-label>
@@ -27,8 +27,8 @@
         </mat-form-field>
       </div>
     </div>
-    <div mat-dialog-close class="action">
-      <button mat-raised-button>Cancel</button> &nbsp;
+    <div class="action">
+      <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
       <button mat-raised-button color="primary" (click)="addProp()">Save</button>
     </div>
     <br/>

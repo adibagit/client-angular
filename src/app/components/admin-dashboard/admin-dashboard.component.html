@@ -15,7 +15,8 @@
       <app-list-managers *ngIf="selectedComponentService.getSelectedComponent()=='ListManagersComponent'"></app-list-managers>
       <app-list-clients *ngIf="selectedComponentService.getSelectedComponent()=='ListClientsComponent'"></app-list-clients>
       <app-list-feedbacks *ngIf="selectedComponentService.getSelectedComponent()=='ListFeedbacksComponent'"></app-list-feedbacks>
-    </mat-drawer-content>
+      <app-list-tickets  *ngIf="selectedComponentService.getSelectedComponent()=='ListTicketsComponent'"></app-list-tickets>
+  </mat-drawer-content>
   </mat-drawer-container>
 
       

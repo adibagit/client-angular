@@ -21,6 +21,7 @@ export class EmployeeHomeComponent implements OnInit{
   };
   addedLog:any;
   allLogs:any;
+  assignedTo:string;
 
 constructor(
     private dialog:MatDialog,
@@ -125,19 +126,19 @@ getWorkflowById(workflowid:number){
   }
 
 
-addTheLog(){
-  console.log("logs"+this.logs);
-  this.ticketService.addLog(this.logs).subscribe({
-    next:(res) => {
-      console.log(res);
-      this.addedLog = res;
-      this.snackbar.open("Assigned to you successfully.", "OK");
-      this.ngOnInit();
-    },
-    error:(err) => {
-      this.snackbar.open("Failed assigning ticket", "OK");
-    }})
-}
+  addTheLog(){
+    console.log("logs"+this.logs);
+    this.ticketService.addLog(this.logs).subscribe({
+      next:(res) => {
+        console.log(res);
+        this.addedLog = res;
+        this.snackbar.open("Assigned to you successfully.", "OK");
+        this.ngOnInit();
+      },
+      error:(err) => {
+        this.snackbar.open("Failed assigning ticket", "OK");
+      }})
+  }
 
   getDepartmentAllTickets()
   {
@@ -165,15 +166,25 @@ addTheLog(){
     })
   }
 
-  checkAssignedToMe(workflow: any): boolean {
-    console.log("workflow is ",workflow)
-    console.log("first",workflow.status.statusid === 10 || workflow.status.statusid === 12)
-    console.log("second",this.allLogs.some((log: Log) => log.workflow && log.workflow.workflowid === workflow.workflowid && log.status && log.status.statusid === 11))
-    
-  return (workflow.status.statusid === 10 || workflow.status.statusid === 12) && !this.allLogs.some((log: Log) => log.workflow && log.workflow.workflowid === workflow.workflowid && log.status && log.status.statusid === 11);
-  }
+  checkAssignedToMe(workflow: any): boolean { 
+    // console.log("workflow is ",workflow)
+    // console.log("first",workflow.status.statusid === 10 || workflow.status.statusid === 12)
+    // console.log("second",this.allLogs.some((log: Log) => log.workflow && log.workflow.workflowid === workflow.workflowid && log.status && log.status.statusid === 11))
+    let isAssigned = (workflow.status.statusid === 10 || workflow.status.statusid === 12) && !this.allLogs.some((log: Log) => log.workflow && log.workflow.workflowid === workflow.workflowid && log.status && log.status.statusid === 11);
 
-  
-  
+    const desiredLog = this.allLogs.find((log: { workflow: { workflowid: any; }; status: { statusid: number; }; }) =>
+      log.workflow &&
+      log.workflow.workflowid === workflow.workflowid &&
+      log.status &&
+      log.status.statusid === 11
+    );
+    if((workflow.status.statusid === 10 || workflow.status.statusid === 12) && !desiredLog){
+      alert("Not found")
+    }else{
+      
+      console.log("Founddd",desiredLog)
+    }
+    return isAssigned;
+  }
 
 }

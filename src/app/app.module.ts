@@ -71,6 +71,7 @@ import { AssignToMeComponent } from './components/assign-to-me/assign-to-me.comp
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { ListFeedbacksComponent } from './components/list-feedbacks/list-feedbacks.component';
 import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
+import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +115,8 @@ import { AddFeedbackComponent } from './components/add-feedback/add-feedback.com
     AssignToMeComponent,
     ListClientsComponent,
     ListFeedbacksComponent,
-    AddFeedbackComponent
+    AddFeedbackComponent,
+    ListTicketsComponent
   ],
   imports: [
     BrowserModule,

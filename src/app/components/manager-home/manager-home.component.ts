@@ -24,6 +24,7 @@ export class ManagerHomeComponent {
   userId = Number(sessionStorage.getItem('userid'));
   deptId:number;
   logs:any;
+  assignedTo:string;
 
   displayedColumns: string[] = ['ticket', 'department', 'status','description','priority','date','actions'];
   dataSource !: MatTableDataSource<any>;
@@ -92,6 +93,8 @@ export class ManagerHomeComponent {
   isWorkflowAssigned(workflowId:number):boolean{
     if (this.logs) {
       console.log("In check assigned func.",this.logs)
+      console.log(workflowId,"is assigned to : " ,this.logs[0].employee.user.firstname)
+      this.assignedTo=this.logs[0].employee.user.firstname;
       const workflowAssigned: boolean = this.logs.some((log: any) =>
         log.workflow?.workflowid === workflowId &&
         log.status.statusid === 11

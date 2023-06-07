@@ -115,16 +115,60 @@ header{
     margin: 0.5rem 0 1.4rem;
 }
 .btn{
-    padding: 7px 16px;
-    border: 2px solid #3636eb;
-    border-radius: 40px;
-    color:#04048f;
-    font-weight: 700;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #4285F4;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-style: arial;
+    font-weight: bold;
+
 }
 .btn:hover{
-    color:#fff;
-    background-color: #04048f;
+    background-color: #3367D6;
+
 }
+
+.btn i {
+    margin-right: 8px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    border-radius: 3px;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: #4285F4;
+    border-color: #4285F4;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    content: '\2713';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .checkbox-label {
+    font-size: 14px;
+    color: #333;
+  }
+  
+
 .heading{
     text-align: center;
     text-transform: uppercase;

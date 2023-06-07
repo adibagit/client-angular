@@ -51,7 +51,11 @@
               <th mat-header-cell *matHeaderCellDef><b>Actions</b></th>
               <td mat-cell *matCellDef="let row"> 
                 <button mat-raised-button color="primary" (click)="openAssignTicket(row.workflowid)" *ngIf="!isWorkflowAssigned(row.workflowid)" > Assign </button> 
-                <mat-icon *ngIf="isWorkflowAssigned(row.workflowid)">check</mat-icon>
+              
+                <span class="happy-vibes" *ngIf="isWorkflowAssigned(row.workflowid)">
+                  <span class="checked-symbol">&#10003;</span>
+                  Assigned to {{assignedTo}}
+                </span>
               </td>
             </ng-container>
         

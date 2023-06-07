@@ -48,10 +48,17 @@
               </div>
             </div> -->
             <div class="ticket-actions">
-              <button mat-raised-button class="close-button" (click)="openViewImages(ticket.ticketid)">Images</button>
-              <button mat-raised-button class="close-button" (click)="openTrackTicket(ticket.ticketid)" *ngIf="ticket.status.status != 'new'">Track</button>
+              <button mat-raised-button class="close-button" (click)="openViewImages(ticket.ticketid)">
+                <mat-icon class="custom-icon">photo_library</mat-icon>
+              </button>
+              <button mat-raised-button class="close-button" (click)="openTrackTicket(ticket.ticketid)" *ngIf="ticket.status.status != 'new'">
+                <mat-icon class="custom-icon">track_changes</mat-icon>
+              </button>
               <button mat-raised-button class="close-button" (click)="deleteTicket(ticket.ticketid)" *ngIf="ticket.status.status == 'new'">
                 <mat-icon color="warn">delete</mat-icon>
+              </button>
+              <button mat-raised-button class="close-button" (click)="openAddFeedback(ticket.ticketid)" *ngIf="ticket.status.status == 'completed'">
+                <mat-icon class="custom-icon">feedback</mat-icon>
               </button>
             </div>
             <div class="ticket-priority" *ngIf="ticket.status.status != 'new'"></div>
