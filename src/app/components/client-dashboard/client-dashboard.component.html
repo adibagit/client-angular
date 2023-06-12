@@ -1,12 +1,11 @@
-
 <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen">
-      <app-client-menu></app-client-menu>>
-    </mat-drawer>
-    <mat-drawer-content>
-      <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
-      <ng-container #componentContainer></ng-container>
-      <app-client-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-client-home>
-      <app-client-home *ngIf="selectedComponentService.getSelectedComponent()=='ClientHomeComponent'"></app-client-home>
-    </mat-drawer-content>
- </mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-client-menu></app-client-menu>>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
+    <ng-container #componentContainer></ng-container>
+    <app-client-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-client-home>
+    <app-client-home *ngIf="selectedComponentService.getSelectedComponent()=='ClientHomeComponent'"></app-client-home>
+  </mat-drawer-content>
+</mat-drawer-container>

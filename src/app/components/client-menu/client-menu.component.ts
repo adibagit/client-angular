@@ -11,11 +11,13 @@ import { SelectedComponentService } from 'src/app/services/selected-component.se
 export class ClientMenuComponent {
 
   constructor(private router: Router,private selectedComponentService: SelectedComponentService) {}
+  
   navigateToComponent(route: string) {
     this.router.navigate([route]);
   }
 
-  selectComponent(component: string) {
+  selectComponent(component: string,status: string) {
+    this.selectedComponentService.setStatus(status);
     this.selectedComponentService.setSelectedComponent(component);
   }
 

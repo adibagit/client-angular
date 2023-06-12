@@ -1,0 +1,45 @@
+<div class="container">
+    <br/>
+    <div mat-dialog-title>
+      <h2>User Form</h2>
+    </div>
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <div class="example-container">
+            <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="Ex. Zayn" [(ngModel)]="user.firstname" required="true" name="firstname">
+            <mat-error *ngIf="!user.firstname || !regexPattern.test(user.firstname)">Empty or invalid value!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" placeholder="Ex. Malik" [(ngModel)]="user.lastname" required="true" name="lastname">
+                <mat-error *ngIf="!user.lastname || !regexPattern.test(user.lastname)">Empty or invalid value!</mat-error>
+            </mat-form-field><br/>
+            <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="adiba@example.com" [(ngModel)]="user.emailid" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Department</mat-label>
+                <mat-select [(ngModel)]="employeeRequest.department.deptid" required="true">
+                  <mat-option *ngFor="let department of departments" [value]="department.deptid">
+                    {{department.deptname}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field><br>
+            <mat-button-toggle-group [(ngModel)]="user.usertype" aria-label="Font Style" required="true" (ngModelChange)="filterDepartments()">
+                <mat-button-toggle value="employee">Employee</mat-button-toggle>
+                <mat-button-toggle value="manager">Manager</mat-button-toggle>
+            </mat-button-toggle-group><br>
+        </div>
+        </div>
+    </div>
+    <div class="action">
+      <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" (click)="addUser()">Save</button>
+    </div>
+    <br/>
+</div>

@@ -7,11 +7,12 @@ import { SelectedComponentService } from 'src/app/services/selected-component.se
   styleUrls: ['./client-dashboard.component.css']
 })
 export class ClientDashboardComponent {
+
+  sideBarOpen = true;
+  
   constructor(
     public selectedComponentService: SelectedComponentService,
   ) {}
-
-  sideBarOpen = true;
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;

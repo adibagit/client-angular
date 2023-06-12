@@ -1,17 +1,1 @@
-@import url(../admin-home/admin-home.component.css);
-
-.table-container {
-    padding: 10px;
-  }
-
-  .table-container table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .table-container th,
-  .table-container td {
-    padding: 20px;
-    text-align: left;
-    
-  }
+@import url(../list-departments/list-departments.component.css);

@@ -1,1 +1,13 @@
-@import url(../admin-home/admin-home.component.css);
+@import url(../list-departments/list-departments.component.css);
+.happy-vibes {
+  color: green;
+  font-weight: bold;
+  font-size: 13px;
+  margin-right: 15px;
+}
+.checked-symbol {
+  margin-right: 5px;
+}
+.custom-icon {
+  color: #3f51b5; 
+}

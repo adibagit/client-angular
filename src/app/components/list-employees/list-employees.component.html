@@ -1,15 +1,13 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Employees
-      <button mat-raised-button (click)="openAddEmployeeRequest()"
+      <!-- <button mat-raised-button (click)="openAddEmployeeRequest()"
             matBadge={{noOfEmployeeRequest}} matBadgePosition="before" matBadgeColor="accent">
             Requests
-      </button>
-      
+      </button> -->
+      <button mat-raised-button (click)="openAddUser()">Add User</button>
     </div>
-    
     <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute text-center">
-   
+        <div class="page__content-data position-absolute text-center">
             <div class="parent-container">
                 <div class="employee-container">
                     <div *ngFor="let emp of employee" >
@@ -22,7 +20,6 @@
                             </mat-card-title-group>
                             </mat-card-header>
                             <mat-card-content>
-                                <!-- <p>Employee ID: {{ emp.empid }}</p> -->
                                 <hr/>
                                 <p><b>Email:</b> {{ emp.user.emailid }}</p>
                                 <p><b>Phone:</b> {{ emp.user.phoneno }}</p>
@@ -36,10 +33,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <p> Notification msg: {{ notificationMessage }}</p> -->
-
         </div>
     </div>
 </div>
-  

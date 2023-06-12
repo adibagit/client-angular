@@ -16,21 +16,22 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListPropertiesComponent implements OnInit{
 
-  // property?: Property[];
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+  @ViewChild(MatSort) sort !: MatSort;
+
   property: any = {
     propertyname: '',
     propertydesc: '',
     propertyaddress: '',
     area: {areaname:''}
   };
-
   displayedColumns: string[] = ['propertyname', 'propertydesc', 'propertyaddress','area','regdate','actions'];
   dataSource !: MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator) paginator !: MatPaginator;
-  @ViewChild(MatSort) sort !: MatSort;
-
-  constructor(private propertyService: PropertyService, private router: Router,private dialog:MatDialog,private snackBar: MatSnackBar){}
+  constructor(
+    private propertyService: PropertyService,
+    private dialog:MatDialog,
+    private snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     this.getAllProps();
@@ -43,7 +44,6 @@ export class ListPropertiesComponent implements OnInit{
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.property = res;
-        console.log(this.property)
       },
       error:(err)=>{
         this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
@@ -52,20 +52,14 @@ export class ListPropertiesComponent implements OnInit{
   }
 
   deleteProp(id?:number){
-    //this.departmentService.deleteDept(id).subscribe();
     this.propertyService.deleteProp(id).subscribe({
       next:(res)=>{
         this.snackBar.open("Property deleted!","OK");
-        //this.getAllProps();
       },
       error:(err)=>{
-        console.log(err);
-        // this.snackBar.open("Failed deleting property!","OK");
         this.snackBar.open("Property deleted!","OK");
       }
     });
-    //this.router.navigate(['departments']);
-    //window.location.reload();
   }
 
   openAddProp(){
@@ -73,9 +67,7 @@ export class ListPropertiesComponent implements OnInit{
   }
 
   openUpdateProp(id:number){
-    //this.dialog.open(AddDepartmentComponent,{data});
     this.propertyService.setId(id);
-   // this.router.navigate(['update-department']); 
     this.dialog.open(UpdatePropertyComponent).afterClosed().subscribe(()=>{
       this.ngOnInit();
     })
@@ -84,7 +76,6 @@ export class ListPropertiesComponent implements OnInit{
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

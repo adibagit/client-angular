@@ -1,36 +1,34 @@
 <div class="container">
-    <br/>
-    <div mat-dialog-title>
-      <h2>Ticket Form</h2>
-    </div>
-    <div mat-dialog-content class="content">
-      <div class="row">
-        <mat-form-field appearance="outline">
-          <mat-label>Description</mat-label>
-          <textarea matInput [(ngModel)]="ticket.description" required #descriptionInput="ngModel"></textarea>
-          <mat-error *ngIf="descriptionInput.invalid && descriptionInput.touched">
-            Description field is required.
+  <br/>
+  <div mat-dialog-title>
+    <h2>Ticket Form</h2>
+  </div>
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="ticket.description" required #descriptionInput="ngModel"></textarea>
+        <mat-error *ngIf="descriptionInput.invalid && descriptionInput.touched">
+          Description field is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Property</mat-label>
+          <mat-select [(ngModel)]="ticket.property.propertyid" required #propertySelect="ngModel">
+            <mat-option *ngFor="let property of properties" [value]="property.propertyid">
+              {{property.propertyname}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="propertySelect.invalid && propertySelect.touched">
+            Property field is required.
           </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Property</mat-label>
-            <mat-select [(ngModel)]="ticket.property.propertyid" required #propertySelect="ngModel">
-              <mat-option *ngFor="let property of properties" [value]="property.propertyid">
-                {{property.propertyname}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="propertySelect.invalid && propertySelect.touched">
-              Property field is required.
-            </mat-error>
-        </mat-form-field>
-        
-        
-        <input type="file" (change)="handleFileInput($event)" multiple accept="image/*">
-      </div>
+      </mat-form-field>       
+      <input type="file" (change)="handleFileInput($event)" multiple accept="image/*">
     </div>
-    <div class="action">
-      <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
-      <button mat-raised-button color="primary" (click)="addTicket()">Save</button>
-    </div>
-    <br/>
-  </div>  
+  </div>
+  <div class="action">
+    <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
+    <button mat-raised-button color="primary" (click)="addTicket()">Save</button>
+  </div>
+  <br/>
+</div>  

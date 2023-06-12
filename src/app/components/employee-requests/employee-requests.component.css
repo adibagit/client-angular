@@ -1,114 +1,32 @@
-/* .employee-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .employee-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 16px;
-    padding: 18px 15px;
-  }
-  
-  .profile-picture {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 8px;
-  }
-  
-  .employee-info span {
-    font-weight: bold;
-    margin-bottom: 4px;
-  }
-  
-  .action-buttons {
-    display: flex;
-    gap: 16px;
-  }
-   */
-
-/* .employee-requests-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .employee-request {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .employee-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-picture {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .action-buttons button {
-    margin-right: 10px;
-  }
-  
-  .accept-button {
-    background-color: green;
-    color: white;
-  }
-  
-  .deny-button {
-    background-color: red;
-    color: white;
-  } */
-
-  
-
-
-
-
-
-  .employee-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 5px;
-  }
-  
-  .profile-picture {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-  
-  .mat-row:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .actions-cell {
-    white-space: nowrap;
-  }
-  
-  .actions-cell button {
-    margin-right: 8px;
-  }
-  .dept-select{
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: -20px;
-  }
-  
-  .example-section {
-    margin: 12px 0;
-  }
-  
-  .example-margin {
-    margin: 0 12px;
-  }
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 5px;
+}
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.mat-row:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+.actions-cell {
+  white-space: nowrap;
+}
+.actions-cell button {
+  margin-right: 8px;
+}
+.dept-select{
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: -20px;
+}
+.example-section {
+  margin: 12px 0;
+}
+.example-margin {
+  margin: 0 12px;
+}

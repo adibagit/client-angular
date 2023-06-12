@@ -13,7 +13,6 @@ export class AssignTicketComponent implements OnInit{
   employees:any;
   worflowId:number = Number(this.logService.workflowid);
   deptId:number = Number(this.logService.deptid);
-
   log:any={
     workflow:{workflowid:this.worflowId},
     employee:{empid:''},
@@ -32,7 +31,6 @@ export class AssignTicketComponent implements OnInit{
   }
 
   getAllEmployees(){
-    //get emp dept wise
     this.employeeService.getEmployeesByDept(this.deptId).subscribe({
       next:(res)=>{
         this.employees = res;
@@ -45,8 +43,7 @@ export class AssignTicketComponent implements OnInit{
       next:(res)=>{
         this.snackbar.open("Assigned","Ok");
       }
-    });
-    
+    }); 
   }
 
 }

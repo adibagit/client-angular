@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectedComponentService } from 'src/app/services/selected-component.service';
 
-
 @Component({
   selector: 'app-scheduler-menu',
   templateUrl: './scheduler-menu.component.html',
@@ -10,7 +9,11 @@ import { SelectedComponentService } from 'src/app/services/selected-component.se
 })
 export class SchedulerMenuComponent {
 
-  constructor(private router: Router,private selectedComponentService: SelectedComponentService) {}
+  constructor(
+    private router: Router,
+    private selectedComponentService: SelectedComponentService
+  ) {}
+  
   navigateToComponent(route: string) {
     this.router.navigate([route]);
   }

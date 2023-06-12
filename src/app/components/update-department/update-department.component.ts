@@ -13,11 +13,16 @@ export class UpdateDepartmentComponent implements OnInit{
    
   department: Department = new Department();
 
+  constructor(
+    private router:Router, 
+    private departmentService: DepartmentService,
+    private snackBar: MatSnackBar
+  ){}
+
   ngOnInit(): void {
     this.getDeptById();
-
   }
-  constructor(private router:Router, private departmentService: DepartmentService,private snackBar: MatSnackBar){}
+  
   updateDept(){
     this.departmentService.updateDept(this.department).subscribe({
       next:(res)=>{
@@ -34,4 +39,5 @@ export class UpdateDepartmentComponent implements OnInit{
       this.department=data; 
     })
   }
+
 }

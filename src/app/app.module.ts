@@ -33,7 +33,6 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { MatMenuModule } from '@angular/material/menu';
 import {  GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AddPropertyComponent } from './components/add-property/add-property.component';
 import { UpdatePropertyComponent } from './components/update-property/update-property.component';
 import { ListPropertiesComponent } from './components/list-properties/list-properties.component';
@@ -50,11 +49,9 @@ import { ManagerMenuComponent } from './components/manager-menu/manager-menu.com
 import { SchedulerHomeComponent } from './components/scheduler-home/scheduler-home.component';
 import { SchedulerDashboardComponent } from './components/scheduler-dashboard/scheduler-dashboard.component';
 import { SchedulerMenuComponent } from './components/scheduler-menu/scheduler-menu.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
 import { UpdateEmployeesComponent } from './components/update-employees/update-employees.component';
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
-import { UpdateTicketComponent } from './components/update-ticket/update-ticket.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ListManagersComponent } from './components/list-managers/list-managers.component';
 import { UpdateManagerComponent } from './components/update-manager/update-manager.component';
@@ -70,7 +67,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AssignToMeComponent } from './components/assign-to-me/assign-to-me.component';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { ListFeedbacksComponent } from './components/list-feedbacks/list-feedbacks.component';
+import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
 import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AuthGuard } from './auth.guard';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
+import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +86,6 @@ import { ListTicketsComponent } from './components/list-tickets/list-tickets.com
     AdminMenuComponent,
     Header2Component,
     AdminDashboardComponent,
-    AdminHomeComponent,
     AddPropertyComponent,
     UpdatePropertyComponent,
     ListPropertiesComponent,
@@ -98,11 +101,9 @@ import { ListTicketsComponent } from './components/list-tickets/list-tickets.com
     SchedulerHomeComponent,
     SchedulerDashboardComponent,
     SchedulerMenuComponent,
-    UserProfileComponent,
     ListEmployeesComponent,
     UpdateEmployeesComponent,
     AddTicketComponent,
-    UpdateTicketComponent,
     ListManagersComponent,
     UpdateManagerComponent,
     InactiveEmployeeComponent,
@@ -114,7 +115,12 @@ import { ListTicketsComponent } from './components/list-tickets/list-tickets.com
     AssignToMeComponent,
     ListClientsComponent,
     ListFeedbacksComponent,
-    ListTicketsComponent
+    AddFeedbackComponent,
+    ListTicketsComponent,
+    AddUserComponent,
+    AccessDeniedComponent,
+    TicketDetailsComponent,
+    DepartmentDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -165,7 +171,8 @@ import { ListTicketsComponent } from './components/list-tickets/list-tickets.com
           console.error(err);
         }
       } as SocialAuthServiceConfig,
-    }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

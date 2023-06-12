@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class SelectedComponentService {
   constructor() { }
   
   private selectedComponent: string='';
+  private status: BehaviorSubject<string> = new BehaviorSubject<string>('all');
 
   setSelectedComponent(component: string) {
     this.selectedComponent = component;
@@ -16,5 +17,13 @@ export class SelectedComponentService {
 
   getSelectedComponent() {
     return this.selectedComponent;
+  }
+
+  getStatus() {
+    return this.status.asObservable();
+  }
+
+  setStatus(status: string) {
+    this.status.next(status);
   }
 }

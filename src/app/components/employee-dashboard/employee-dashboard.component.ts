@@ -8,11 +8,11 @@ import { SelectedComponentService } from 'src/app/services/selected-component.se
 })
 export class EmployeeDashboardComponent {
   
+  sideBarOpen = true;
+  
   constructor(
     public selectedComponentService: SelectedComponentService,
   ) {}
-
-  sideBarOpen = true;
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;

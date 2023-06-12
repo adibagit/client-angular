@@ -1,15 +1,12 @@
-
 <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen">
-      <app-manager-menu></app-manager-menu>>
-    </mat-drawer>
-    <mat-drawer-content>
-      <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
-      <ng-container #componentContainer></ng-container>
-      <app-manager-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-manager-home>
-      <app-manager-home *ngIf="selectedComponentService.getSelectedComponent()=='ManagerHomeComponent'"></app-manager-home>
-    </mat-drawer-content>
-  </mat-drawer-container>
-  
-      
-  
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-manager-menu></app-manager-menu>>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
+    <ng-container #componentContainer></ng-container>
+    <app-manager-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-manager-home>
+    <app-manager-home *ngIf="selectedComponentService.getSelectedComponent()=='ManagerHomeComponent'"></app-manager-home>
+    <app-department-details *ngIf="selectedComponentService.getSelectedComponent()=='DepartmentDetailsComponent'"></app-department-details>
+  </mat-drawer-content>
+</mat-drawer-container>

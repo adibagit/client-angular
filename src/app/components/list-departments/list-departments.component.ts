@@ -16,16 +16,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./list-departments.component.css']
 })
 export class ListDepartmentsComponent implements OnInit{
-
-  departments?: Department[];
-
-  displayedColumns: string[] = ['deptname', 'deptdesc', 'lastmodified','actions'];
-  dataSource !: MatTableDataSource<any>;
-
+ 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
 
-  constructor(private departmentService: DepartmentService, private router: Router,private dialog:MatDialog,private snackBar: MatSnackBar){}
+  departments?: Department[];
+  displayedColumns: string[] = ['deptname', 'deptdesc', 'lastmodified','actions'];
+  dataSource !: MatTableDataSource<any>;
+
+  constructor(
+    private departmentService: DepartmentService,
+    private dialog:MatDialog,
+    private snackBar: MatSnackBar
+  ){}
 
   ngOnInit(): void {
     this.getAllDepts();
@@ -38,7 +41,6 @@ export class ListDepartmentsComponent implements OnInit{
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.departments = res;
-        console.log(res)
       },
       error:(err)=>{
         this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
@@ -71,9 +73,9 @@ export class ListDepartmentsComponent implements OnInit{
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
+  
 }

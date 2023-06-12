@@ -1,160 +1,66 @@
 .ticket-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .workflow-item {
-    display: flex;
-    align-items: center;
-  }
-  
-  .workflow-indicator {
-    position: relative;
-    margin-right: 20px;
-    margin-left: 10px;
-  }
-  
-  .indicator-number {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: lightgray;
-    color: white;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-  
-  .indicator-line {
-    width: 20px;
-    height: 4px;
-    background-color: #ccc;
-    position: absolute;
-    top: 18px;
-    left: 40px;
-  }
-  
-  .workflow-content {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .workflow-department {
-    font-weight: bold;
-  }
-  
-  .workflow-description {
-    margin-top: 5px;
-  }
-  
-  .workflow-status {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  .workflow-date {
-    margin-top: 5px;
-    font-size: 12px;
-  }
-  
-  .workflow-item.picked .workflow-indicator .indicator-number  {
-    /* width: 60px;
-    height: 60px; */
-    font-size: 24px;
-    background-color: #3f51b5;
-    color: #fff;
-  }
-  .container{
-    padding: 50px 70px;
-  }
-  .action{
-    display: flex;
-    justify-content: right;
-    margin-top: 10px;
-  }
-
-
-  
-  /* .ticket-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .workflow-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-  }
-  
-  .workflow-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 10px;
-    position: relative;
-  }
-  
-  .indicator-number {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #f1f1f1;
-    color: #333;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .workflow-details {
-    margin-top: 10px;
-    background-color: #f1f1f1;
-    border-radius: 8px;
-    padding: 10px;
-    max-width: 200px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .workflow-department {
-    font-weight: bold;
-    font-size: 16px;
-  }
-  
-  .workflow-description {
-    margin-top: 5px;
-  }
-  
-  .workflow-status {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .workflow-date {
-    margin-top: 5px;
-    font-size: 12px;
-  }
-  
-  .workflow-item.picked .indicator-number {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    background-color: #ffcc00;
-    color: #fff;
-  }
-  
-  .workflow-item.picked .workflow-details {
-    background-color: #ffcc00;
-  }
-   */
-  
-
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.workflow-item {
+  display: flex;
+  align-items: center;
+}
+.workflow-indicator {
+  position: relative;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+.indicator-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: lightgray;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.indicator-line {
+  width: 20px;
+  height: 4px;
+  background-color: #ccc;
+  position: absolute;
+  top: 18px;
+  left: 40px;
+}
+.workflow-content {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.workflow-department {
+  font-weight: bold;
+}
+.workflow-description {
+  margin-top: 5px;
+}
+.workflow-status {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.workflow-date {
+  margin-top: 5px;
+  font-size: 12px;
+}
+.workflow-item.picked .workflow-indicator .indicator-number  {
+  font-size: 24px;
+  background-color: #3f51b5;
+  color: #fff;
+}
+.container{
+  padding: 50px 70px;
+}
+.action{
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+}

@@ -1,0 +1,83 @@
+<div class="ticket-dialog">
+    <h2>Ticket Details</h2><hr>
+      <table class="table table-striped">
+    
+        <tbody>
+          <tr>
+            <td><b>Description</b></td>
+            <td>{{ ticket.description }}</td>
+          </tr>
+          <tr>
+            <td><b>Raised By</b></td>
+            <td>
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ ticket.client.firstname }} {{ ticket.client.lastname }}</td>
+                            <td>{{ ticket.client.emailid }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Raised Date</b></td>
+            <td>{{ ticket.date | date }}</td>
+          </tr>
+          <tr>
+            <td><b>Property</b></td>
+            <td>{{ ticket.property.propertyname }}</td>
+          </tr>
+          <tr>
+            <td><b>Current Status</b></td>
+            <td>{{ ticket.status.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+     <h3><b>Images</b></h3><hr/>
+        <div class="ticket-images">
+          <img *ngFor="let image of ticket.images" [src]="image" alt="Ticket Image" />
+        </div>
+    <div class="image-container">
+      <div *ngIf="images.length > 0" class="image-grid">
+        <div *ngFor="let image of images" class="image-item">
+          <img [src]="'http://localhost:8080/api/file/displayS3Image/' + image.imagepath" [alt]="image.imagename">
+        </div>
+      </div>
+      <div *ngIf="images.length === 0" class="no-image-message">
+        No images uploaded for this ticket
+      </div>
+    </div>
+    
+    <h3><b>Stages</b></h3><hr/>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Description</th>
+          <th scope="col">Department</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let workflow of workflows; let i=index ">
+          <td>{{ i+1 }}</td>
+          <td>{{ workflow.description }}</td>
+          <td>{{ workflow.department.deptname }}</td>
+          <td>{{ workflow.status.status }}</td>
+          <td>{{ workflow.date | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div mat-dialog-close class="action">
+        <button mat-raised-button>Close</button> &nbsp;
+      </div>
+  </div>

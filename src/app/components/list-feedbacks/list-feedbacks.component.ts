@@ -9,11 +9,13 @@ import { FeedbackService } from 'src/app/services/feedback.service';
   styleUrls: ['./list-feedbacks.component.css']
 })
 export class ListFeedbacksComponent implements OnInit{
+
+  feedbacks : any;
+
   ngOnInit(): void {
     this.getAllFeedbacks();
   }
-  feedbacks : any;
-
+  
   constructor(
     private feedbackService: FeedbackService,
     private snackBar : MatSnackBar
@@ -23,7 +25,6 @@ export class ListFeedbacksComponent implements OnInit{
     this.feedbackService.getAllFeedbacks().subscribe({
       next:(res)=>{
         this.feedbacks=res;
-        console.log(res)
       },
       error:(err)=>{
         this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");

@@ -1,15 +1,13 @@
-
 <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen">
-      <app-scheduler-menu></app-scheduler-menu>
-    </mat-drawer>
-    <mat-drawer-content>
-      <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
-      <ng-container #componentContainer></ng-container>
-      <app-scheduler-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-scheduler-home>
-      <app-scheduler-home *ngIf="selectedComponentService.getSelectedComponent()=='SchedulerHomeComponent'"></app-scheduler-home>
-    </mat-drawer-content>
-  </mat-drawer-container>
-  
-      
-  
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-scheduler-menu></app-scheduler-menu>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header2 (toggleSidebarForMe)="sideBarToggler()"></app-header2>
+    <ng-container #componentContainer></ng-container>
+    <app-scheduler-home *ngIf="selectedComponentService.getSelectedComponent()==''"></app-scheduler-home>
+    <app-scheduler-home *ngIf="selectedComponentService.getSelectedComponent()=='SchedulerHomeComponent'"></app-scheduler-home>
+    <app-list-departments *ngIf="selectedComponentService.getSelectedComponent()=='ListDepartmentsComponent'"></app-list-departments>
+    <app-list-properties *ngIf="selectedComponentService.getSelectedComponent()=='ListPropertiesComponent'"></app-list-properties>
+  </mat-drawer-content>
+</mat-drawer-container>
