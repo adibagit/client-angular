@@ -1,19 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+/* @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "~boxicons/css/boxicons.min.css";
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap"); */
 
-body {
+/* body {
   font-family: "Roboto", sans-serif;
 }
 
 html, body { height: 100%; }
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
-.logo{
-    height: 150px;
-    width: 150px;
+
+ */
+ .mylogo{
+  height: 150px;
+  width: 150px;
 }
 .mat-list-item {
-    color: #ffffff !important; /* Set the text color to white */
+    color: #ffffff !important; 
   }
 
+  
+/* body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+} */

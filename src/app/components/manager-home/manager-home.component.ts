@@ -5,13 +5,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Ticket } from 'src/app/models/ticket';
 import { Workflow } from 'src/app/models/worklow';
 import { LogService } from 'src/app/services/log.service';
 import { ManagerService } from 'src/app/services/manager.service';
 import { TicketService } from 'src/app/services/ticket.service';
 import { WorkflowService } from 'src/app/services/workflow.service';
 import { AssignTicketComponent } from '../assign-ticket/assign-ticket.component';
+import { TicketDetailsComponent } from '../ticket-details/ticket-details.component';
 
 @Component({
   selector: 'app-manager-home',
@@ -19,38 +19,38 @@ import { AssignTicketComponent } from '../assign-ticket/assign-ticket.component'
   styleUrls: ['./manager-home.component.css']
 })
 export class ManagerHomeComponent {
-  workflows?: Workflow[];
-  manager:any;
-  userId = Number(sessionStorage.getItem('userid'));
-  deptId:number;
-  logs:any;
-  assignedTo:string;
-
-  displayedColumns: string[] = ['ticket', 'department', 'status','description','priority','date','actions'];
-  dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
 
+  workflows?: Workflow[];
+  manager:any;
+  userId = Number(sessionStorage.getItem('userid'));
+  deptId:number|any;
+  logs:any;
+  currentLog:any;
+  assignedTo:any;
+  displayedColumns: string[] = ['ticket', 'department', 'status','description','date','actions','details'];
+  dataSource !: MatTableDataSource<any>;
+
   constructor(
-    private ticketService: TicketService, 
-    private router: Router,
     private dialog:MatDialog,
     private snackBar: MatSnackBar,
     private workflowService:WorkflowService,
     private managerService:ManagerService,
-    private logService:LogService
+    private logService:LogService,
+    private ticketService:TicketService
   ){}
 
   ngOnInit(): void {
     this.managerService.getManagerByUser(this.userId).subscribe({
       next:(res)=>{
         this.manager=res;
-        this.deptId=this.manager[0].department.deptid
+        this.deptId=this.manager[0].department.deptid;
+        sessionStorage.setItem("deptid",this.deptId);
         this.getAllWorkflows(this.deptId);
       }
     })
-
     this.logService.getAllLogs().subscribe({
       next:(res)=>{
         this.logs=res;
@@ -59,7 +59,6 @@ export class ManagerHomeComponent {
   }
 
   getAllWorkflows(deptId:number){
-    //get workflows dept wise
     this.workflowService.getWorkflowsByDept(deptId).subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
@@ -92,15 +91,26 @@ export class ManagerHomeComponent {
 
   isWorkflowAssigned(workflowId:number):boolean{
     if (this.logs) {
-      console.log("In check assigned func.",this.logs)
-      console.log(workflowId,"is assigned to : " ,this.logs[0].employee.user.firstname)
-      this.assignedTo=this.logs[0].employee.user.firstname;
       const workflowAssigned: boolean = this.logs.some((log: any) =>
         log.workflow?.workflowid === workflowId &&
         log.status.statusid === 11
       );
+
+      if(workflowAssigned){
+        this.currentLog = this.logs.find((log: any) =>
+          log.workflow?.workflowid === workflowId && log.status.statusid === 11
+        );
+        this.currentLog=this.currentLog.employee.user.firstname;
+        console.log(this.currentLog)
+      }
       return workflowAssigned;
     }
     return false;
   }
+
+  viewTicketDetails(ticketId:number){
+    this.ticketService.id=ticketId;
+    this.dialog.open(TicketDetailsComponent)
+  }
+
 }

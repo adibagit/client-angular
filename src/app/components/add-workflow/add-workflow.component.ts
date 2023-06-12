@@ -1,11 +1,10 @@
-import { Component , ElementRef, OnInit} from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Department } from 'src/app/models/department';
 import { Ticket } from 'src/app/models/ticket';
 import { DepartmentService } from 'src/app/services/department.service';
 import { TicketService } from 'src/app/services/ticket.service';
 import { WorkflowService } from 'src/app/services/workflow.service';
-
 
 @Component({
   selector: 'app-add-workflow',
@@ -14,9 +13,7 @@ import { WorkflowService } from 'src/app/services/workflow.service';
 })
 export class AddWorkflowComponent implements OnInit{
 
-
   departments:any;
-
   workflow:any={
     ticket:{ticketid:'',statusid:''},
     department:{deptid:''},
@@ -24,10 +21,7 @@ export class AddWorkflowComponent implements OnInit{
     description:'',
     priority:''
   }
-
   tasks: any[] = [];
-
-  
 
   constructor(
     private departmentService: DepartmentService,
@@ -35,35 +29,30 @@ export class AddWorkflowComponent implements OnInit{
     private snackBar: MatSnackBar,
     private workflowService: WorkflowService
   ){}
+
   ngOnInit(): void {
     this.workflow.ticket.ticketid = this.ticketService.id as number;
     this.getAllDepartments();
-    console.log(this.workflow.ticket.ticketid);
   }
 
   getAllDepartments(){
-
     this.departmentService.getAllDepartments().subscribe({
       next:(res)=>{
        this.departments = res;
       },
       error:(err)=>{
         this.snackBar.open("Something went wrong! Try restarting the server.","OK");
-        console.log(err);
       }
     });
   }
 
   addWorkflow(){
-
-    
     const newTask = {
       description: this.workflow.description,
       department: this.departments.find((department: Department) => department.deptid === this.workflow.department.deptid)
     };
 
     this.tasks.push(newTask);
-
     this.workflow.priority = this.tasks.length;
     this.workflow.status.statusid = this.tasks.length === 1 ? 10 : 12;
 
@@ -76,30 +65,20 @@ export class AddWorkflowComponent implements OnInit{
               ticket=res;
               if (ticket.status) {
                 ticket.status.statusid = 3;
-                this.ticketService.updateTicket(ticket).subscribe({
-                  next:(res)=>{
-                    // console.log("This ticket is after update :",res);
-                  }
-                });
+                this.ticketService.updateTicket(ticket).subscribe();
               }
             }
           });
-          
-         
         }
         this.snackBar.open("Workflow added successfully.","OK");
       },
       error:(err)=>{
         this.snackBar.open("Failed adding workflow!","OK")
-        console.log(err);
       }
     });
-    
     this.workflow.description = '';
     this.workflow.department.deptid = null;
     this.getAllDepartments();
   }
-
-  
 
 }

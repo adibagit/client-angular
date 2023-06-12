@@ -1,53 +1,43 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2" style="display:flex; justify-content: space-between;">My Tickets
-      
-    </div>
-    <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute">
-  
-        <br/>
-        <ng-container *ngIf="logs && logs.length > 0; else noLogs">
-          <div class="ticket-container">
-            <div *ngFor="let log of logs" class="ticket">
-              <div class="ticket-left-line"></div>
-              <div class="ticket-icon">
-                <mat-icon>confirmation_number</mat-icon>
-              </div>
-              <div class="ticket-details">
-                <h3 class="ticket-title">Ticket #{{log.workflow.ticket.ticketid}}</h3>
-                <p class="ticket-description"><b>{{log.workflow.description}}</b></p><br>
-                <p  class="ticket-date"><b>Property: {{log.workflow.ticket.property.propertyname}}</b></p>
-                <div class="ticket-info">
-                  <span class="ticket-status">{{log.workflow.status.status}}</span>
-                  <span class="ticket-date">Created: {{log.logdate | date:'MMM d, yyyy'}}</span> &nbsp;&nbsp;
-  
-                </div>
-              </div>
-              <!-- [disabled]="startedWorking" -->
-              <ng-container *ngIf="log.workflow.status.statusid === 10">
-                <button mat-raised-button class="start-button"  (click)="startWorking(log.workflow)">Start Working</button>
-              </ng-container>
-              <ng-container *ngIf="log.workflow.status.statusid === 13;">
-                <button mat-raised-button class="complete-button" [disabled]="showComplete" (click)="completeWorking(log.workflow)">Complete</button>
-              </ng-container>
-              <ng-container *ngIf="log.workflow.status.statusid === 4">
-                <span class="happy-vibes">
-                  <span class="checked-symbol">&#10003;</span>
-                  Completed 
-                </span>
-              </ng-container>
-              <div class="ticket-priority"  matTooltip="Priority {{log.workflow.priority}}" matTooltipPosition="left"> </div>
-          
+  <div class="d-flex page__box p-3 mt-2" style="display:flex; justify-content: space-between;">My Tickets</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute">
+      <br/>
+      <ng-container *ngIf="logs && logs.length > 0; else noLogs">
+        <div class="ticket-container">
+          <div *ngFor="let log of logs" class="ticket">
+            <div class="ticket-left-line"></div>
+            <div class="ticket-icon">
+              <mat-icon>confirmation_number</mat-icon>
             </div>
+            <div class="ticket-details">
+              <h3 class="ticket-title">Ticket #{{log.workflow.ticket.ticketid}}</h3>
+              <p class="ticket-description"><b>{{log.workflow.description}}</b></p><br>
+              <p  class="ticket-date"><b>Property: {{log.workflow.ticket.property.propertyname}}</b></p>
+              <div class="ticket-info">
+                <span class="ticket-status">{{log.workflow.status.status}}</span>
+                <span class="ticket-date">Created: {{log.logdate | date:'MMM d, yyyy'}}</span> &nbsp;&nbsp;
+              </div>
+            </div>
+            <ng-container *ngIf="log.workflow.status.statusid === 10">
+              <button mat-raised-button class="start-button"  (click)="startWorking(log.workflow)">Start Working</button>
+            </ng-container>
+            <ng-container *ngIf="log.workflow.status.statusid === 13;">
+              <button mat-raised-button class="complete-button" [disabled]="showComplete" (click)="completeWorking(log.workflow)">Complete</button>
+            </ng-container>
+            <ng-container *ngIf="log.workflow.status.statusid === 4">
+              <span class="happy-vibes">
+                <span class="checked-symbol">&#10003;</span>
+                Completed 
+              </span>
+            </ng-container>
+            <div class="ticket-priority"  matTooltip="Priority {{log.workflow.priority}}" matTooltipPosition="left"> </div>
           </div>
-        </ng-container>
-  
-        <ng-template #noLogs>
-          You don't have any tickets yet.
-        </ng-template>
-  
-        <!-- kmdwkwqmddl -->
-      </div>
+        </div>
+      </ng-container>
+      <ng-template #noLogs>
+        You have no tickets assigned.
+      </ng-template>
     </div>
   </div>
-  
+</div>

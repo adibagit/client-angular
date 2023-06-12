@@ -1,24 +1,23 @@
 <div class="container">
-    <br/>
-    <div mat-dialog-title>
-      <h2>Edit Manager</h2>
-    </div>
-    <div mat-dialog-content class="content">
-      <div class="row">
-          <mat-form-field>
-              <mat-label>Department</mat-label>
-              <mat-select [(ngModel)]="manager.department.deptid" >
-                <mat-option *ngFor="let dept of departments" [value]="dept.deptid" >
-                  {{dept.deptname}}
-                </mat-option>
-              </mat-select>
-          </mat-form-field>
-      </div>
-    </div>
-    <div mat-dialog-close class="action">
-      <button mat-raised-button>Cancel</button> &nbsp;
-      <button mat-raised-button color="primary" (click)="updateManager()">Update</button>
-    </div>
-    <br/>
+  <br/>
+  <div mat-dialog-title>
+    <h2>Edit Manager</h2>
   </div>
-  
+  <div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Department</mat-label>
+            <mat-select [(ngModel)]="manager.department.deptid" >
+              <mat-option *ngFor="let dept of departments" [value]="dept.deptid" >
+                {{dept.deptname}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-close class="action">
+    <button mat-raised-button>Cancel</button> &nbsp;
+    <button mat-raised-button color="primary" (click)="updateManager()">Update</button>
+  </div>
+  <br/>
+</div>

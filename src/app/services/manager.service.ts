@@ -39,4 +39,8 @@ export class ManagerService {
   getManagerByUser(userId : number): Observable<Object>{
     return this.httpClient.get<Object>(`http://localhost:8080/api/managerByUser/${userId}`);
   }
+
+  getManagerByDepartment(deptId : number): Observable<Object>{
+    return this.httpClient.get<Object>(`http://localhost:8080/api/managerByDept/${deptId}`);
+  }
 }

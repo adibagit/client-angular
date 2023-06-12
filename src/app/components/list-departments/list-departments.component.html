@@ -2,14 +2,14 @@
   <div class="d-flex page__box p-3 mt-2">Departments
     <button mat-raised-button (click)="openAddDept()">Add Department</button>
   </div>
-  
   <div class="page__content shadow p-3 position-relative">
-    <div class="page__content-data position-absolute text-center">              
+    <div class="page__content-data position-absolute text-center">  
+      <br/>            
       <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Department" #input>
       </mat-form-field>
-      <div class="table-container" style="max-height: 248px; overflow-x: auto;">
+      <div class="table-container" style="max-height: 448px; overflow-x: auto;">
         <table mat-table [dataSource]="dataSource" matSort>
       
           <ng-container matColumnDef="deptname">
@@ -43,7 +43,7 @@
           </tr>
         </table>
       </div>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
   </div>
 </div>

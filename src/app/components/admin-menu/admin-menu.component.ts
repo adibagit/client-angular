@@ -8,6 +8,7 @@ import { SelectedComponentService } from 'src/app/services/selected-component.se
   styleUrls: ['./admin-menu.component.css']
 })
 export class AdminMenuComponent {
+  
   constructor(private router: Router,private selectedComponentService: SelectedComponentService) {}
 
   navigateToComponent(route: string) {

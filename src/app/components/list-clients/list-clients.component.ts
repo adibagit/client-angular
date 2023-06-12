@@ -10,10 +10,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListClientsComponent implements OnInit{
 
-  ngOnInit(): void {
-    this.getAllClients();
-  }
-
   clients: any = {
     firstname:'',
     lastname:'',
@@ -22,11 +18,17 @@ export class ListClientsComponent implements OnInit{
     usertype:'',
     regdate:'',
   };
-
   totalTickets=0;
   selectedClientID: number | null = null;
 
-  constructor( private userService:UserService, private ticketService :TicketService,private dialog: MatDialog){}
+  ngOnInit(): void {
+    this.getAllClients();
+  }
+
+  constructor( 
+    private userService:UserService, 
+    private ticketService :TicketService
+  ){}
 
   getAllClients(){
     this.userService.getAllClients().subscribe({
@@ -40,7 +42,7 @@ export class ListClientsComponent implements OnInit{
     this.selectedClientID = userId; 
     this.ticketService.getTicketsByUser(userId).subscribe({
       next:(res)=>{
-          this.totalTickets = Object.keys(res).length;
+        this.totalTickets = Object.keys(res).length;
       }
     });
   }

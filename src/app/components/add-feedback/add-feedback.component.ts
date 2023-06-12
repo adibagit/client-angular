@@ -10,13 +10,12 @@ import { FeedbackService } from 'src/app/services/feedback.service';
   styleUrls: ['./add-feedback.component.css']
 })
 export class AddFeedbackComponent  implements OnInit{
+
   feedback: any = {
     user: {userid:''},
     ticket:{ticketid:''},
     feedbackdesc: ''
   };
-
-  
   hasFeedback: boolean;
   previousFeedback:any;
 
@@ -42,7 +41,6 @@ export class AddFeedbackComponent  implements OnInit{
   }
 
   addFeedback(){
-    
     this.feedbackService.addFeedback(this.feedback).subscribe({
       next:(res)=>{
         this.snackBar.open("Feedback added successfully.","OK");
@@ -56,7 +54,6 @@ export class AddFeedbackComponent  implements OnInit{
   }
 
   updateFeedback(){
-  
     this.feedbackService.updateFeedback(this.feedback).subscribe({
       next:(res)=>{
         this.snackBar.open("Feedback updated successfully.","OK");

@@ -1,53 +1,44 @@
 @import url('../list-departments/list-departments.component.css');
 .feedback-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .feedback-card {
-    width: 300px;
-    margin: 10px;
-    padding: 16px;
-    border-radius: 8px;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    animation: fade-in 0.5s;
-  }
-  
-  .feedback-header {
-    display: flex;
-    align-items: center;
-  }
-  
-  .avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    margin-right: 16px;
-  }
-  
-  .user-info h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .user-info p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .feedback-content {
-    margin-top: 16px;
-  }
-  
-  .feedback-content p {
-    margin: 0;
-  }
-  
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.feedback-card {
+  width: 300px;
+  margin: 10px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fade-in 0.5s;
+}
+.feedback-header {
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.user-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.user-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+.feedback-content {
+  margin-top: 16px;
+}
+.feedback-content p {
+  margin: 0;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

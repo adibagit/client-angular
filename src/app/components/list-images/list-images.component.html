@@ -1,15 +1,21 @@
-<h1>Images</h1>
-<hr/>
-<div class="image-container">
-  <div *ngIf="images.length > 0" class="image-grid">
-    <div *ngFor="let image of images" class="image-item">
-      <img [src]="'http://localhost:8080/uploads/' + image.imagename" [alt]="image.imagename">
+<div class="container">
+  <br>
+  <h1>Images</h1>
+  <hr/>
+  <div class="image-container">
+    <div *ngIf="images.length > 0" class="image-grid">
+      <div *ngFor="let image of images" class="image-item">
+        <img [src]="'http://localhost:8080/api/file/displayS3Image/' + image.imagepath" [alt]="image.imagename">
+        <button class="delete-button" (click)="deleteImage(image.imageid,image.imagename,image.imagepath)">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="images.length === 0" class="no-image-message">
+      No images found for this ticket.
     </div>
   </div>
-  <div *ngIf="images.length === 0" class="no-image-message">
-    No images found for this ticket.
+  <div mat-dialog-close class="action">
+    <button mat-raised-button>Close</button> &nbsp;
   </div>
 </div>
-<div mat-dialog-close class="action">
-    <button mat-raised-button>Close</button> &nbsp;
-</div> 

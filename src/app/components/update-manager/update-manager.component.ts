@@ -9,27 +9,28 @@ import { ManagerService } from 'src/app/services/manager.service';
   styleUrls: ['./update-manager.component.css']
 })
 export class UpdateManagerComponent implements OnInit {
-manager: any = {
-  department: {deptid:''}
-};
-departments?:any;
 
-constructor(private managerService: ManagerService,private snackBar: MatSnackBar,private deptService: DepartmentService){}
+  manager: any = {
+    department: {deptid:''}
+  };
+  departments?:any;
+
+  constructor(
+    private managerService: ManagerService,
+    private snackBar: MatSnackBar,
+    private deptService: DepartmentService
+  ){}
 
   ngOnInit(): void {
     this.getManagerById();
-
     this.deptService.getAllDepartments().subscribe({
       next:(res)=>{
-        console.log(res)
-       this.departments = res;
+        this.departments = res;
       },
       error:(err)=>{
         this.snackBar.open("Something went wrong! Try restarting the server.","OK");
-        console.log(err);
       }
     });
-
   }
   
   updateManager(){
@@ -38,7 +39,6 @@ constructor(private managerService: ManagerService,private snackBar: MatSnackBar
         this.snackBar.open("Manager updated successfully.","OK");
       },
       error:(err)=>{
-        console.log(err);
         this.snackBar.open("Failed updating Manager!","OK");
       }
     });
@@ -49,4 +49,5 @@ constructor(private managerService: ManagerService,private snackBar: MatSnackBar
       this.manager=data; 
     })
   }
+
 }

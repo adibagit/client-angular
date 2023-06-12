@@ -2,17 +2,16 @@
     <div class="d-flex page__box p-3 mt-2">Clients    </div>
     <div class="page__content shadow p-3 position-relative">
       <div class="page__content-data position-absolute text-center">
-   
             <div class="parent-container">
-                <div class="employee-container">
+              <div class="employee-container">
                     <div *ngFor="let client of clients" >
                         <mat-card class="employee-card" mat-elevation-z8>
                             <mat-card-header>
-                            <mat-card-title-group>
-                                <mat-card-title>{{ client.firstname }} {{ client.lastname }}</mat-card-title>
-                                <mat-card-subtitle>{{ client.usertype }}</mat-card-subtitle>
-                                <img mat-card-md-image src="{{ client.picture }}"   alt="Employee Avatar">
-                            </mat-card-title-group>
+                                <mat-card-title-group>
+                                    <mat-card-title>{{ client.firstname }} {{ client.lastname }}</mat-card-title>
+                                    <mat-card-subtitle>{{ client.usertype }}</mat-card-subtitle>
+                                    <img mat-card-md-image src="{{ client.picture }}"   alt="Employee Avatar">
+                                </mat-card-title-group>
                             </mat-card-header>
                             <mat-card-content>
                                 <hr/>
@@ -22,15 +21,12 @@
                             </mat-card-content>
                             <mat-card-actions>
                                 <button mat-icon-button color="primary" (click)="getTotalTickets(client.userid)"><mat-icon>confirmation_number</mat-icon></button>
-                                <!-- <span *ngIf="totalTickets">{{ totalTickets }}</span> -->
-                                <!-- <span *ngIf="client.totalTickets">{{ client.totalTickets }}</span> -->
                                 <span class="ticket-count" *ngIf="selectedClientID === client.userid && totalTickets">{{ totalTickets }}</span>
                             </mat-card-actions>
                         </mat-card>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

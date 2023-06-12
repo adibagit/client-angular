@@ -23,4 +23,8 @@ export class LogService {
   getAllLogs(): Observable<Log[]>{
     return this.httpClient.get<Log[]>("http://localhost:8080/api/log");
   }
+
+  getAssignee(workflowId:number): Observable<Log[]>{
+    return this.httpClient.get<Log[]>(`http://localhost:8080/api/log/getAssignee/${workflowId}`);
+  }
 }

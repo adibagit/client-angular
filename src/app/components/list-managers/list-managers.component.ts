@@ -10,46 +10,45 @@ import { UpdateManagerComponent } from '../update-manager/update-manager.compone
   styleUrls: ['./list-managers.component.css']
 })
 export class ListManagersComponent {
-manager: any = {
-  managerid: '',
-  user:{firstname:'',lastname:'',emailid:'',phoneno:'',picture:''},
-  department: {deptname:''},
-};
 
-constructor(private managerservice: ManagerService,private dialog:MatDialog,private snackbar: MatSnackBar){}
-ngOnInit(): void {
-  this.getAllProps();
-}
+  manager: any = {
+    managerid: '',
+    user:{firstname:'',lastname:'',emailid:'',phoneno:'',picture:''},
+    department: {deptname:''},
+  };
 
-getAllProps(){
-  this.managerservice.getAllManagers().subscribe({
-    next:(res)=>{
-      this.manager = res;
-      console.log(this.manager)
-    },
-    error:(err)=>{
-      this.snackbar.open("Failed retrieving data! Try restarting the server.","OK");
-    }
-  });
-}
+  constructor(
+    private managerservice: ManagerService,
+    private dialog:MatDialog,
+    private snackbar: MatSnackBar){}
 
-deleteManager(id?:number){
-  //this.departmentService.deleteDept(id).subscribe();
-  this.managerservice.deleteManager(id).subscribe({
-    next:(res)=>{
-      this.snackbar.open("Manager deleted!","OK");
-      this.ngOnInit();
-    },
-    error:(err)=>{
-      console.log(err);
-      // this.snackBar.open("Failed deleting property!","OK");
-      this.snackbar.open("Failed deleting manager!","OK");
-      this.ngOnInit();
-    }
-  });
-  //this.router.navigate(['departments']);
-  //window.location.reload();
-}
+  ngOnInit(): void {
+    this.getAllProps();
+  }
+
+  getAllProps(){
+    this.managerservice.getAllManagers().subscribe({
+      next:(res)=>{
+        this.manager = res;
+      },
+      error:(err)=>{
+        this.snackbar.open("Failed retrieving data! Try restarting the server.","OK");
+      }
+    });
+  }
+
+  deleteManager(id?:number){
+    this.managerservice.deleteManager(id).subscribe({
+      next:(res)=>{
+        this.snackbar.open("Manager deleted!","OK");
+        this.ngOnInit();
+      },
+      error:(err)=>{
+        this.snackbar.open("Failed deleting manager!","OK");
+        this.ngOnInit();
+      }
+    });
+  }
 
   openUpdateManager(id:number){
     this.managerservice.setId(id);

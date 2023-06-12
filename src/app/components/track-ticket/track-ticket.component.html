@@ -1,68 +1,20 @@
-
 <div class="container">
-    <h1>Ticket #{{ticketId}}</h1><hr/>
-    <div class="ticket-container">
-        <div *ngFor="let workflow of workflows; let i = index" class="workflow-item" [ngClass]="{ 'picked': workflow.status.status != 'pending' }">
-          <div class="workflow-indicator">
-            <div class="indicator-number">{{ i + 1 }}</div>
-            <div class="indicator-line" ></div>
-          </div>
-          <div class="workflow-content">
-            <div class="workflow-department">{{ workflow.description }}</div>
-            <div class="workflow-description">{{ workflow.department.deptname }}</div>
-            <div class="workflow-status">{{ workflow.status.status }}</div>
-            <div class="workflow-date">{{ workflow.date |date}}</div>
-          </div>
-        </div>
-    </div>
-    <div mat-dialog-close class="action">
-        <button mat-raised-button>Close</button> &nbsp;
-      </div>
-</div>
-<!-- 
-<div class="ticket-container">
-    <h1>Ticket #{{ ticketId }}</h1>
-    <div class="workflow-items">
-      <div *ngFor="let workflow of workflows; let i = index" class="workflow-item" [ngClass]="{ 'picked': workflow.status.status != 'new' }">
-        <div class="workflow-content">
-          <div class="workflow-indicator">
-            <div class="indicator-number">{{ i + 1 }}</div>
-            <div class="indicator-line"></div>
-          </div>
-          <div class="workflow-details">
-            <div class="workflow-department">{{ workflow.department.deptname }}</div>
-            <div class="workflow-description">{{ workflow.description }}</div>
-            <div class="workflow-status">{{ workflow.status.status }}</div>
-            <div class="workflow-date">{{ workflow.date }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div mat-dialog-close class="action">
-        <button mat-raised-button>Close</button> &nbsp;
-      </div>
-  </div> -->
-<!--   
-
+  <h1>Ticket #{{ticketId}}</h1><hr/>
   <div class="ticket-container">
-    <h1>Ticket #{{ ticketId }}</h1>
-    <div class="workflow-items">
-      <div *ngFor="let workflow of workflows; let i = index" class="workflow-item" [ngClass]="{ 'picked': workflow.status.status != 'new' }">
-        <div class="workflow-content">
+      <div *ngFor="let workflow of workflows; let i = index" class="workflow-item" [ngClass]="{ 'picked': workflow.status.status != 'pending' }">
+        <div class="workflow-indicator">
           <div class="indicator-number">{{ i + 1 }}</div>
-          <div class="workflow-details">
-            <div class="workflow-department">{{ workflow.department.deptname }}</div>
-            <div class="workflow-description">{{ workflow.description }}</div>
-            <div class="workflow-status">{{ workflow.status.status }}</div>
-            <div class="workflow-date">{{ workflow.date }}</div>
-          </div>
+          <div class="indicator-line" ></div>
         </div>
-      </div>
-    </div>
-    <div mat-dialog-close class="action">
-        <button mat-raised-button>Close</button> &nbsp;
+        <div class="workflow-content">
+          <div class="workflow-department">{{ workflow.description }}</div>
+          <div class="workflow-description">{{ workflow.department.deptname }}</div>
+          <div class="workflow-status">{{ workflow.status.status }}</div>
+          <div class="workflow-date">{{ workflow.date |date}}</div>
+        </div>
       </div>
   </div>
-  
-  
-   -->
+  <div mat-dialog-close class="action">
+    <button mat-raised-button>Close</button> &nbsp;
+  </div>
+</div>

@@ -1,13 +1,17 @@
 <mat-nav-list>
-    <div class="logo py-4">
-      <img src="../../../assets/images/logo.png" alt="Company Logo" />
-    </div>
-    <br/><br/><br/>
-    <mat-divider></mat-divider><br/>
-    <a mat-list-item (click)="selectComponent('ManagerHomeComponent')">
-      <mat-icon>dashboard</mat-icon> Dashboard
-    </a>
-    <a mat-list-item>
-      <mat-icon>confirmation_number</mat-icon> Tickets
-    </a>    
-  </mat-nav-list>
+  <div class="logo py-4"  style="height: 150px; width: 150px;">
+    <a href="index.html"><img src="../../../assets/images/logo.png" alt="Company Logo" /></a> 
+  </div>
+  <br/><br/><br/>
+  <mat-divider></mat-divider><br/>
+  <a mat-list-item (click)="selectComponent('ManagerHomeComponent')">
+    <mat-icon>confirmation_number</mat-icon> Department Tickets
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" (click)="selectComponent('DepartmentDetailsComponent')">
+    <mat-icon>account_balance</mat-icon> About Department
+  </a>
+  <a mat-list-item href="mailto:adiba012000@gmail.com">
+    <mat-icon>contact_mail</mat-icon>Contact Admin
+  </a>
+  
+</mat-nav-list>

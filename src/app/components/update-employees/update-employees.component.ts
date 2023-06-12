@@ -14,22 +14,22 @@ export class UpdateEmployeesComponent implements OnInit{
   };
   departments?:any;
 
-  constructor(private empService: EmployeeService,private snackBar: MatSnackBar,private deptService: DepartmentService){}
+  constructor(
+    private empService: EmployeeService,
+    private snackBar: MatSnackBar,
+    private deptService: DepartmentService
+  ){}
 
   ngOnInit(): void {
     this.getEmpById();
-
     this.deptService.getAllDepartments().subscribe({
       next:(res)=>{
-        console.log(res)
-       this.departments = res;
+        this.departments = res;
       },
       error:(err)=>{
         this.snackBar.open("Something went wrong! Try restarting the server.","OK");
-        console.log(err);
       }
     });
-
   }
   
   updateEmp(){
@@ -38,7 +38,6 @@ export class UpdateEmployeesComponent implements OnInit{
         this.snackBar.open("Employee updated successfully.","OK");
       },
       error:(err)=>{
-        console.log(err);
         this.snackBar.open("Failed updating employee!","OK");
       }
     });
@@ -49,6 +48,5 @@ export class UpdateEmployeesComponent implements OnInit{
       this.employee=data; 
     })
   }
-
 
 }

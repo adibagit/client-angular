@@ -5,7 +5,6 @@
         </div>
         <div mat-dialog-content class="content">
         <div class="row">
-            
             <mat-form-field appearance="outline">
                 <mat-label>Feedback</mat-label>
                 <textarea matInput [(ngModel)]="feedback.feedbackdesc" required></textarea>
@@ -13,9 +12,9 @@
         </div>
         </div>
         <div class="action">
-        <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
-        <button mat-raised-button color="primary" *ngIf="!hasFeedback" (click)="addFeedback()">Save</button>
-        <button mat-raised-button color="primary" *ngIf="hasFeedback" (click)="updateFeedback()">Update</button>
+            <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
+            <button mat-raised-button color="primary" *ngIf="!hasFeedback" (click)="addFeedback()">Save</button>
+            <button mat-raised-button color="primary" *ngIf="hasFeedback" (click)="updateFeedback()">Update</button>
         </div>
         <br/>
     </div>  

@@ -21,12 +21,11 @@ export class TrackTicketComponent implements OnInit {
     this.workflowService.getAllWorkflowsByTicket(this.ticketId).subscribe({
       next:(res)=>{
         this.workflows = res;
-        console.log(this.workflows)
       },
       error:(err)=>{
         this.snackbar.open("Something went wrong","Dismiss");
-        console.log(err);
       }
     })
   }
+
 }

@@ -17,16 +17,16 @@ import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
   templateUrl: './scheduler-home.component.html',
   styleUrls: ['./scheduler-home.component.css']
 })
-export class SchedulerHomeComponent {
-  tickets?: Ticket[];
-  workflows?:Workflow[];
 
-  displayedColumns: string[] = ['client', 'description', 'property','status','ticketdate','lastmodified','actions'];
-  dataSource !: MatTableDataSource<any>;
+export class SchedulerHomeComponent {
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
 
+  tickets?: Ticket[];
+  workflows?:Workflow[];
+  displayedColumns: string[] = ['client', 'description', 'property','status','ticketdate','lastmodified','actions'];
+  dataSource !: MatTableDataSource<any>;
   isWorkflowSet:boolean;
 
   constructor(
@@ -60,7 +60,6 @@ export class SchedulerHomeComponent {
     });
   }
 
-  
   openCreateWorkflow(ticketId:number){
     this.ticketService.id = ticketId;
     this.dialog.open(AddWorkflowComponent).afterClosed().subscribe(res=>{
@@ -89,6 +88,5 @@ export class SchedulerHomeComponent {
     this.workflowService.id=ticketid;
     this.dialog.open(TrackTicketComponent);
   }
-  
 
 }

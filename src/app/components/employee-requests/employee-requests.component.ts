@@ -15,16 +15,16 @@ export class EmployeeRequestsComponent implements OnInit{
 
   employees: any;
   managerChecked=false;
+  departments:any;
+  managers:any;
 
   employeeRequest : any ={
     user:{userid:''},
     department:{deptid:''}
   }
 
-  departments:any;
-  managers:any;
-
-  constructor(private employeeService : EmployeeService,
+  constructor(
+    private employeeService : EmployeeService,
     private snackBar: MatSnackBar,
     private deptService : DepartmentService,
     private userService : UserService,
@@ -41,7 +41,6 @@ export class EmployeeRequestsComponent implements OnInit{
         this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
       }
     });
-
     this.filterDepartments();
   }
 
@@ -54,7 +53,6 @@ export class EmployeeRequestsComponent implements OnInit{
         this.managerService.addManager(this.employeeRequest).subscribe({
           next:(res)=>{
             this.snackBar.open("Accepted as Manager","OK");
-            //Update userRole as manager
             this.userService.getUser(this.employeeRequest.user.userid).subscribe({
               next:(result)=>{
                 result.usertype='manager';
@@ -67,7 +65,6 @@ export class EmployeeRequestsComponent implements OnInit{
           },
           error:(err)=>{
             this.snackBar.open("Failed accepting request!","OK");
-            console.log(err);
           }
         });
       }else{
@@ -78,12 +75,10 @@ export class EmployeeRequestsComponent implements OnInit{
           },
           error:(err)=>{
             this.snackBar.open("Failed accepting request!","OK");
-            console.log(err);
           }
         });
       }
-    }
-    
+    } 
   }
 
   denyRequest(employee :any): void {
@@ -95,7 +90,6 @@ export class EmployeeRequestsComponent implements OnInit{
       },
       error:(err)=>{
         this.ngOnInit();
-        console.log(err);
       }
     });
   }
@@ -122,6 +116,4 @@ export class EmployeeRequestsComponent implements OnInit{
     }
   }
   
-
-
 }

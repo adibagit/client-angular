@@ -9,6 +9,7 @@ import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
 import { ListImagesComponent } from '../list-images/list-images.component';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { AddFeedbackComponent } from '../add-feedback/add-feedback.component';
+import { SelectedComponentService } from 'src/app/services/selected-component.service';
 
 @Component({
   selector: 'app-client-home',
@@ -23,34 +24,41 @@ export class ClientHomeComponent implements OnInit {
     private snackbar : MatSnackBar,
     private imageService : ImageService,
     private workflowService : WorkflowService,
-    private feedbackService : FeedbackService
-    
+    private feedbackService : FeedbackService,
+    private selectedComponentService: SelectedComponentService
   ){}
 
   clientId : number = Number(sessionStorage.getItem('userid'));
   tickets ?: any;
-
+  allTickets?:any;
   ticketImages: { [ticketId: number]: any[] } = {};
+  selectedStatus:string ;
 
   ngOnInit(): void {
-   this.getAllTicketByUser();
+    this.getAllTicketByUser();
+    this.selectedComponentService.getStatus().subscribe((status: string) => {
+      this.selectedStatus = status;
+      this.filterTicketsByStatus();
+    });
   }
 
   openAddTicket(){
     this.dialog.open(AddTicketComponent).afterClosed().subscribe(() => {
       this.ngOnInit();
-      this.getAllTicketByUser();
     });
   }
 
   getAllTicketByUser(){
     this.ticketService.getTicketsByUser(this.clientId).subscribe({
       next:(res)=>{
-        this.tickets = res;
-        
+        console.log('Retrieved tickets:', res);
+      this.allTickets = res;
+      this.tickets = res; // Assign tickets as well
+      console.log('Assigned tickets:', this.tickets);
         for (const ticket of this.tickets) {
           this.retrieveTicketImages(ticket.ticketid);
         }
+        this.filterTicketsByStatus();
       },
       error:(err)=>{
         this.snackbar.open("Failed fetching records. Try restarting the server","Ok");
@@ -58,15 +66,18 @@ export class ClientHomeComponent implements OnInit {
     })
   }
 
+  filterTicketsByStatus() {
+    if (this.selectedStatus === 'all') {
+      this.tickets = this.allTickets;
+    } else {
+      this.tickets = this.allTickets.filter((ticket: { status: { status: string } }) => ticket.status.status === this.selectedStatus);
+    }
+  }
+
   retrieveTicketImages(ticketId: number) {
-    // Call your API or service to retrieve the images for a specific ticket ID
     this.imageService.getImagesByTicket(ticketId).subscribe({
       next:(response) => {
         this.ticketImages[ticketId] = response;
-        console.log("the images for te ticket : ",ticketId , "are : ", response); 
-      },
-      error: (err) => {
-        console.error(`Error retrieving images for ticket ${ticketId}:`, err);
       }
     });
   }
@@ -84,8 +95,6 @@ export class ClientHomeComponent implements OnInit {
         this.ngOnInit();
       },
       error:(err)=>{
-        console.log(err);
-        // this.snackbar.open("Failed deleting ticket!","Ok");
         this.snackbar.open("Deleted !","Dismiss");
         this.ngOnInit();
       }
@@ -94,12 +103,9 @@ export class ClientHomeComponent implements OnInit {
 
   openViewImages(ticketId : number){
     this.imageService.ticketImages = this.ticketImages[ticketId];
-    this.dialog.open(ListImagesComponent);
-  }
-
-  viewImages(imageNames: string[]): void {
-    // Handle the logic to show the image names in another component or do any other processing
-    console.log(imageNames);
+    this.dialog.open(ListImagesComponent).afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   openAddFeedback(ticketId : number){
@@ -108,4 +114,5 @@ export class ClientHomeComponent implements OnInit {
       this.ngOnInit();
     });
   }
+  
 }
