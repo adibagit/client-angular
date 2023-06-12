@@ -1,0 +1,61 @@
+@import url(../list-departments/list-departments.component.css);
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+  }
+  .page__box {
+    min-height: 120px;
+    background: #1e293b;
+    margin: 0 -1rem;
+    font-size: 36px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .page__box .mat-raised-button {
+    align-self: flex-end;
+  }
+  .page__content {
+    min-height: calc(100vh - 7px);
+    border-radius: 10px;
+    margin-top: -2rem;
+    background: white;
+    margin-bottom: 5rem;
+    color: black;
+    font-size: 2rem;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+  .page__content-data {
+    width: 85%;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .table-container{
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    white-space: nowrap;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: auto;
+  }
+  .right{
+    display: flex;
+    align-content: end;
+  }
+  

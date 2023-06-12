@@ -21,7 +21,7 @@ export class SchedulerHomeComponent {
   tickets?: Ticket[];
   workflows?:Workflow[];
 
-  displayedColumns: string[] = ['ticketid', 'client', 'description', 'property','status','priority','ticketdate','lastmodified','actions'];
+  displayedColumns: string[] = ['client', 'description', 'property','status','ticketdate','lastmodified','actions'];
   dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;

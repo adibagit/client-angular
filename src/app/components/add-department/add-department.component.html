@@ -7,16 +7,18 @@
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Department Name</mat-label>
-        <input matInput type="text" placeholder="Ex. Electricity" [(ngModel)]="department.deptname">
+        <input matInput type="text" placeholder="Ex. Electricity" [(ngModel)]="department.deptname" required="true" name="deptname">
+        <mat-error *ngIf="!department.deptname || !regexPattern.test(department.deptname)">Please insert valid values only.</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="department.deptdesc"></textarea>
+        <textarea matInput [(ngModel)]="department.deptdesc" required="true" name="deptdesc"></textarea>
+        <mat-error *ngIf="!department.deptdesc || !regexPattern.test(department.deptdesc)">Please insert valid values only.</mat-error>
       </mat-form-field>
     </div>
   </div>
-  <div mat-dialog-close class="action">
-    <button mat-raised-button>Cancel</button> &nbsp;
+  <div class="action">
+    <button mat-dialog-close mat-raised-button>Cancel</button> &nbsp;
     <button mat-raised-button color="primary" (click)="addDept()">Save</button>
   </div>
   <br/>

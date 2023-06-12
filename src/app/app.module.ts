@@ -70,6 +70,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AssignToMeComponent } from './components/assign-to-me/assign-to-me.component';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { ListFeedbacksComponent } from './components/list-feedbacks/list-feedbacks.component';
+import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +113,8 @@ import { ListFeedbacksComponent } from './components/list-feedbacks/list-feedbac
     AssignTicketComponent,
     AssignToMeComponent,
     ListClientsComponent,
-    ListFeedbacksComponent
+    ListFeedbacksComponent,
+    ListTicketsComponent
   ],
   imports: [
     BrowserModule,

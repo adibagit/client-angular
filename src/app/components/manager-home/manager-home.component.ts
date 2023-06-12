@@ -25,7 +25,7 @@ export class ManagerHomeComponent {
   deptId:number;
   logs:any;
 
-  displayedColumns: string[] = ['workflowid', 'ticket', 'department', 'status','description','priority','date','actions'];
+  displayedColumns: string[] = ['workflowid', 'ticket', 'department', 'status','description','date','actions'];
   dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;

@@ -16,6 +16,7 @@ import { SchedulerDashboardComponent } from './components/scheduler-dashboard/sc
 import { ListManagersComponent } from './components/list-managers/list-managers.component';
 import { UpdateManagerComponent } from './components/update-manager/update-manager.component';
 import { InactiveEmployeeComponent } from './components/inactive-employee/inactive-employee.component';
+import { ListTicketsComponent } from './components/list-tickets/list-tickets.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path : "managers",component : ListManagersComponent},
   {path : "update-manager",component : UpdateManagerComponent},
   {path : "inactive-employee",component : InactiveEmployeeComponent},
+  {path : "list-ticket",component : ListTicketsComponent},
 ];
 
 @NgModule({
