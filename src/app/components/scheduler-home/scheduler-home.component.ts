@@ -60,6 +60,7 @@ export class SchedulerHomeComponent {
     });
   }
 
+
   openCreateWorkflow(ticketId:number){
     this.ticketService.id = ticketId;
     this.dialog.open(AddWorkflowComponent).afterClosed().subscribe(res=>{
