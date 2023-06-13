@@ -37,12 +37,12 @@ export class HomepageComponent implements OnInit {
         this.myuser = user;
         this.sessionService.isLoggedIn = (user!=null);
 
-        if(user.email == 'adiba012000@gmail.com'){
+        if(user.email == 'nehapophalikar21@gmail.com'){
           this.manageSession(user.email);
           sessionStorage.setItem('role','admin');
           this.router.navigate(['adminDashboard']);
         }
-        else if(user.email == 'siddiqui.rubab.dcs23@vnsgu.ac.in'){
+        else if(user.email == 'popanuradha15@gmail.com'){
           this.manageSession(user.email);
           sessionStorage.setItem('role','scheduler');
           this.router.navigate(['schedulerDashboard']);
