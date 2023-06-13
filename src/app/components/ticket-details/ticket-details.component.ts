@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/services/config.service';
 import { ImageService } from 'src/app/services/image.service';
 import { S3storageService } from 'src/app/services/s3storage.service';
 import { TicketService } from 'src/app/services/ticket.service';
@@ -15,13 +16,16 @@ export class TicketDetailsComponent implements OnInit {
   images:any;
   workflows:any;
   ticketId:number;
+  url:string;
 
   constructor(
     private ticketService : TicketService,
     private imageService : ImageService,
     private workflowService : WorkflowService,
-    private s3Service : S3storageService
-  ){}
+    private configService : ConfigService
+  ){
+    this.url=this.configService.baseURL;
+  }
 
   ngOnInit(): void {
     this.ticketId=Number(this.ticketService.id);

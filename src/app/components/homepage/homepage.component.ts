@@ -12,6 +12,7 @@ import { SessionService } from 'src/app/services/session.service';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 import { MatDialog } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-homepage',
@@ -23,6 +24,7 @@ export class HomepageComponent implements OnInit {
   user : User = new User();
   myuser:any;
   loggedInUser:any;
+  url:string;
 
   public loading = false;
   public error = '';
@@ -30,16 +32,19 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private socialAuthService: SocialAuthService,
-    private userService: UserService, 
+    private userService: UserService,
     private router:Router,
     private snackBar: MatSnackBar,
     private httpClient: HttpClient,
     private employeeService: EmployeeService,
     private sessionService : SessionService,
-    private dialog : MatDialog
-  ) { }
+    private configService : ConfigService
+  ) {
+    this.url=this.configService.baseURL;
+   }
 
   ngOnInit() {
+    this.url=this.configService.baseURL;
     if(!this.sessionService.isLoggedIn){
       this.socialAuthService.authState.subscribe(async (user) => {
         this.myuser = user;
@@ -56,7 +61,7 @@ export class HomepageComponent implements OnInit {
           this.router.navigate(['schedulerDashboard']);
         }
         else if(await this.isExist(user.email)){
-          this.httpClient.get(`http://localhost:8080/api/role/${user.email}`, { responseType: 'text' }).subscribe({
+          this.httpClient.get(`${this.url}/role/${user.email}`, { responseType: 'text' }).subscribe({
             next: (response: string) => {
               if(response=='client'){
                 this.manageSession(user.email);
@@ -72,12 +77,12 @@ export class HomepageComponent implements OnInit {
                   } else {
                     this.router.navigate(['inactive-employee']);
                   }
-                });                                          
+                });
               }else{
                 this.manageSession(user.email);
                 sessionStorage.setItem('role','manager');
                 this.router.navigate(['managerDashboard']);
-              } 
+              }
             },
             error: () => {
               this.snackBar.open("Something went wrong!","Dismiss", { duration: 5000 });
@@ -109,13 +114,13 @@ export class HomepageComponent implements OnInit {
         }
       });
     }
-  } 
+  }
 
   toggleChange(event: MatButtonToggleChange) {
     this.user.usertype=event.value;
   }
 
-  
+
   async isExist(email: string): Promise<boolean> {
     const observable = this.userService.userExist(email);
     const result = await firstValueFrom(observable);
@@ -165,6 +170,7 @@ export class HomepageComponent implements OnInit {
   addSubscription(e: Event):void{
     alert("Subscription Added. Thank You!")
   }
-   
+
+    
 
 }
