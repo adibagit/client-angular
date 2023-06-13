@@ -43,11 +43,11 @@ export class AddFeedbackComponent  implements OnInit{
   addFeedback(){
     this.feedbackService.addFeedback(this.feedback).subscribe({
       next:(res)=>{
-        this.snackBar.open("Feedback added successfully.","OK");
+        this.snackBar.open("Feedback added successfully.","OK", { duration: 5000 });
         this.dialogRef.close();
       },
       error:(err)=>{
-        this.snackBar.open("Failed adding feedback!","OK");
+        this.snackBar.open("Failed adding feedback!","Dismiss", { duration: 5000 });
       }
     });
     this.router.navigate(['clientDashboard']);
@@ -56,11 +56,11 @@ export class AddFeedbackComponent  implements OnInit{
   updateFeedback(){
     this.feedbackService.updateFeedback(this.feedback).subscribe({
       next:(res)=>{
-        this.snackBar.open("Feedback updated successfully.","OK");
+        this.snackBar.open("Feedback updated successfully.","OK", { duration: 5000 });
         this.dialogRef.close();
       },
       error:(err)=>{
-        this.snackBar.open("Failed updating feedback!","OK");
+        this.snackBar.open("Failed updating feedback!","Dismiss", { duration: 5000 });
       }
     });
     this.router.navigate(['clientDashboard']);

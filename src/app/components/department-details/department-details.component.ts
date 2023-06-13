@@ -14,6 +14,7 @@ export class DepartmentDetailsComponent implements OnInit {
   department:any;
   workflows:any;
   employees:any;
+  isLoading = true;
 
   constructor(
     private deptService : DepartmentService,
@@ -22,23 +23,24 @@ export class DepartmentDetailsComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.deptService.setId(this.deptId);
     this.deptService.getDeptById().subscribe({
       next:(result)=>{
         this.department=result;
-        console.log(this.department)
+        this.isLoading=false;
       }
     });
     this.workflowService.getWorkflowsByDept(this.deptId).subscribe({
       next:(result)=>{
         this.workflows=result;
-        console.log(this.workflows)
+        this.isLoading=false;
       }
     });
     this.employeeService.getEmployeesByDept(this.deptId).subscribe({
       next:(result)=>{
         this.employees=result;
-        console.log(this.employees)
+        this.isLoading=false;
       }
     });
   }

@@ -74,6 +74,8 @@ import { AuthGuard } from './auth.guard';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
 import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -120,7 +122,8 @@ import { DepartmentDetailsComponent } from './components/department-details/depa
     AddUserComponent,
     AccessDeniedComponent,
     TicketDetailsComponent,
-    DepartmentDetailsComponent
+    DepartmentDetailsComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +154,8 @@ import { DepartmentDetailsComponent } from './components/department-details/depa
     GoogleSigninButtonModule,
     MatSelectModule,
     MatBadgeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
     
   ],
   providers: [

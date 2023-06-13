@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Employee } from '../models/employee';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,48 +10,51 @@ import { Employee } from '../models/employee';
 export class EmployeeService {
 
   id?: number;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private configService : ConfigService) { 
+    this.url=this.configService.baseURL;
+  }
 
   noOfEmployeeRequest : number;
+  url:string;
 
   setId(empId?: number){
     this.id = empId;
   }
 
   getAllEmployees(): Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>("http://localhost:8080/api/employee");
+    return this.httpClient.get<Employee[]>(`${this.url}/employee`);
   }
 
   addEmployee(department?: Employee): Observable<Object>{
-    return this.httpClient.post<Object>("http://localhost:8080/api/employee",department ); 
+    return this.httpClient.post<Object>(`${this.url}/employee`,department ); 
   }
 
   getEmpById():Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/employee/${this.id}`);
+    return this.httpClient.get<Object>(`${this.url}/employee/${this.id}`);
   }
 
   updateEmp(department?: Employee) : Observable<Object>{
-    return this.httpClient.put<Object>(`http://localhost:8080/api/employee/${this.id}`,department);
+    return this.httpClient.put<Object>(`${this.url}/employee/${this.id}`,department);
   }
 
   deleteEmp(id?: number): Observable<string>{
-    return this.httpClient.delete(`http://localhost:8080/api/employee?id=${id}`,{ responseType: 'text' });
+    return this.httpClient.delete(`${this.url}/employee?id=${id}`,{ responseType: 'text' });
   }
 
   isActive(id?:number):Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/employee/isActive/${id}`);
+    return this.httpClient.get<Object>(`${this.url}/employee/isActive/${id}`);
   }
 
   getEmployeeRequest(): Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>("http://localhost:8080/api/employeeRequest");
+    return this.httpClient.get<Employee[]>(`${this.url}/employeeRequest`);
   }
 
   getEmployeesByDept(id?:number): Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>(`http://localhost:8080/api/employeeByDept/${id}`);
+    return this.httpClient.get<Employee[]>(`${this.url}/employeeByDept/${id}`);
   }
 
   getEmployeeIdByUserId(id?: number): Observable<number>{
-    return this.httpClient.get<number>(`http://localhost:8080/api/employeeIdFromUserid/${id}`);
+    return this.httpClient.get<number>(`${this.url}/employeeIdFromUserid/${id}`);
   }
 
 }

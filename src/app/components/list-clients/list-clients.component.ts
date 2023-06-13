@@ -20,6 +20,7 @@ export class ListClientsComponent implements OnInit{
   };
   totalTickets=0;
   selectedClientID: number | null = null;
+  isLoading = true;
 
   ngOnInit(): void {
     this.getAllClients();
@@ -31,9 +32,11 @@ export class ListClientsComponent implements OnInit{
   ){}
 
   getAllClients(){
+    this.isLoading=true;
     this.userService.getAllClients().subscribe({
       next:(result)=>{
         this.clients = result;
+        this.isLoading=false;
       }
     });
   }

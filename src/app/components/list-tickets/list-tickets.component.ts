@@ -27,12 +27,14 @@ export class ListTicketsComponent implements OnInit{
   };
   displayedColumns: string[] = ['clientid', 'ticket_description', 'property','status','ticket_date','last_modified'];
   dataSource !: MatTableDataSource<any>;
+  isLoading = true;
 
   constructor(
     private ticketservice: TicketService,
     private snackbar: MatSnackBar){}
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.getAlltick();
   }
 
@@ -43,9 +45,11 @@ export class ListTicketsComponent implements OnInit{
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.tickets = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackbar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackbar.open("Failed retrieving data!","OK", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }

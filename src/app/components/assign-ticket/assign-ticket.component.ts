@@ -41,7 +41,7 @@ export class AssignTicketComponent implements OnInit{
   assignTicket(){
     this.logService.addLog(this.log).subscribe({
       next:(res)=>{
-        this.snackbar.open("Assigned","Ok");
+        this.snackbar.open("Assigned","Dismiss", { duration: 5000 });
       }
     }); 
   }

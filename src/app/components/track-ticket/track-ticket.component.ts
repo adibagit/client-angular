@@ -11,6 +11,7 @@ export class TrackTicketComponent implements OnInit {
 
   ticketId : number = this.workflowService.id ?? 0;
   workflows:any;
+  isLoading = true;
   
   constructor(
     private workflowService: WorkflowService,
@@ -18,12 +19,15 @@ export class TrackTicketComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.workflowService.getAllWorkflowsByTicket(this.ticketId).subscribe({
       next:(res)=>{
         this.workflows = res;
+        this.isLoading = false;
       },
       error:(err)=>{
-        this.snackbar.open("Something went wrong","Dismiss");
+        this.snackbar.open("Something went wrong","Dismiss", { duration: 5000 });
+        this.isLoading = false;
       }
     })
   }

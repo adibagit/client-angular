@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-//import { Employee } from '../models/employee';
 import { Manager } from '../models/manager';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,37 +10,41 @@ import { Manager } from '../models/manager';
 export class ManagerService {
 
   id?: number;
-  constructor(private httpClient : HttpClient) { }
+  url:string;
+
+  constructor(private httpClient : HttpClient,private configService : ConfigService) { 
+    this.url=this.configService.baseURL;
+  }
 
   setId(managerid?: number){
     this.id = managerid;
   }
 
   getAllManagers(): Observable<Manager[]>{
-    return this.httpClient.get<Manager[]>("http://localhost:8080/api/manager");
+    return this.httpClient.get<Manager[]>(`${this.url}/manager`);
   }
 
   getManagerById(): Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/manager/${this.id}`);
+    return this.httpClient.get<Object>(`${this.url}/manager/${this.id}`);
   }
 
   updateManager(department?: Manager) : Observable<Object>{
-    return this.httpClient.put<Object>(`http://localhost:8080/api/manager/${this.id}`,department);
+    return this.httpClient.put<Object>(`${this.url}/manager/${this.id}`,department);
   }
 
   deleteManager(id?: number): Observable<string>{
-    return this.httpClient.delete(`http://localhost:8080/api/manager?id=${id}`,{ responseType: 'text' });
+    return this.httpClient.delete(`${this.url}/manager?id=${id}`,{ responseType: 'text' });
   }
 
   addManager(manager:Manager): Observable<Object>{
-    return this.httpClient.post<Object>("http://localhost:8080/api/manager",manager ); 
+    return this.httpClient.post<Object>(`${this.url}/manager`,manager ); 
   }
 
   getManagerByUser(userId : number): Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/managerByUser/${userId}`);
+    return this.httpClient.get<Object>(`${this.url}/managerByUser/${userId}`);
   }
 
   getManagerByDepartment(deptId : number): Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/managerByDept/${deptId}`);
+    return this.httpClient.get<Object>(`${this.url}/managerByDept/${deptId}`);
   }
 }

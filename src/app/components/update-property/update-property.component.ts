@@ -29,7 +29,7 @@ export class UpdatePropertyComponent implements OnInit{
         this.areas = res;
       },
       error:(err)=>{
-        this.snackBar.open("Something went wrong! Try restarting the server.","OK");
+        this.snackBar.open("Something went wrong!","Dismiss", { duration: 5000 });
       }
     });
   }
@@ -37,10 +37,10 @@ export class UpdatePropertyComponent implements OnInit{
   updateProp(){
     this.propertyService.updateProp(this.property).subscribe({
       next:(res)=>{
-        this.snackBar.open("Property updated successfully.","OK");
+        this.snackBar.open("Property updated successfully.","OK", { duration: 5000 });
       },
       error:(err)=>{
-        this.snackBar.open("Failed updating property!","OK");
+        this.snackBar.open("Failed updating property!","Dismiss", { duration: 5000 });
       }
     });
   }

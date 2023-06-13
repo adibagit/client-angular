@@ -65,6 +65,10 @@
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
           </tr>
         </table>
+        <div *ngIf="isLoading">
+          <app-loading-spinner></app-loading-spinner>
+          Loading Tickets...
+        </div>
       </div>
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>

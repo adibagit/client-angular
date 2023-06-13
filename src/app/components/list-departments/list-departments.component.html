@@ -4,13 +4,13 @@
   </div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute text-center">  
-      <br/>            
+      <br/>      
       <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Department" #input>
       </mat-form-field>
       <div class="table-container" style="max-height: 448px; overflow-x: auto;">
-        <table mat-table [dataSource]="dataSource" matSort>
+        <table mat-table [dataSource]="dataSource" matSort *ngIf="!isLoading">
       
           <ng-container matColumnDef="deptname">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Name</b> </th>
@@ -42,6 +42,9 @@
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
           </tr>
         </table>
+        <div *ngIf="isLoading">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
       </div>
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>

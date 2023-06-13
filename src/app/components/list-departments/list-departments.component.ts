@@ -23,6 +23,7 @@ export class ListDepartmentsComponent implements OnInit{
   departments?: Department[];
   displayedColumns: string[] = ['deptname', 'deptdesc', 'lastmodified','actions'];
   dataSource !: MatTableDataSource<any>;
+  isLoading = true;
 
   constructor(
     private departmentService: DepartmentService,
@@ -31,19 +32,23 @@ export class ListDepartmentsComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.getAllDepts();
   }
 
   getAllDepts(){
+    this.isLoading=true;
     this.departmentService.getAllDepartments().subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.departments = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","Dismiss", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
@@ -51,7 +56,7 @@ export class ListDepartmentsComponent implements OnInit{
   deleteDept(id?:number){
     this.departmentService.deleteDept(id).subscribe({
       next:(res)=>{
-        this.snackBar.open("Department deleted!","OK");
+        this.snackBar.open("Department deleted!","OK", { duration: 5000 });
         this.ngOnInit();
       }
     });

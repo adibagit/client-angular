@@ -9,6 +9,9 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { firstValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SessionService } from 'src/app/services/session.service';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { MatDialog } from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-homepage',
@@ -21,6 +24,10 @@ export class HomepageComponent implements OnInit {
   myuser:any;
   loggedInUser:any;
 
+  public loading = false;
+  public error = '';
+  public success = '';
+
   constructor(
     private socialAuthService: SocialAuthService,
     private userService: UserService, 
@@ -29,6 +36,7 @@ export class HomepageComponent implements OnInit {
     private httpClient: HttpClient,
     private employeeService: EmployeeService,
     private sessionService : SessionService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit() {
@@ -37,12 +45,12 @@ export class HomepageComponent implements OnInit {
         this.myuser = user;
         this.sessionService.isLoggedIn = (user!=null);
   
-        if(user.email == 'adiba012000@gmail.com'){
+        if(user.email == 'adiba012000@gmail.com' || user.email == 'manavvanani@gmail.com' || user.email == 'nehapophalikar21@gmail.com'){
           this.manageSession(user.email);
           sessionStorage.setItem('role','admin');
           this.router.navigate(['adminDashboard']);
         }  
-        else if(user.email == 'siddiqui.rubab.dcs23@vnsgu.ac.in'){
+        else if(user.email == 'siddiqui.rubab.dcs23@vnsgu.ac.in' || user.email == 'popanuradha15@gmail.com'){
           this.manageSession(user.email);
           sessionStorage.setItem('role','scheduler');
           this.router.navigate(['schedulerDashboard']);
@@ -72,7 +80,7 @@ export class HomepageComponent implements OnInit {
               } 
             },
             error: () => {
-              this.snackBar.open("Something went wrong!!","OK");
+              this.snackBar.open("Something went wrong!","Dismiss", { duration: 5000 });
             }
             });
         }else{
@@ -80,9 +88,10 @@ export class HomepageComponent implements OnInit {
           this.user.lastname = user.lastName;
           this.user.emailid = user.email;
           this.user.picture = user.photoUrl;
+          this.user.usertype = 'client';
           this.userService.addUser(this.user).subscribe({
             next:()=>{
-              this.snackBar.open("Registered successfully.","OK");
+              this.snackBar.open("Registered successfully.","OK", { duration: 5000 });
               if(this.user.usertype == 'employee'){
                 this.manageSession(user.email);
                 sessionStorage.setItem('role','employee');
@@ -93,8 +102,8 @@ export class HomepageComponent implements OnInit {
                 this.router.navigate(['clientDashboard']);
               }
             },
-            error:(_err)=>{
-              this.snackBar.open("Registeration failed!","OK");
+            error:(err)=>{
+              this.snackBar.open("Registeration failed!","OK", { duration: 5000 });
             }
           });
         }
@@ -124,16 +133,38 @@ export class HomepageComponent implements OnInit {
       next:(res)=>{
         this.loggedInUser = res;
         sessionStorage.setItem('username', this.loggedInUser[0]["firstname"]);
+        sessionStorage.setItem('lastname', this.loggedInUser[0]["lastname"]);
         sessionStorage.setItem('dp',this.loggedInUser[0]["picture"]);
         sessionStorage.setItem('userid',this.loggedInUser[0]["userid"]);
         location.reload();
       },
       error:(err)=>{
-        this.snackBar.open("Something went wrong with your session!","OK");
+        this.snackBar.open("Something went wrong with your session!","OK", { duration: 5000 });
       }
     })
   }
 
-    
+  sendEmail(e: Event): void {
+    e.preventDefault();
+
+    this.loading = true;
+    const form = e.target as HTMLFormElement;
+
+    emailjs.sendForm('service_3hdb02u', 'template_m7sd2lj', e.target as HTMLFormElement, 'UmTgyMolRNdWZdeSX')
+      .then((response: EmailJSResponseStatus) => {
+        this.loading = false;
+        alert("Your message has been sent.")
+        this.success = 'Your message has been sent. Thank you!';
+        location.reload();
+      }, (error) => {
+        this.loading = false;
+        this.error = 'An error occurred while sending the message. Please try again later.';
+    });
+  }
+
+  addSubscription(e: Event):void{
+    alert("Subscription Added. Thank You!")
+  }
+   
 
 }

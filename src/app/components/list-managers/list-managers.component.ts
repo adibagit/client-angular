@@ -16,6 +16,7 @@ export class ListManagersComponent {
     user:{firstname:'',lastname:'',emailid:'',phoneno:'',picture:''},
     department: {deptname:''},
   };
+  isLoading = true;
 
   constructor(
     private managerservice: ManagerService,
@@ -27,12 +28,15 @@ export class ListManagersComponent {
   }
 
   getAllProps(){
+    this.isLoading=true;
     this.managerservice.getAllManagers().subscribe({
       next:(res)=>{
         this.manager = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackbar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackbar.open("Failed retrieving data!","OK", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
@@ -40,11 +44,11 @@ export class ListManagersComponent {
   deleteManager(id?:number){
     this.managerservice.deleteManager(id).subscribe({
       next:(res)=>{
-        this.snackbar.open("Manager deleted!","OK");
+        this.snackbar.open("Manager deleted!","OK", { duration: 5000 });
         this.ngOnInit();
       },
       error:(err)=>{
-        this.snackbar.open("Failed deleting manager!","OK");
+        this.snackbar.open("Failed deleting manager!","OK", { duration: 5000 });
         this.ngOnInit();
       }
     });

@@ -26,12 +26,13 @@ export class ManagerHomeComponent {
   workflows?: Workflow[];
   manager:any;
   userId = Number(sessionStorage.getItem('userid'));
-  deptId:number|any;
+  deptId:any;
   logs:any;
   currentLog:any;
   assignedTo:any;
   displayedColumns: string[] = ['ticket', 'department', 'status','description','date','actions','details'];
   dataSource !: MatTableDataSource<any>;
+  isLoading = true;
 
   constructor(
     private dialog:MatDialog,
@@ -43,6 +44,7 @@ export class ManagerHomeComponent {
   ){}
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.managerService.getManagerByUser(this.userId).subscribe({
       next:(res)=>{
         this.manager=res;
@@ -59,15 +61,18 @@ export class ManagerHomeComponent {
   }
 
   getAllWorkflows(deptId:number){
+    this.isLoading=true;
     this.workflowService.getWorkflowsByDept(deptId).subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.workflows = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","OK", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }

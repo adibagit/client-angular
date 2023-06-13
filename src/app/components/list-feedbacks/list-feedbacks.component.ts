@@ -11,6 +11,7 @@ import { FeedbackService } from 'src/app/services/feedback.service';
 export class ListFeedbacksComponent implements OnInit{
 
   feedbacks : any;
+  isLoading = true;
 
   ngOnInit(): void {
     this.getAllFeedbacks();
@@ -22,12 +23,15 @@ export class ListFeedbacksComponent implements OnInit{
   ){}
 
   getAllFeedbacks(){
+    this.isLoading=true;
     this.feedbackService.getAllFeedbacks().subscribe({
       next:(res)=>{
         this.feedbacks=res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","OK", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }

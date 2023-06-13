@@ -1,6 +1,5 @@
 import { Component,OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketService } from 'src/app/services/ticket.service';
 import {MatPaginator} from '@angular/material/paginator';
@@ -18,7 +17,7 @@ import { TrackTicketComponent } from '../track-ticket/track-ticket.component';
   styleUrls: ['./scheduler-home.component.css']
 })
 
-export class SchedulerHomeComponent {
+export class SchedulerHomeComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
@@ -28,34 +27,39 @@ export class SchedulerHomeComponent {
   displayedColumns: string[] = ['client', 'description', 'property','status','ticketdate','lastmodified','actions'];
   dataSource !: MatTableDataSource<any>;
   isWorkflowSet:boolean;
+  isLoading = true;
 
   constructor(
-    private ticketService: TicketService, 
-    private router: Router,
+    private ticketService: TicketService,
     private dialog:MatDialog,
     private snackBar: MatSnackBar,
     private workflowService:WorkflowService
   ){}
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.getAllTickets();
     this.workflowService.getAllWorkflows().subscribe({
       next:(res)=>{
         this.workflows=res;
+        this.isLoading=false;
       }
     });
   }
 
   getAllTickets(){
+    this.isLoading=true;
     this.ticketService.getAllTickets().subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.tickets = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","OK", { duration: 5000 });
+        this.isLoading=true;
       }
     });
   }

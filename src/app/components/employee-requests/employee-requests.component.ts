@@ -38,7 +38,7 @@ export class EmployeeRequestsComponent implements OnInit{
         this.employeeService.noOfEmployeeRequest = this.employees.length;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","Dismiss", { duration: 5000 });
       }
     });
     this.filterDepartments();
@@ -47,12 +47,12 @@ export class EmployeeRequestsComponent implements OnInit{
   acceptRequest(employee :any): void {
     this.employeeRequest.user.userid = employee.userid;
     if(this.employeeRequest.department.deptid === null || this.employeeRequest.department.deptid === ''){
-      this.snackBar.open("Please select department","OK");
+      this.snackBar.open("Please select department","OK", { duration: 5000 });
     }else{
       if(this.managerChecked){
         this.managerService.addManager(this.employeeRequest).subscribe({
           next:(res)=>{
-            this.snackBar.open("Accepted as Manager","OK");
+            this.snackBar.open("Accepted as Manager","OK", { duration: 5000 });
             this.userService.getUser(this.employeeRequest.user.userid).subscribe({
               next:(result)=>{
                 result.usertype='manager';
@@ -64,17 +64,17 @@ export class EmployeeRequestsComponent implements OnInit{
             })
           },
           error:(err)=>{
-            this.snackBar.open("Failed accepting request!","OK");
+            this.snackBar.open("Failed accepting request!","Dismiss", { duration: 5000 });
           }
         });
       }else{
         this.employeeService.addEmployee(this.employeeRequest).subscribe({
           next:(res)=>{
-            this.snackBar.open("Accepted","OK");
+            this.snackBar.open("Accepted","OK", { duration: 5000 });
             this.ngOnInit();
           },
           error:(err)=>{
-            this.snackBar.open("Failed accepting request!","OK");
+            this.snackBar.open("Failed accepting request!","Dismiss", { duration: 5000 });
           }
         });
       }
@@ -85,7 +85,7 @@ export class EmployeeRequestsComponent implements OnInit{
     this.userService.deleteUser(employee.userid).subscribe({
       next:(res)=>{
         alert("inn")
-        this.snackBar.open("Discarded","OK");
+        this.snackBar.open("Discarded","OK", { duration: 5000 });
         this.ngOnInit();
       },
       error:(err)=>{
@@ -101,7 +101,7 @@ export class EmployeeRequestsComponent implements OnInit{
           this.departments = res;
         },
         error: (err) => {
-          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+          this.snackBar.open("Failed retrieving data!", "Dismiss", { duration: 5000 });
         }
       });
     } else {
@@ -110,7 +110,7 @@ export class EmployeeRequestsComponent implements OnInit{
           this.departments = res;
         },
         error: (err) => {
-          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+          this.snackBar.open("Failed retrieving data!", "Dismiss", { duration: 5000 });
         }
       });
     }

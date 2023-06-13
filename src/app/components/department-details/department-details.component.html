@@ -18,35 +18,41 @@
     <div class="page__content shadow p-3 position-relative">
       <div class="page__content-data position-absolute text-center">
   
-        <h1 class="department-name">{{ department.deptname }}</h1>
-        <p>{{ department.deptdesc }}</p>
-        <hr><br>
-        <div class="counters">
+        <div *ngIf="!isLoading">
+          <h1 class="department-name">{{ department.deptname }}</h1>
+          <p>{{ department.deptdesc }}</p>
+          <hr><br>
+          <div class="counters">
+              <div class="counter-box">
+                  <h2>{{ getActiveTicketsCount() }}</h2>
+                  <p>Active Tickets</p>
+                </div>
+                <div class="counter-box">
+                  <h2>{{ getPendingTicketsCount() }}</h2>
+                  <p>Pending Tickets</p>
+                </div>
+                <div class="counter-box">
+                  <h2>{{ getCompletedTicketsCount() }}</h2>
+                  <p>Completed Tickets</p>
+                </div>
+          </div>
+          <div class="counters">
             <div class="counter-box">
-                <h2>{{ getActiveTicketsCount() }}</h2>
-                <p>Active Tickets</p>
-              </div>
-              <div class="counter-box">
-                <h2>{{ getPendingTicketsCount() }}</h2>
-                <p>Pending Tickets</p>
-              </div>
-              <div class="counter-box">
-                <h2>{{ getCompletedTicketsCount() }}</h2>
-                <p>Completed Tickets</p>
-              </div>
-        </div>
-        <div class="counters">
-          <div class="counter-box">
-            <h2>{{ workflows.length }}</h2>
-            <p>Workflows</p>
+              <h2>{{ workflows.length }}</h2>
+              <p>Workflows</p>
+            </div>
+            <div class="counter-box">
+              <h2>{{ employees.length }}</h2>
+              <p>Employees</p>
+            </div>
           </div>
-          <div class="counter-box">
-            <h2>{{ employees.length }}</h2>
-            <p>Employees</p>
-          </div>
+          <br><br>
+          <p>Last modified at {{ department.lastmodified | date}}</p>
         </div>
-        <br><br>
-        <p>Last modified at {{ department.lastmodified | date}}</p>
+        <div *ngIf="isLoading">
+          <app-loading-spinner></app-loading-spinner>
+          Loading Department Details...
+        </div>
       </div>
     </div>
   </div>

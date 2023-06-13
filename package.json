@@ -26,6 +26,7 @@
     "@ngx-pwa/local-storage": "^16.0.0",
     "bootstrap": "^5.2.3",
     "boxicons": "^2.1.4",
+    "emailjs-com": "^3.2.0",
     "rxjs": "~7.8.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",

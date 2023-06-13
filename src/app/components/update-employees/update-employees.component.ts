@@ -27,7 +27,7 @@ export class UpdateEmployeesComponent implements OnInit{
         this.departments = res;
       },
       error:(err)=>{
-        this.snackBar.open("Something went wrong! Try restarting the server.","OK");
+        this.snackBar.open("Something went wrong!","Dismiss", { duration: 5000 });
       }
     });
   }
@@ -35,10 +35,10 @@ export class UpdateEmployeesComponent implements OnInit{
   updateEmp(){
     this.empService.updateEmp(this.employee).subscribe({
       next:(res)=>{
-        this.snackBar.open("Employee updated successfully.","OK");
+        this.snackBar.open("Employee updated successfully.","OK", { duration: 5000 });
       },
       error:(err)=>{
-        this.snackBar.open("Failed updating employee!","OK");
+        this.snackBar.open("Failed updating employee!","Dismiss", { duration: 5000 });
       }
     });
   }

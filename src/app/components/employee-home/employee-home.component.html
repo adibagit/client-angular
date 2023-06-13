@@ -3,7 +3,7 @@
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute">
       <br/>
-      <ng-container *ngIf="workflows && workflows.length > 0; else noWorkflows">
+      <ng-container *ngIf="!isLoading && workflows && workflows.length > 0;" >
         <div class="ticket-container">
           <div *ngFor="let workflow of workflows" class="ticket">
             <div class="ticket-left-line"></div>
@@ -37,9 +37,13 @@
           </div>
         </div>
       </ng-container>
-      <ng-template #noWorkflows>
+      <ng-template *ngIf="!isLoading && workflows.length <= 0">
         No tickets found in this department.
       </ng-template>
+      <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+        Loading Tickets...
+      </div>
     </div>
   </div>
 </div>

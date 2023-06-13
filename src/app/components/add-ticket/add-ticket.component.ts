@@ -40,25 +40,24 @@ export class AddTicketComponent implements OnInit {
        this.properties = res;
       },
       error:(err)=>{
-        this.snackBar.open("Something went wrong! Try restarting the server.","OK");
+        this.snackBar.open("Something went wrong! ","Dismiss", { duration: 5000 });
       }
     });
   }
 
   handleFileInput(event: any): void {
     this.images = event.target.files;
-    console.log("file aai : ",this.images)
   }
   
   addTicket(): void {
     if(this.images && this.images.length && this.images.length > 5 ) {
-      this.snackBar.open("Maximum 5 images are allowed!","OK");
+      this.snackBar.open("Maximum 5 images are allowed!","OK", { duration: 5000 });
     }
     else {
       this.ticketService.addTicket(this.ticket).subscribe({
         next:(res) => {
           this.addedTicket = res;
-          this.snackBar.open("Ticket added successfully.", "OK");
+          this.snackBar.open("Ticket added successfully.", "Dismiss", { duration: 5000 });
           let url:any;
           Array.from(this.images).forEach((image: File) => {
             this.s3service.uploadImage(image).subscribe({
@@ -78,7 +77,7 @@ export class AddTicketComponent implements OnInit {
           this.dialogRef.close();
         },
         error:(err) => {
-          this.snackBar.open("Failed adding ticket", "OK");
+          this.snackBar.open("Failed adding ticket", "Dismiss", { duration: 5000 });
         } 
 
       }); 

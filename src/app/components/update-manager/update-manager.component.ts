@@ -28,7 +28,7 @@ export class UpdateManagerComponent implements OnInit {
         this.departments = res;
       },
       error:(err)=>{
-        this.snackBar.open("Something went wrong! Try restarting the server.","OK");
+        this.snackBar.open("Something went wrong!","Dismiss", { duration: 5000 });
       }
     });
   }
@@ -36,10 +36,10 @@ export class UpdateManagerComponent implements OnInit {
   updateManager(){
     this.managerService.updateManager(this.manager).subscribe({
       next:(res)=>{
-        this.snackBar.open("Manager updated successfully.","OK");
+        this.snackBar.open("Manager updated successfully.","OK", { duration: 5000 });
       },
       error:(err)=>{
-        this.snackBar.open("Failed updating Manager!","OK");
+        this.snackBar.open("Failed updating Manager!","Dismiss", { duration: 5000 });
       }
     });
   }

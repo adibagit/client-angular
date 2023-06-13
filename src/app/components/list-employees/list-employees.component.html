@@ -1,14 +1,10 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Employees
-      <!-- <button mat-raised-button (click)="openAddEmployeeRequest()"
-            matBadge={{noOfEmployeeRequest}} matBadgePosition="before" matBadgeColor="accent">
-            Requests
-      </button> -->
       <button mat-raised-button (click)="openAddUser()">Add User</button>
     </div>
     <div class="page__content shadow p-3 position-relative">
         <div class="page__content-data position-absolute text-center">
-            <div class="parent-container">
+            <div class="parent-container"  *ngIf="!isLoading">
                 <div class="employee-container">
                     <div *ngFor="let emp of employee" >
                         <mat-card class="employee-card" mat-elevation-z8>
@@ -32,6 +28,11 @@
                         </mat-card>
                     </div>
                 </div>
+            </div>
+            <div *ngIf="isLoading">
+                <br><br>
+                <app-loading-spinner></app-loading-spinner>
+                Loading Employees...
             </div>
         </div>
     </div>

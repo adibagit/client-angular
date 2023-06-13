@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Property } from '../models/property';
 import { Area } from '../models/area';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,34 +11,38 @@ import { Area } from '../models/area';
 export class PropertyService {
 
   id?: number;
-  constructor(private httpClient: HttpClient) { }
+  url:string;
+
+  constructor(private httpClient: HttpClient,private configService : ConfigService) {
+    this.url=this.configService.baseURL;
+   }
 
   setId(propId?: number){
     this.id = propId;
   }
 
   getAllProperties(): Observable<Property[]>{
-    return this.httpClient.get<Property[]>("http://localhost:8080/api/properties");
+    return this.httpClient.get<Property[]>(`${this.url}/properties`);
   }
 
   getAllAreas(): Observable<Area[]>{
-    return this.httpClient.get<Area[]>("http://localhost:8080/api/areas");
+    return this.httpClient.get<Area[]>(`${this.url}/areas`);
   }
 
   addProperty(property?: Property): Observable<Object>{
-    return this.httpClient.post<Object>("http://localhost:8080/api/properties",property ); 
+    return this.httpClient.post<Object>(`${this.url}/properties`,property ); 
   }
 
   getPropById():Observable<Object>{
-    return this.httpClient.get<Object>(`http://localhost:8080/api/properties/${this.id}`);
+    return this.httpClient.get<Object>(`${this.url}/properties/${this.id}`);
   }
 
   updateProp(property?: Property) : Observable<Object>{
-    return this.httpClient.put<Object>(`http://localhost:8080/api/properties/${this.id}`,property);
+    return this.httpClient.put<Object>(`${this.url}/properties/${this.id}`,property);
   }
 
   deleteProp(id?: number): Observable<string>{
-    return this.httpClient.delete(`http://localhost:8080/api/properties?id=${id}`,{ responseType: 'text' });
+    return this.httpClient.delete(`${this.url}/properties?id=${id}`,{ responseType: 'text' });
   }
   
 }

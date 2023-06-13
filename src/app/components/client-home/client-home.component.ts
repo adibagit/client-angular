@@ -33,8 +33,12 @@ export class ClientHomeComponent implements OnInit {
   allTickets?:any;
   ticketImages: { [ticketId: number]: any[] } = {};
   selectedStatus:string ;
+  username:any;
+  isLoading = true;
 
   ngOnInit(): void {
+    this.username = sessionStorage.getItem('username');
+    this.isLoading=true;
     this.getAllTicketByUser();
     this.selectedComponentService.getStatus().subscribe((status: string) => {
       this.selectedStatus = status;
@@ -49,19 +53,20 @@ export class ClientHomeComponent implements OnInit {
   }
 
   getAllTicketByUser(){
+    this.isLoading=true;
     this.ticketService.getTicketsByUser(this.clientId).subscribe({
       next:(res)=>{
-        console.log('Retrieved tickets:', res);
-      this.allTickets = res;
-      this.tickets = res; // Assign tickets as well
-      console.log('Assigned tickets:', this.tickets);
+        this.allTickets = res;
+        this.tickets = res; // Assign tickets as well
+        this.isLoading=false;
         for (const ticket of this.tickets) {
           this.retrieveTicketImages(ticket.ticketid);
         }
         this.filterTicketsByStatus();
       },
       error:(err)=>{
-        this.snackbar.open("Failed fetching records. Try restarting the server","Ok");
+        this.snackbar.open("Failed fetching records.","Dismiss", { duration: 5000 });
+        this.isLoading=false;
       }
     })
   }
@@ -91,11 +96,11 @@ export class ClientHomeComponent implements OnInit {
   deleteTicket(ticketId:number){
     this.ticketService.deleteTicket(ticketId).subscribe({
       next:(res)=>{
-        this.snackbar.open("Deleted !","Dismiss");
+        this.snackbar.open("Deleted !","Dismiss", { duration: 5000 });
         this.ngOnInit();
       },
       error:(err)=>{
-        this.snackbar.open("Deleted !","Dismiss");
+        this.snackbar.open("Deleted !","Dismiss", { duration: 5000 });
         this.ngOnInit();
       }
     });

@@ -19,6 +19,7 @@ export class ListEmployeesComponent {
     department: {deptname:''},
   };
   noOfEmployeeRequest : number;
+  isLoading = true;
 
   constructor(
     private empService: EmployeeService,
@@ -28,23 +29,32 @@ export class ListEmployeesComponent {
 
   ngOnInit(): void {
     this.getAllProps();
-    this.empService.getEmployeeRequest().subscribe({
+    this.getEmployeeRequests();
+  }
+
+  getAllProps(){
+    this.isLoading=true;
+    this.empService.getAllEmployees().subscribe({
       next:(res)=>{
-        this.noOfEmployeeRequest = res.length;
+        this.employee = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","OK", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
 
-  getAllProps(){
-    this.empService.getAllEmployees().subscribe({
+  getEmployeeRequests(){
+    this.empService.getEmployeeRequest().subscribe({
       next:(res)=>{
-        this.employee = res;
+        this.noOfEmployeeRequest = res.length;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","OK", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
@@ -52,11 +62,11 @@ export class ListEmployeesComponent {
   deleteEmp(id?:number){
     this.empService.deleteEmp(id).subscribe({
       next:(res)=>{
-        this.snackBar.open("Employee deleted!","OK");
+        this.snackBar.open("Employee deleted!","OK", { duration: 5000 });
         this.ngOnInit();
       },
       error:(err)=>{
-        this.snackBar.open("Failed to delete employee","OK");
+        this.snackBar.open("Failed to delete employee","Dismiss", { duration: 5000 });
         this.ngOnInit();
       }
     });

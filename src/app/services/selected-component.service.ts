@@ -5,8 +5,6 @@ import { BehaviorSubject,Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SelectedComponentService {
-
-  constructor() { }
   
   private selectedComponent: string='';
   private status: BehaviorSubject<string> = new BehaviorSubject<string>('all');

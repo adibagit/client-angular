@@ -21,6 +21,7 @@ export class AssignToMeComponent implements OnInit{
   empId?:number;
   startedWorking?:boolean;
   showComplete?:boolean;
+  isLoading = true;
 
   constructor(
     private ticketService : TicketService,
@@ -37,24 +38,30 @@ export class AssignToMeComponent implements OnInit{
 
   getEmployeesLogs()
   {
+    this.isLoading=true;
     this.employeeService.getEmployeeIdByUserId(this.clientId).subscribe({
       next:(res)=>{
       this.empId = res;
       this.getTheLog(this.empId);
+      this.isLoading=false;
       },
       error:(err)=>{
-        this.snackbar.open("Something went wrong! Try restarting the server.","OK");
+        this.snackbar.open("Something went wrong!","Dismiss", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
 
   getTheLog(empId : number){
+    this.isLoading=true;
     this.logService.getlogsByEmployee(empId,11).subscribe({
       next:(res)=>{
         this.logs = res;
+        this.isLoading=false;
       },  
       error:(err)=>{
-        this.snackbar.open("Failed fetching workflows. Try restarting the server","Ok");
+        this.snackbar.open("Failed fetching workflows. ","Dismiss", { duration: 5000 });
+        this.isLoading=false;
       }
     })
   }
@@ -62,7 +69,7 @@ export class AssignToMeComponent implements OnInit{
   startWorking(workflow: any) {
     this.workflowService.updateWorkflowStatus(workflow.workflowid,13).subscribe({
       next:(res)=>{
-        this.snackbar.open("Workflow Status Updated Successfully","OK");
+        this.snackbar.open("Workflow Status Updated Successfully","OK", { duration: 5000 });
         this.ngOnInit();
       }
     });
@@ -73,7 +80,7 @@ export class AssignToMeComponent implements OnInit{
   completeWorking(workflow: any) {
     this.workflowService.updateWorkflowStatus(workflow.workflowid,4).subscribe({
       next:(res)=>{
-        this.snackbar.open("Workflow Status Updated Successfully","OK");
+        this.snackbar.open("Workflow Status Updated Successfully","OK", { duration: 5000 });
         this.ngOnInit();
       }
     });
@@ -91,7 +98,7 @@ export class AssignToMeComponent implements OnInit{
 
     this.workflowService.shiftToNextWorkflow(workflow.ticket.ticketid,workflow.priority+1,10).subscribe({
       next:(res)=>{
-        this.snackbar.open("Task completed successfully.","Ok");
+        this.snackbar.open("Task completed successfully.","Ok", { duration: 5000 });
       }
     })
     this.ngOnInit();

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Log } from '../models/log';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +11,25 @@ export class LogService {
 
   workflowid?: number;
   deptid?:number;
-  constructor(private httpClient : HttpClient) { }
+  url:string;
+
+  constructor(private httpClient : HttpClient,private configService : ConfigService) {
+    this.url=this.configService.baseURL;
+   }
 
   addLog(log?:Log): Observable<Object>{
-    return this.httpClient.post<Object>("http://localhost:8080/api/log",log ); 
+    return this.httpClient.post<Object>(`${this.url}/log`,log ); 
   }
 
   isAssigned(workflowId:number): Observable<Boolean>{
-    return this.httpClient.get<Boolean>(`http://localhost:8080/api/isAssigned/${workflowId}`); 
+    return this.httpClient.get<Boolean>(`${this.url}/isAssigned/${workflowId}`); 
   }
 
   getAllLogs(): Observable<Log[]>{
-    return this.httpClient.get<Log[]>("http://localhost:8080/api/log");
+    return this.httpClient.get<Log[]>(`${this.url}/log`);
   }
 
   getAssignee(workflowId:number): Observable<Log[]>{
-    return this.httpClient.get<Log[]>(`http://localhost:8080/api/log/getAssignee/${workflowId}`);
+    return this.httpClient.get<Log[]>(`${this.url}/log/getAssignee/${workflowId}`);
   }
 }

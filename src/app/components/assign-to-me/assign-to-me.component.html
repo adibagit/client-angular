@@ -3,7 +3,7 @@
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute">
       <br/>
-      <ng-container *ngIf="logs && logs.length > 0; else noLogs">
+      <ng-container *ngIf="!isLoading && logs && logs.length > 0;">
         <div class="ticket-container">
           <div *ngFor="let log of logs" class="ticket">
             <div class="ticket-left-line"></div>
@@ -35,9 +35,13 @@
           </div>
         </div>
       </ng-container>
-      <ng-template #noLogs>
+      <ng-template *ngIf="!isLoading && logs.length <= 0">
         You have no tickets assigned.
       </ng-template>
+      <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+        Loading your tickets...
+      </div>
     </div>
   </div>
 </div>

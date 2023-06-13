@@ -32,7 +32,7 @@ export class AddPropertyComponent  implements OnInit{
        this.areas = res;
       },
       error:(err)=>{
-        this.snackBar.open("Something went wrong! Try restarting the server.","OK");
+        this.snackBar.open("Something went wrong!","Dismiss", { duration: 5000 });
       }
     });
   }
@@ -40,11 +40,11 @@ export class AddPropertyComponent  implements OnInit{
   addProp(){
     this.propertyService.addProperty(this.property).subscribe({
       next:(res)=>{
-        this.snackBar.open("Property added successfully.","OK");
+        this.snackBar.open("Property added successfully.","OK", { duration: 5000 });
         this.dialogRef.close();
       },
       error:(err)=>{
-        this.snackBar.open("Failed adding property!","OK");
+        this.snackBar.open("Failed adding property!","Dismiss", { duration: 5000 });
       }
     });
     this.router.navigate(['adminDashboard']);

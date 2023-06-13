@@ -32,6 +32,7 @@ export class EmployeeHomeComponent implements OnInit{
   workflow?:any;
   assignee:string;
   ticketImages: { [ticketId: number]: any[] } = {};
+  isLoading = true;
 
   constructor(
     private ticketService : TicketService,
@@ -44,9 +45,11 @@ export class EmployeeHomeComponent implements OnInit{
 
   ngOnInit(): void {
    this.getDepartmentAllTickets();
+   this.isLoading=true;
    this.logService.getAllLogs().subscribe({
     next:(res)=>{
       this.allLogs=res;
+      this.isLoading=false;
     }
    });
   }
@@ -60,21 +63,24 @@ export class EmployeeHomeComponent implements OnInit{
   changeTicketStatus(ticketsid:number){
     this.ticketService.updateTicketStatus(ticketsid,3).subscribe({
       next:(res)=>{
-        this.snackbar.open("Ticket Status Updated Successfully","OK");
+        this.snackbar.open("Ticket Status Updated Successfully","OK", { duration: 5000 });
       },
       error:(err)=>{
-        this.snackbar.open("Something went wrong cant update ticket status ! Try restarting the server.","OK");
+        this.snackbar.open("Something went wrong!","OK", { duration: 5000 });
       }
     });
   }
 
   getWorkflowById(workflowid:number){
+    this.isLoading=true;
     this.workflowService.getSingleWorkflows(workflowid).subscribe({
       next:(res)=>{
         this.workflow=res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackbar.open("Something went wrong can find workflow  ! Try restarting the server.","OK");
+        this.snackbar.open("Something went wrong !","Dismiss", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
@@ -82,7 +88,7 @@ export class EmployeeHomeComponent implements OnInit{
   changeWorkflowStatus(workflowid:number){
     this.workflowService.updateWorkflowStatus(workflowid,3).subscribe({
       next:(res)=>{
-        this.snackbar.open("Workflow Status Updated Successfully","OK");
+        this.snackbar.open("Workflow Status Updated Successfully","OK", { duration: 5000 });
       }
     });
   }
@@ -96,7 +102,7 @@ export class EmployeeHomeComponent implements OnInit{
         this.getDepartmentAllTickets();
       },
       error:(err)=>{
-        this.snackbar.open("Something went wrong cant find empId ! Try restarting the server.","OK");
+        this.snackbar.open("Something went wrong cant find empId !","OK", { duration: 5000 });
       }
     });
   }
@@ -105,35 +111,41 @@ export class EmployeeHomeComponent implements OnInit{
     this.ticketService.addLog(this.logs).subscribe({
       next:(res) => {
         this.addedLog = res;
-        this.snackbar.open("Assigned to you successfully.", "OK");
+        this.snackbar.open("Assigned to you successfully.", "OK", { duration: 5000 });
         this.ngOnInit();
       },
       error:(err) => {
-        this.snackbar.open("Failed assigning ticket", "OK");
+        this.snackbar.open("Failed assigning ticket", "OK", { duration: 5000 });
       }})
   }
 
   getDepartmentAllTickets()
   {
+    this.isLoading=true;
     this.workflowService.getEmployeeDepartment(this.clientId).subscribe({
       next:(res)=>{
         this.department=res;
         this.getTheWorkflows(this.department);
+        this.isLoading=false;
         sessionStorage.setItem("deptid",this.department);
       },
       error:(err)=>{
-        this.snackbar.open("Failed fetching employee department. Try restarting the server","Ok");
+        this.snackbar.open("Failed fetching employee department.","Dismiss", { duration: 5000 });
+        this.isLoading=false;
       }
     })
   }
 
   getTheWorkflows(deptId: number){
+    this.isLoading=true;
     this.workflowService.departmentTickets(deptId).subscribe({
       next:(res)=>{
         this.workflows = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackbar.open("Failed fetching workflows. Try restarting the server","Ok");
+        this.snackbar.open("Failed fetching workflows","Dismiss", { duration: 5000 });
+        this.isLoading=true;
       }
     })
   }

@@ -14,6 +14,7 @@ export class Header2Component implements OnInit {
 
   username :any;
   picture :any;
+  lastname:any;
 
   constructor(
     private router: Router,
@@ -23,6 +24,7 @@ export class Header2Component implements OnInit {
   ngOnInit(): void {
     this.username = sessionStorage.getItem('username');
     this.picture = sessionStorage.getItem('dp');
+    this.lastname = sessionStorage.getItem('lastname');
   }
 
   toggleSidebar() {

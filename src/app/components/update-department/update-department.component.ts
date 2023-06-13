@@ -26,10 +26,10 @@ export class UpdateDepartmentComponent implements OnInit{
   updateDept(){
     this.departmentService.updateDept(this.department).subscribe({
       next:(res)=>{
-        this.snackBar.open("Department updated successfully.","OK");
+        this.snackBar.open("Department updated successfully.","OK", { duration: 5000 });
       },
       error:(err)=>{
-        this.snackBar.open("Failed updating department!","OK");
+        this.snackBar.open("Failed updating department!","Dismiss", { duration: 5000 });
       }
     });
   }

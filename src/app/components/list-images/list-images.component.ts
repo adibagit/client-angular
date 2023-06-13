@@ -23,7 +23,6 @@ export class ListImagesComponent implements OnInit{
 
   ngOnInit(): void {
     this.images = this.imageService.ticketImages;
-    console.log(this.images)
   }
 
   deleteImage(id:number,imageName:string,imagePath:string){
@@ -34,7 +33,7 @@ export class ListImagesComponent implements OnInit{
     });
     this.imageService.deleteImage(id).subscribe({
       next:(next)=>{
-        this.snackbar.open("Image : "+imageName+" has been deleted!","Dismiss");
+        this.snackbar.open("Image : "+imageName+" has been deleted!","Dismiss", { duration: 5000 });
         this.dialog.close();
       }
     })

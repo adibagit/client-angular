@@ -58,21 +58,20 @@ export class AddUserComponent implements OnInit{
           if(this.user.usertype=='employee'){
             this.employeeService.addEmployee(this.employeeRequest).subscribe({
               next:(result)=>{
-                this.snackBar.open("User added successfully.","OK")
+                this.snackBar.open("User added successfully.","OK", { duration: 5000 })
               }
             });
           }else{
             this.managerService.addManager(this.employeeRequest).subscribe({
               next:(result)=>{
-                this.snackBar.open("User added successfully.","OK")
+                this.snackBar.open("User added successfully.","OK", { duration: 5000 })
               }
             });
           }
-          console.log("Added User ",this.addedUser)
           this.dialog.close();
         },
         error: (err) => {
-          this.snackBar.open("Failed adding user!", "OK");
+          this.snackBar.open("Failed adding user!", "OK", { duration: 5000 });
         }
       });
     }
@@ -95,7 +94,7 @@ export class AddUserComponent implements OnInit{
           this.departments = res;
         },
         error: (err) => {
-          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+          this.snackBar.open("Failed retrieving data!", "Dismiss", { duration: 5000 });
         }
       });
     } else {
@@ -104,7 +103,7 @@ export class AddUserComponent implements OnInit{
           this.departments = res;
         },
         error: (err) => {
-          this.snackBar.open("Failed retrieving data! Try restarting the server.", "OK");
+          this.snackBar.open("Failed retrieving data!", "Dismiss", { duration: 5000 });
         }
       });
     }

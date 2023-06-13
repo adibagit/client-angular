@@ -19,7 +19,7 @@ import { ListTicketsComponent } from './components/list-tickets/list-tickets.com
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'homepage', pathMatch: 'full' },
+  { path: '', pathMatch: 'full', component: HomepageComponent },
   { path : "departments",component : ListDepartmentsComponent, canActivate: [AuthGuard]},
   { path : "add-department", component : AddDepartmentComponent, canActivate: [AuthGuard]},
   { path : "update-department", component : UpdateDepartmentComponent, canActivate: [AuthGuard]},
@@ -31,7 +31,6 @@ const routes: Routes = [
   { path : "clientDashboard",component : ClientDashboardComponent, canActivate: [AuthGuard]},
   { path : "managerDashboard",component : ManagerDashboardComponent, canActivate: [AuthGuard]},
   { path : "schedulerDashboard",component : SchedulerDashboardComponent, canActivate: [AuthGuard]},
-  { path : "homepage",component : HomepageComponent},
   { path : "managers",component : ListManagersComponent, canActivate: [AuthGuard]},
   {path : "update-manager",component : UpdateManagerComponent, canActivate: [AuthGuard]},
   {path : "inactive-employee",component : InactiveEmployeeComponent},

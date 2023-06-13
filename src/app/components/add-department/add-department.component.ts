@@ -24,11 +24,11 @@ export class AddDepartmentComponent {
     if (this.validateForm()) {
       this.departmentService.addDepartment(this.department).subscribe({
         next: (res) => {
-          this.snackBar.open("Department added successfully.", "OK");
+          this.snackBar.open("Department added successfully.", "OK", { duration: 5000 });
           this.dialogRef.close();
         },
         error: (err) => {
-          this.snackBar.open("Failed adding department!", "OK");
+          this.snackBar.open("Failed adding department!", "Dismiss", { duration: 5000 });
         }
       });
     }

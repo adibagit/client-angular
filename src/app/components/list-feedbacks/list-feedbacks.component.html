@@ -2,7 +2,7 @@
   <div class="d-flex page__box p-3 mt-2">Feedbacks</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute text-center"> 
-      <div class="feedback-container">
+      <div class="feedback-container" *ngIf="!isLoading">
         <div class="feedback-card" *ngFor="let feedback of feedbacks">
           <div class="feedback-header">
             <img class="avatar" [src]="feedback.user.picture" alt="User Avatar">
@@ -16,5 +16,9 @@
           </div>
           </div>
       </div>  
+      <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+        Loading Feedbacks...
+      </div>
     </div>
 </div>

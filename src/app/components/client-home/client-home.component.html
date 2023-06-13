@@ -1,11 +1,11 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2" style="display:flex; justify-content: space-between;">Client Dashboard
+  <div class="d-flex page__box p-3 mt-2" style="display:flex; justify-content: space-between;">Welcome {{username}}
     <button mat-raised-button (click)="openAddTicket()">Create Ticket</button>
   </div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute">
       <br/>
-      <ng-container *ngIf="tickets && tickets.length > 0; else noTickets">
+      <ng-container *ngIf="tickets && tickets.length > 0;">
           <div class="ticket-container">
           <div *ngFor="let ticket of tickets" class="ticket">
             <div class="ticket-left-line"></div>
@@ -46,9 +46,13 @@
           </div>
         </div>
       </ng-container>
-      <ng-template #noTickets>
+      <ng-template *ngIf="!isLoading && tickets && tickets.length > 0;">
         You don't have any tickets yet.
       </ng-template>
+      <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+        Loading Tickets...
+      </div>
     </div>
   </div>
 </div>

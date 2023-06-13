@@ -3,7 +3,7 @@
     <div class="page__content shadow p-3 position-relative">
       <div class="page__content-data position-absolute text-center">
             <div class="parent-container">
-              <div class="employee-container">
+              <div class="employee-container" *ngIf="!isLoading">
                     <div *ngFor="let client of clients" >
                         <mat-card class="employee-card" mat-elevation-z8>
                             <mat-card-header>
@@ -25,7 +25,11 @@
                             </mat-card-actions>
                         </mat-card>
                     </div>
-                </div>
+              </div>
+              <div *ngIf="isLoading">
+                <app-loading-spinner></app-loading-spinner>
+                Loading Clients...
+              </div>
             </div>
         </div>
     </div>

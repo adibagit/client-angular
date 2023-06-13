@@ -27,6 +27,7 @@ export class ListPropertiesComponent implements OnInit{
   };
   displayedColumns: string[] = ['propertyname', 'propertydesc', 'propertyaddress','area','regdate','actions'];
   dataSource !: MatTableDataSource<any>;
+  isLoading = true;
 
   constructor(
     private propertyService: PropertyService,
@@ -34,30 +35,37 @@ export class ListPropertiesComponent implements OnInit{
     private snackBar: MatSnackBar){}
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.getAllProps();
   }
 
   getAllProps(){
+    this.isLoading=true;
     this.propertyService.getAllProperties().subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator  = this.paginator;
         this.property = res;
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Failed retrieving data! Try restarting the server.","OK");
+        this.snackBar.open("Failed retrieving data!","Dismiss", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
 
   deleteProp(id?:number){
+    this.isLoading=true;
     this.propertyService.deleteProp(id).subscribe({
       next:(res)=>{
-        this.snackBar.open("Property deleted!","OK");
+        this.snackBar.open("Property deleted!","OK", { duration: 5000 });
+        this.isLoading=false;
       },
       error:(err)=>{
-        this.snackBar.open("Property deleted!","OK");
+        this.snackBar.open("Property deleted!","OK", { duration: 5000 });
+        this.isLoading=false;
       }
     });
   }
