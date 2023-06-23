@@ -177,3 +177,92 @@
 .custom-icon {
   color: #007bff; 
 }
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .page__box {
+    font-size: 24px; /* Reduce font size for smaller screens */
+  }
+  
+  .ticket {
+    width: 100%; /* Adjust width to fit smaller screens */
+    max-width: 100%; /* Remove maximum width to allow full width on smaller screens */
+    margin: 10px 0; /* Adjust margin for spacing */
+    position: relative; /* Add position for proper alignment */
+  }
+  
+  .ticket-left-line {
+    top: 0; /* Reset top position */
+    bottom: 0; /* Set bottom position for full length */
+    left: 0; /* Reset left position */
+    width: 4px; /* Set fixed width */
+    border-radius: 10px; /* Adjust border radius for full length */
+    background-color: #007bff; /* Add background color to make it visible */
+  }
+  
+  .ticket-icon {
+    margin-bottom: 10px; /* Adjust margin bottom for spacing */
+    flex-shrink: 0; /* Prevent icon from squeezing */
+    width: 50px; /* Set fixed width */
+    height: 50px; /* Set fixed height */
+    display: flex; /* Add flex display */
+    align-items: center; /* Center the icon vertically */
+    justify-content: center; /* Center the icon horizontally */
+    background-color: #6c757d; /* Add background color to make it visible */
+    color: #fff; /* Set icon color */
+    border-radius: 50%; /* Make the icon circular */
+  }
+  
+  .ticket-icon mat-icon {
+    font-size: 24px; /* Adjust icon size */
+  }
+  
+  .ticket-details {
+    flex-grow: 1;
+    margin-left: 10px; /* Add margin left for spacing */
+  }
+  
+  .ticket-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align elements evenly */
+    margin-top: 10px; /* Adjust margin top for spacing */
+  }
+  
+  .ticket-status {
+    width: 120px; /* Adjust width for visibility */
+  }
+  
+  .ticket-date {
+    display: none; /* Hide date on mobile */
+  }
+  
+  .ticket-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align actions to the right */
+    margin-top: 10px; /* Adjust margin top for spacing */
+  }
+  
+  .ticket-priority {
+    top: 10px; /* Adjust position for spacing */
+    right: 10px; /* Adjust position for spacing */
+  }
+  
+  .ticket-images {
+    margin-top: 10px; /* Adjust margin top for spacing */
+  }
+  
+  .ticket-image {
+    margin-right: 5px; /* Adjust margin right for spacing */
+  }
+  
+  /* Hide certain elements on mobile */
+  .page__box .mat-raised-button {
+    display: none;
+  }
+  
+  .ticket-priority {
+    display: none;
+  }
+}
