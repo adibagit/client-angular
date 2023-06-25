@@ -50,7 +50,7 @@ export class HomepageComponent implements OnInit {
         this.myuser = user;
         this.sessionService.isLoggedIn = (user!=null);
   
-        if(user.email == 'adiba012000@gmail.com' || user.email == 'manavvanani@gmail.com' || user.email == 'nehapophalikar21@gmail.com'){
+        if(user.email == 'adiba012000@gmail.com' || user.email == 'manavvanani@gmail.com' || user.email == 'nehapophalikar21@gmail.com' || user.email == 'vanani.manav.dcs23@vnsgu.ac.in'){
           this.manageSession(user.email);
           sessionStorage.setItem('role','admin');
           this.router.navigate(['adminDashboard']);
